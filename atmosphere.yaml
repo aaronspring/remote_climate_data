@@ -1,0 +1,18 @@
+plugins:
+  source:
+    - module: intake_xarray
+
+sources:
+  HadCRUT4:
+    description: HadCRUT temperature anomalies wrt. 1960-1989
+    metadata:
+      url: https://crudata.uea.ac.uk/cru/data/temperature/
+      doi: 10.1029/2011JD017187
+    driver: netcdf
+    args:
+      urlpath: simplecache::https://crudata.uea.ac.uk/cru/data/temperature/HadCRUT.4.6.0.0.median.nc
+      chunks: {'time': 'auto'}
+      storage_options:
+        simplecache:
+          cache_storage: HadCRUT4
+          same_names: True

@@ -1,0 +1,30 @@
+description: remote_climate_data master
+sources:
+
+  ocean:
+    args:
+      path: "{{CATALOG_DIR}}/ocean.yaml"
+    description: remote oceanography data
+    driver: intake.catalog.local.YAMLFileCatalog
+    metadata: {}
+
+  atmosphere:
+    args:
+      path: "{{CATALOG_DIR}}/atmosphere.yaml"
+    description: remote atmospheric science data
+    driver: intake.catalog.local.YAMLFileCatalog
+    metadata: {}
+
+  climate:
+    args:
+      path: "{{CATALOG_DIR}}/climate.yaml"
+    description: remote climate data. everything that does not fit into ocean atmosphere
+    driver: intake.catalog.local.YAMLFileCatalog
+    metadata: {}
+
+  shapefiles:
+    args:
+      path: "{{CATALOG_DIR}}/shapefiles.yaml"
+    description: remote shapefiles
+    driver: intake.catalog.local.YAMLFileCatalog
+    metadata: {}

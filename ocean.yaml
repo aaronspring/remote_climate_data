@@ -1,0 +1,119 @@
+plugins:
+  source:
+    - module: intake_xarray
+sources:
+  GISTEMP:
+    description: GISS Surface Temperature Analysis (GISTEMP v4)
+    metadata:
+      url: https://data.giss.nasa.gov/gistemp/
+      doi: 10.1029/2018JD029522
+    driver: netcdf
+    args:
+      urlpath: simplecache::https://data.giss.nasa.gov/pub/gistemp/gistemp1200_GHCNv4_ERSSTv5.nc.gz
+      storage_options:
+        simplecache:
+          cache_storage: gistemp
+          same_names: True
+          compression: infer
+      chunks: {'time':'auto'}
+
+  HadISST1:
+    description: Hadley Centre Sea Ice and Sea Surface Temperature data set 1
+    metadata:
+      url: https://www.metoffice.gov.uk/hadobs/hadisst/
+      doi: 10.1029/2002JD002670
+    driver: netcdf
+    args:
+      urlpath: simplecache::https://www.metoffice.gov.uk/hadobs/hadisst/data/HadISST_sst.nc.gz
+      chunks: {'time': 'auto'}
+      storage_options:
+        simplecache:
+          cache_storage: HadISST1
+          same_names: True
+          compression: infer
+
+  HadSST4:
+    description: Met Office Hadley Centre's sea surface temperature data set 4
+    metadata:
+      url: https://www.metoffice.gov.uk/hadobs/hadsst4/
+      doi:
+    driver: netcdf
+    parameters:
+      file:
+        description: name of file
+        type: str
+        default: median
+        allowed: [median, total_incertainty, measurement_and_sampling_uncertainty, uncorrelated_measurement_uncertainty, correlated_measurement_uncertainty, number_of_observations, number_of_superobservations, unadjusted, actuals_median, actuals_ensemble]
+    args:
+      urlpath: simplecache::https://www.metoffice.gov.uk/hadobs/hadsst4/data/netcdf/HadSST.4.0.0.0_{{file}}.nc
+      chunks: {'time': 'auto'}
+      storage_options:
+        simplecache:
+          cache_storage: HadSST4
+          same_names: True
+
+  CSIR-ML6:
+    description: CSIR
+    metadata:
+      url: https://figshare.com/articles/Global_surface_ocean_pCO2_from_CSIR-ML6_2020a_/12652100/4
+      doi:
+        - 10.5194/gmd-12-5113-2019
+        - 10.6084/m9.figshare.12652100.v4
+    driver: netcdf
+    args:
+      urlpath: simplecache::https://ndownloader.figshare.com/files/23875943
+      chunks: {'time':'auto'}
+      storage_options:
+        simplecache:
+          cache_storage: CSIR-ML6
+          same_names: True
+
+  SOM_FFN:
+    description: Observational time series data
+    metadata:
+      url: https://www.nodc.noaa.gov/ocads/oceans/SPCO2_1982_present_ETH_SOM_FFN.html
+      doi:
+        - 10.1002/2015GB005359
+        - 10.7289/V5Z899N6
+    driver: netcdf
+    parameters:
+      version:
+        description: version release in year
+        type: int
+        default: 2020
+        allowed: [2017,2018,2020]
+    metadata:
+      plots:
+        fgco2_over_time:
+          title: SOM-FFN fgco2 over time
+          kind: contourf
+          x: lon
+          y: lat
+          z: fgco2_smoothed
+          groupby: time
+          cmap: RdBu_r
+          levels: 20
+          clim: [-10, 10]
+        fgco2_timeseries_location:
+          title: fgco2 timeseries at (lon,lat) location
+          kind: line
+          x: time
+          y: fgco2_smoothed
+          groupby: ['lon','lat']
+        fgco2_timeseries_latitude:
+          title: fgco2 timeseries at latitude
+          kind: contourf
+          y: time
+          x: lon
+          z: fgco2_smoothed
+          groupby: lat
+          levels: 20
+    args:
+      urlpath: simplecache::https://data.nodc.noaa.gov/ncei/ocads/data/0160558/MPI_SOM-FFN_v{{version}}/spco2_MPI-SOM_FFN_v{{version}}.nc
+      chunks: {'time':'120'}
+      storage_options:
+        simplecache:
+          cache_storage: SOM_FFN
+          same_names: True
+      xarray_kwargs:
+        drop_variables: date
