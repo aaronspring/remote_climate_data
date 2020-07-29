@@ -70,11 +70,6 @@ sources:
 
   SOM_FFN:
     description: Observational time series data
-    metadata:
-      url: https://www.nodc.noaa.gov/ocads/oceans/SPCO2_1982_present_ETH_SOM_FFN.html
-      doi:
-        - 10.1002/2015GB005359
-        - 10.7289/V5Z899N6
     driver: netcdf
     parameters:
       version:
@@ -83,6 +78,10 @@ sources:
         default: 2020
         allowed: [2017,2018,2020]
     metadata:
+      url: https://www.nodc.noaa.gov/ocads/oceans/SPCO2_1982_present_ETH_SOM_FFN.html
+      doi:
+        - 10.1002/2015GB005359
+        - 10.7289/V5Z899N6
       plots:
         fgco2_over_time:
           title: SOM-FFN fgco2 over time
