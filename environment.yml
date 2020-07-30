@@ -13,7 +13,7 @@ dependencies:  # requred: mean required for catalog to load data
   - aiohttp  # fsspec or dask should actually include this
   # Visualization
   - cartopy
-  - matplotlib
+  - matplotlib=3.2
   - pyviz_comms
   - hvplot
   - geoviews
