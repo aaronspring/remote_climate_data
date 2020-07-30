@@ -10,6 +10,7 @@ dependencies:  # requred: mean required for catalog to load data
   - requests
   - geopandas  # requred
   - ipywidgets
+  - aiohttp
   # Visualization
   - cartopy
   - matplotlib
