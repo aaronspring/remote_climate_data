@@ -14,7 +14,6 @@ dependencies:  # requred: mean required for catalog to load data
   - cartopy
   - matplotlib
   - hvplot
-  - pyviz
   - geoviews
   - bokeh
   - pip
