@@ -10,10 +10,10 @@ dependencies:  # requred: mean required for catalog to load data
   - requests
   - geopandas  # requred
   - ipywidgets
-  - aiohttp
+  - aiohttp  # fsspec or dask should actually include this
   # Visualization
   - cartopy
-  - matplotlib
+  - matplotlib<3.3
   - hvplot
   - geoviews
   - bokeh
