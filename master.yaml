@@ -8,6 +8,13 @@ sources:
     driver: intake.catalog.local.YAMLFileCatalog
     metadata: {}
 
+  land:
+    args:
+      path: "{{CATALOG_DIR}}/land.yaml"
+    description: remote terrestrial data
+    driver: intake.catalog.local.YAMLFileCatalog
+    metadata: {}
+
   atmosphere:
     args:
       path: "{{CATALOG_DIR}}/atmosphere.yaml"
@@ -18,7 +25,7 @@ sources:
   climate:
     args:
       path: "{{CATALOG_DIR}}/climate.yaml"
-    description: remote climate data. everything that does not fit into ocean atmosphere
+    description: remote climate data. everything that does not fit into ocean, land or atmosphere
     driver: intake.catalog.local.YAMLFileCatalog
     metadata: {}
 

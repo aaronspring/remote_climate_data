@@ -8,6 +8,17 @@ sources:
     metadata:
       url: https://crudata.uea.ac.uk/cru/data/temperature/
       doi: 10.1029/2011JD017187
+      plots:
+        temperature_anomaly_over_time:
+          title: HadCRUT4 temperature anomly wrt. 1960-1989
+          kind: contourf
+          x: longitude
+          y: latitude
+          z: temperature_anomaly
+          groupby: time
+          cmap: RdBu_r
+          levels: 20
+          # clim: (-10, 10)  # once https://github.com/holoviz/hvplot/pull/492 is merged
     driver: netcdf
     args:
       urlpath: simplecache::https://crudata.uea.ac.uk/cru/data/temperature/HadCRUT.4.6.0.0.median.nc

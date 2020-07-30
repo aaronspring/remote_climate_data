@@ -92,7 +92,7 @@ sources:
           groupby: time
           cmap: RdBu_r
           levels: 20
-          clim: [-10, 10]
+          # clim: (-10, 10)  # once https://github.com/holoviz/hvplot/pull/492 is merged
         fgco2_timeseries_location:
           title: fgco2 timeseries at (lon,lat) location
           kind: line
