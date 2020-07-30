@@ -1,6 +1,7 @@
 name: remote_climate_data-dev
 channels:
   - conda-forge
+  - pyviz
 dependencies:  # requred: mean required for catalog to load data
   - python=3.6
   - intake  # requred
@@ -14,7 +15,7 @@ dependencies:  # requred: mean required for catalog to load data
   # Visualization
   - cartopy
   - matplotlib
-  - pyviz_comms
+  - pyviz
   - hvplot
   - geoviews
   - bokeh
