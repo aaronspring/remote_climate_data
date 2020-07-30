@@ -1,0 +1,7 @@
+xarray
+dask
+intake
+intake_xarray
+hvplot
+git+https://github.com/intake/filesystem_spec.git
+git+https://github.com/aaronspring/intake_geopandas.git@AS_cache

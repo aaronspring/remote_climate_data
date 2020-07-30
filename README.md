@@ -1,6 +1,7 @@
 # remote_climate_data
 a collection of remote climate data accessed via `intake` cached to disk
 
+[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/aaronspring/remote_climate_data/master?filepath=demo.ipynb)
 
 ## Usage
 ```python
