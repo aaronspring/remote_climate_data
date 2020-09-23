@@ -1,7 +1,7 @@
 name: remote_climate_data-dev
 channels:
   - conda-forge
-dependencies:  : mean required for catalog to load data
+dependencies:
   - python=3.6
   - intake
   - xarray
