@@ -15,10 +15,12 @@ sources:
           x: longitude
           y: latitude
           z: temperature_anomaly
+          ylim: [-90,90]
+          xlim: [-180,180]
           groupby: time
+          label: Temperature Anomaly [K]
           cmap: RdBu_r
-          levels: 20
-          # clim: (-10, 10)  # once https://github.com/holoviz/hvplot/pull/492 is merged
+          levels: 20 # clim: (-10, 10)  # once https://github.com/holoviz/hvplot/pull/492 is merged
     driver: netcdf
     args:
       urlpath: simplecache::https://crudata.uea.ac.uk/cru/data/temperature/HadCRUT.4.6.0.0.median.nc

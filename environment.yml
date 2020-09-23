@@ -1,14 +1,14 @@
 name: remote_climate_data-dev
 channels:
   - conda-forge
-dependencies:  # requred: mean required for catalog to load data
+dependencies:  : mean required for catalog to load data
   - python=3.6
-  - intake  # requred
-  - xarray  # requred
-  - dask  # requred
-  - fsspec  # requred
+  - intake
+  - xarray
+  - dask
+  - fsspec
   - requests
-  - geopandas  # requred
+  - geopandas
   - ipywidgets
   - aiohttp  # fsspec or dask should actually include this
   # Visualization
@@ -20,9 +20,9 @@ dependencies:  # requred: mean required for catalog to load data
   - bokeh
   - pip
   - pip:  # get latest master from source
-      - git+https://github.com/intake/filesystem_spec.git  # required
-      - git+https://github.com/intake/intake.git  # requred
-      - git+https://github.com/intake/intake-xarray.git  # requred
+      - git+https://github.com/intake/filesystem_spec.git
+      - git+https://github.com/intake/intake.git
+      - git+https://github.com/intake/intake-xarray.git
       - git+https://github.com/mathause/regionmask.git
       - git+https://github.com/intake/intake-esm.git
-      - git+https://github.com/aaronspring/intake_geopandas.git@AS_cache  # requred
+      - git+https://github.com/intake/intake_geopandas.git

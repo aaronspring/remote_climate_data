@@ -14,7 +14,6 @@ sources:
         simplecache:
           cache_storage: gistemp
           same_names: True
-          compression: infer
       chunks: {'time':'auto'}
 
   HadISST1:
@@ -30,7 +29,6 @@ sources:
         simplecache:
           cache_storage: HadISST1
           same_names: True
-          compression: infer
 
   HadSST4:
     description: Met Office Hadley Centre's sea surface temperature data set 4
