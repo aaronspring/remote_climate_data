@@ -4,4 +4,5 @@ intake
 intake_xarray
 hvplot
 git+https://github.com/intake/filesystem_spec.git
-git+https://github.com/intake/intake_geopandas.git
+git+https://github.com/geopandas/geopandas.git
+git+https://github.com/intake/intake_geopandas.git@refs/pull/22/head

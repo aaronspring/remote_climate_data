@@ -10,8 +10,8 @@ sources:
     driver: intake_geopandas.geopandas.ShapefileSource
     args:
       urlpath: simplecache::https://www.naturalearthdata.com/http//www.naturalearthdata.com/download/10m/cultural/ne_10m_admin_0_countries.zip
-      use_fsspec: True
+      use_fsspec: true
       storage_options:
         simplecache:
           cache_storage: Countries
-          same_names: True
+          same_names: true
