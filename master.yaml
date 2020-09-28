@@ -35,3 +35,10 @@ sources:
     description: remote shapefiles
     driver: intake.catalog.local.YAMLFileCatalog
     metadata: {}
+
+  regionmask:
+    args:
+      path: "{{CATALOG_DIR}}/regionmask.yaml"
+    description: remote regionmask regions
+    driver: intake.catalog.local.YAMLFileCatalog
+    metadata: {}
