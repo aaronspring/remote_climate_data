@@ -1,0 +1,17 @@
+plugins:
+  source:
+    - module: intake_xarray
+
+sources:
+  CruTS4:
+    parameters:
+      variable:
+        description: variable name
+        type: str
+        default: tmp
+        allowed: [tmp, pre]
+    args:
+      urlpath: http://dap.ceda.ac.uk/thredds/dodsC/badc/cru/data/cru_ts/cru_ts_4.03/data/{{variable}}/cru_ts4.03.1901.2018.{{variable}}.dat.nc
+      #      urlpath: http://esgf3.dkrz.de/thredds/dodsC/cmip6/CMIP/MPI-M/MPI-ESM1-2-LR/historical/r1i1p1f1/Amon/{{variable}}/gn/v20190710/tas_Amon_MPI-ESM1-2-LR_historical_r1i1p1f1_gn_185001-186912.nc
+    description: CRU TS4
+    driver: opendap
