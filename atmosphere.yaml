@@ -36,3 +36,23 @@ sources:
           same_names: True
       xarray_kwargs:
         use_cftime: True
+  CRU_TS:
+    description: Climatic Research Unit (CRU) Time-Series (TS) of high-resolution gridded data of month-by-month variation in climate (Jan. 1901- Dec. 2019) 
+    metadata:
+      url: https://crudata.uea.ac.uk/cru/data/hrg
+      doi: 10.1029/2011JD017187
+    parameters:
+      version:
+        description: dataset version
+        type: str
+        default: '4.03'
+        allowed: ['4.02', '4.03']
+      variable:
+        description: variable name
+        type: str
+        default: tmp
+        allowed: [tmp, tmx, tmn, pre, pet]
+    args:
+      urlpath: http://dap.ceda.ac.uk/thredds/dodsC/badc/cru/data/cru_ts/cru_ts_{{version}}/data/{{variable}}/cru_ts{{version}}.1901.2018.{{variable}}.dat.nc
+      engine: netcdf4
+    driver: opendap
