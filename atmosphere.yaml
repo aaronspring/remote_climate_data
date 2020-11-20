@@ -47,7 +47,7 @@ sources:
         description: dataset version
         type: str
         default: '4.03'
-        allowed: ['4.03'] # only 4.03 is available by opendap from CEDA archive right now.
+        allowed: ['4.03'] # only 4.03, other versions have different end years 
       variable:
         description: variable name
         type: str
