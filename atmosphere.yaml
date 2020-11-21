@@ -37,23 +37,10 @@ sources:
       xarray_kwargs:
         use_cftime: True
   CRU_TS:
-    description: Climatic Research Unit (CRU) Time-Series (TS) of high-resolution gridded data of month-by-month variation in climate (Jan. 1901- Dec. 2019) 
+    description: Climatic Research Unit (CRU) Time-Series (TS) of high-resolution gridded data of month-by-month variation in climate
     metadata:
       url: https://crudata.uea.ac.uk/cru/data/hrg
-      doi: 10.5285/10d3e3640f004c578403419aac167d82
       comment: CEDA archive requires authorization, for setting up a certificate, please follow instructions from https://help.ceda.ac.uk/article/4712-reading-netcdf-with-python-opendap
-    parameters:
-      version:
-        description: dataset version
-        type: str
-        default: '4.03'
-        allowed: ['4.03'] # only 4.03, other versions have different end years 
-      variable:
-        description: variable name
-        type: str
-        default: tmp
-        allowed: [pre, tmp, tmx, tmn, dtr, vap, cld, wet, frs, pet]
     args:
-      urlpath: http://dap.ceda.ac.uk/thredds/dodsC/badc/cru/data/cru_ts/cru_ts_{{version}}/data/{{variable}}/cru_ts{{version}}.1901.2018.{{variable}}.dat.nc
-      engine: netcdf4
-    driver: opendap
+      path: "{{CATALOG_DIR}}/cru_ts.yaml"
+    driver: intake.catalog.local.YAMLFileCatalog
