@@ -6,7 +6,7 @@ import pytest
 
 cat = intake.open_catalog('https://raw.githubusercontent.com/aaronspring/remote_climate_data/master/master.yaml')
 
-def test_check_all_items(cat):
+def test_check_all_items():
     for item_str in cat.walk(depth=3):
         print(item_str)
         item = getattr(cat,item_str)
