@@ -36,3 +36,11 @@ sources:
           same_names: True
       xarray_kwargs:
         use_cftime: True
+  CRU_TS:
+    description: Climatic Research Unit (CRU) Time-Series (TS) of high-resolution gridded data of month-by-month variation in climate
+    metadata:
+      url: https://crudata.uea.ac.uk/cru/data/hrg
+      comment: CEDA archive requires authorization, for setting up a certificate, please follow instructions from https://help.ceda.ac.uk/article/4712-reading-netcdf-with-python-opendap
+    args:
+      path: "{{CATALOG_DIR}}/atmosphere/cru_ts.yaml"
+    driver: intake.catalog.local.YAMLFileCatalog
