@@ -26,14 +26,13 @@ Make data access for climate data easy:
 
 ## Contribute and extend
 - PRs for new remote climate datasets are very welcome
-- shapefiles via `intake_geopandas` once https://github.com/intake/intake_geopandas/pull/17 is merged
 - Extendable with THREDDS catalogs via https://github.com/NCAR/intake-thredds once https://github.com/NCAR/intake-thredds/pull/3 is merged
 
 
 ## Relies on
 - `intake`: https://intake.readthedocs.io/en/latest/
 - `intake_xarray`: https://intake-xarray.readthedocs.io/en/latest/
-- `intake_geopandas`: https://github.com/aaronspring/intake_geopandas.git@AS_cache
+- `intake_geopandas`: https://github.com/intake_geopandas/intake_geopandas.git
 - (optional) `hvplot`: https://hvplot.holoviz.org/index.html for plotting
 
 
