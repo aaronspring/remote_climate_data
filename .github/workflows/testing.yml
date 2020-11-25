@@ -37,7 +37,7 @@ jobs:
         run: |
           pytest
           
-docs_notebooks:  # Checks that pre-compiled notebooks in docs still work.
+  docs_notebooks:  # Checks that pre-compiled notebooks in docs still work.
     runs-on: ubuntu-latest
     defaults:
       run:
