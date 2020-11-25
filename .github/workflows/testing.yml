@@ -1,0 +1,68 @@
+# This is a basic workflow to help you get started with Actions
+
+name: CI
+
+# Controls when the action will run. 
+on: pull_request
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  # This workflow contains a single job called "build"
+  test:
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        shell: bash -l {0}
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v2
+
+      - name: Set up conda
+        uses: conda-incubator/setup-miniconda@v1
+        with:
+          auto-update-conda: true
+          channels: conda-forge
+          mamba-version: '*'
+          activate-environment: environment.yml
+          python-version: 3.6
+      - name: Set up conda environment
+        run: |
+          mamba env update -f environment.yml
+      - name: Conda info
+        run: conda info
+      - name: Conda list
+        run: conda list
+      - name: Run tests
+        run: |
+          pytest
+          
+docs_notebooks:  # Checks that pre-compiled notebooks in docs still work.
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        shell: bash -l {0}
+    steps:
+      - uses: actions/checkout@v2
+      - name: Set up conda
+        uses: conda-incubator/setup-miniconda@v1
+        with:
+          auto-update-conda: true
+          channels: conda-forge
+          mamba-version: '*'
+          activate-environment: environment.yml
+          python-version: 3.6
+      - name: Set up conda environment
+        run: |
+          mamba env update -f environment.yml
+          pip install nbstripout
+      - name: Conda info
+        run: conda info
+      - name: Conda list
+        run: conda list
+      - name: Test notebooks in docs
+        run: |
+          nbstripout source/*.ipynb
+          make -j4 html
