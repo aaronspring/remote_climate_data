@@ -33,13 +33,11 @@ jobs:
           auto-update-conda: true
           channels: conda-forge
           mamba-version: '*'
-          activate-environment: environment.yml
+          activate-environment: remote_climate_data-dev
           python-version: 3.6
       - name: Set up conda environment
         run: |
-          mamba env update -f environment.yml
-          conda activate remote_climate_data-dev
-          pip install pytest
+          mamba env update -f environment.yml --name base
       - name: Conda info
         run: conda info
       - name: Conda list
@@ -64,7 +62,7 @@ jobs:
           auto-update-conda: true
           channels: conda-forge
           mamba-version: '*'
-          activate-environment: environment.yml
+          activate-environment: remote_climate_data-dev
           python-version: 3.6
       - name: Set up conda environment
         run: |
