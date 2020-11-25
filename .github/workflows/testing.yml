@@ -35,6 +35,7 @@ jobs:
       - name: Set up conda environment
         run: |
           mamba env update -f environment.yml
+          conda activate remote_climate_data-dev
           pip install pytest
       - name: Conda info
         run: conda info
@@ -65,12 +66,10 @@ jobs:
       - name: Set up conda environment
         run: |
           mamba env update -f environment.yml
-          pip install nbstripout
       - name: Conda info
         run: conda info
       - name: Conda list
         run: conda list
       - name: Test notebooks in docs
         run: |
-          nbstripout *.ipynb
-          make -j4 html
+          jupyter nbconvert --inplace --execute demo.ipynb
