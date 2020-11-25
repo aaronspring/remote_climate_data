@@ -32,7 +32,6 @@ sources:
       chunks: {'time': 'auto'}
       storage_options:
         simplecache:
-          cache_storage: HadCRUT4
           same_names: True
       xarray_kwargs:
         use_cftime: True
