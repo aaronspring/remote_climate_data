@@ -35,6 +35,7 @@ jobs:
       - name: Set up conda environment
         run: |
           mamba env update -f environment.yml
+          pip install pytest
       - name: Conda info
         run: conda info
       - name: Conda list
@@ -71,5 +72,5 @@ jobs:
         run: conda list
       - name: Test notebooks in docs
         run: |
-          nbstripout source/*.ipynb
+          nbstripout *.ipynb
           make -j4 html
