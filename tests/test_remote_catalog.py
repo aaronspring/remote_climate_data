@@ -1,4 +1,5 @@
 import intake_xarray
+import intake
 import xarray as xr
 from dask.utils import format_bytes
 import pytest
