@@ -46,7 +46,7 @@ jobs:
         run: |
           pytest
           
-  docs_notebooks:  # Checks that pre-compiled notebooks in docs still work.
+  test_notebooks:  # Checks that notebooks complete without failure.
     runs-on: ubuntu-latest
     defaults:
       run:
@@ -71,6 +71,6 @@ jobs:
         run: conda info
       - name: Conda list
         run: conda list
-      - name: Test notebooks in docs
+      - name: Test notebooks
         run: |
           jupyter nbconvert --inplace --execute demo.ipynb
