@@ -69,12 +69,6 @@ sources:
   SOM_FFN:
     description: Observational time series data
     driver: netcdf
-    parameters:
-      version:
-        description: version release in year
-        type: int
-        default: 2020
-        allowed: [2017,2018,2020]
     metadata:
       url: https://www.nodc.noaa.gov/ocads/oceans/SPCO2_1982_present_ETH_SOM_FFN.html
       doi:
@@ -105,6 +99,12 @@ sources:
           z: fgco2_smoothed
           groupby: lat
           levels: 20
+    parameters:
+      version:
+        description: version release in year
+        type: int
+        default: 2020
+        allowed: [2017,2018,2020]
     args:
       urlpath: simplecache::https://data.nodc.noaa.gov/ncei/ocads/data/0160558/MPI_SOM-FFN_v{{version}}/spco2_MPI-SOM_FFN_v{{version}}.nc
       chunks: {'time':'120'}
@@ -114,3 +114,44 @@ sources:
           same_names: True
       xarray_kwargs:
         drop_variables: date
+
+  WOA2018:
+    description: World Ocean Atlas 2018
+    driver: opendap
+    metadata:
+      url: https://www.nodc.noaa.gov/cgi-bin/OC5/woa18/woa18.pl
+      doi: not found
+    parameters:
+      variable:
+        description: version release in year
+        type: str
+        default: temperature
+        allowed: [temperature, salinity, oxygen, phosphate, nitrate, AOU] # silicate(i), o2sat(O) overlapping first string
+      DDDD:
+        description: decade
+        type: str
+        default: decav
+        # average, 1955-1964, 1965-1974, 1975-1984, 1985-1994, 1995-2004, 2005-2017, 1981-2010
+        allowed: [decav, 5564, 6574, 7584, 8594, 95A4, A5B7, 81B0]
+      TT:
+        description: time period
+        type: int
+        default: '00'
+        # annual: 0 , J: 1, F: 2 ... winter:13, spring:14, summer:15, autumn:16
+        min: 0
+        max: 16
+      GG:
+        description: grid
+        type: str
+        default: '1.00'
+        #     [GG] - grid (5deg- 5°, 01- 1°, 04 - 1/4°)
+        allowed: ['5.00', '1.00', '0.25']
+      GG2:
+        description: matching grid GG # inconsistency in WOA2018 file naming
+        type: str
+        default: '01'
+        allowed: ['5d', '01', '04']
+    args:
+      urlpath: https://data.nodc.noaa.gov/thredds/dodsC/ncei/woa/{{variable}}/{{DDDD}}/{{GG}}/woa18_{{DDDD}}_{{variable[0]}}{{ "%02d" | format(TT) }}_{{GG2}}.nc
+      xarray_kwargs:
+        decode_times: false
