@@ -8,7 +8,7 @@ dependencies:
   - dask
   - fsspec
   - requests
-  - geopandas
+  #- geopandas
   - regionmask
   - pip
   - pytest
@@ -25,6 +25,5 @@ dependencies:
       - git+https://github.com/intake/filesystem_spec.git
       - git+https://github.com/intake/intake.git
       - git+https://github.com/intake/intake-xarray.git
-      - git+https://github.com/mathause/regionmask.git
+      - git+https://github.com/geopandas/geopandas.git 
       - git+https://github.com/intake/intake_geopandas.git
-      - git+https://github.com/geopandas/geopandas.git
