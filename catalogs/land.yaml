@@ -13,7 +13,6 @@ sources:  # template with required fields marked
 #      chunks: {'time': 'auto'}
 #      storage_options:
 #        simplecache:
-#          cache_storage: HadCRUT4  # name of the folder when cached
 #          same_names: True  # cache the file with the same name and ending as in url
 #      xarray_kwargs:  # args passed to xarray.open_dataset or xarray.open_mfdataset
 #        concat_dim: time
