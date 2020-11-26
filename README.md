@@ -1,7 +1,8 @@
+![CI](https://github.com/aaronspring/remote_climate_data/workflows/testing/badge.svg)
+[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/aaronspring/remote_climate_data/master?urlpath=lab?filepath=demo.ipynb)
+
 # remote_climate_data
 a collection of remote climate data accessed via `intake` cached to disk
-
-[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/aaronspring/remote_climate_data/master?urlpath=lab?filepath=demo.ipynb)
 
 ## Usage
 ```python
@@ -25,15 +26,14 @@ Make data access for climate data easy:
 
 
 ## Contribute and extend
-- PRs for new remote climate datasets are very welcome
-- shapefiles via `intake_geopandas` once https://github.com/intake/intake_geopandas/pull/17 is merged
+- PRs for new remote climate datasets or useful shapefiles are very welcome
 - Extendable with THREDDS catalogs via https://github.com/NCAR/intake-thredds once https://github.com/NCAR/intake-thredds/pull/3 is merged
 
 
 ## Relies on
 - `intake`: https://intake.readthedocs.io/en/latest/
 - `intake_xarray`: https://intake-xarray.readthedocs.io/en/latest/
-- `intake_geopandas`: https://github.com/aaronspring/intake_geopandas.git@AS_cache
+- (optional) `intake_geopandas`: https://github.com/intake_geopandas/intake_geopandas.git for shapefiles
 - (optional) `hvplot`: https://hvplot.holoviz.org/index.html for plotting
 
 

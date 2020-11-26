@@ -3,42 +3,42 @@ sources:
 
   ocean:
     args:
-      path: "{{CATALOG_DIR}}/ocean.yaml"
+      path: "{{CATALOG_DIR}}/catalogs/ocean.yaml"
     description: remote oceanography data
     driver: intake.catalog.local.YAMLFileCatalog
     metadata: {}
 
   land:
     args:
-      path: "{{CATALOG_DIR}}/land.yaml"
+      path: "{{CATALOG_DIR}}/catalogs/land.yaml"
     description: remote terrestrial data
     driver: intake.catalog.local.YAMLFileCatalog
     metadata: {}
 
   atmosphere:
     args:
-      path: "{{CATALOG_DIR}}/atmosphere.yaml"
+      path: "{{CATALOG_DIR}}/catalogs/atmosphere.yaml"
     description: remote atmospheric science data
     driver: intake.catalog.local.YAMLFileCatalog
     metadata: {}
 
   climate:
     args:
-      path: "{{CATALOG_DIR}}/climate.yaml"
+      path: "{{CATALOG_DIR}}/catalogs/climate.yaml"
     description: remote climate data. everything that does not fit into ocean, land or atmosphere
     driver: intake.catalog.local.YAMLFileCatalog
     metadata: {}
 
   shapefiles:
     args:
-      path: "{{CATALOG_DIR}}/shapefiles.yaml"
+      path: "{{CATALOG_DIR}}/catalogs/shapefiles.yaml"
     description: remote shapefiles
     driver: intake.catalog.local.YAMLFileCatalog
     metadata: {}
 
   regionmask:
     args:
-      path: "{{CATALOG_DIR}}/regionmask.yaml"
+      path: "{{CATALOG_DIR}}/catalogs/regionmask.yaml"
     description: remote regionmask regions
     driver: intake.catalog.local.YAMLFileCatalog
     metadata: {}
