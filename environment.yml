@@ -3,12 +3,17 @@ channels:
   - conda-forge
 dependencies:
   - python=3.6
-  #- intake
+  - intake
+  - intake_xarray
+  - intake_geopandas
   - xarray
   - dask
   - fsspec
   - requests
-  # - geopandas
+  - geopandas
+  - regionmask
+  - pip
+  - pytest
   - ipywidgets
   - aiohttp  # fsspec or dask should actually include this
   # Visualization
@@ -18,8 +23,6 @@ dependencies:
   - hvplot
   - geoviews
   - bokeh
-  - pip
-  - pytest
   - pip:  # get latest master from source
       - git+https://github.com/intake/filesystem_spec.git
       - git+https://github.com/intake/intake.git
