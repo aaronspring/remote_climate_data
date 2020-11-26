@@ -150,3 +150,34 @@ sources:
       urlpath: simplecache::https://data.nodc.noaa.gov/thredds/dodsC/ncei/woa/{{variable}}/{{DDDD}}/{{GG}}/woa18_{{DDDD}}_{{variable[0]}}{{ "%02d" | format(TT) }}_{{GG2}}.nc
       xarray_kwargs:
         decode_times: false
+
+  OISST:
+    driver: netcdf
+    description: "Optimum Interpolation Sea Surface Temperature (OISST) v2.1 provided by the NOAA/NCEI from their Web site at https://www.ncdc.noaa.gov/oisst/data-access"
+    parameters:
+      year:
+        description: year
+        type: int
+        default: 2010
+        min: 1981
+        max: 2020
+      month:
+        description: month
+        type: int
+        default: 1
+        min: 1
+        max: 12
+      day:
+        description: day
+        type: int
+        default: 1
+        min: 1
+        max: 31
+    args:
+      urlpath: simplecache::https://www.ncei.noaa.gov/data/sea-surface-temperature-optimum-interpolation/v2.1/access/avhrr/{{ "%04d" | format(year) }}{{ "%02d" | format(month) }}/oisst-avhrr-v02r01.{{ "%04d" | format(year) }}{{ "%02d" | format(month) }}{{ "%02d" | format(day) }}.nc
+      storage_options:
+        simplecache:
+          same_names: true
+      xarray_kwargs:
+        decode_times: True
+      chunks: {}
