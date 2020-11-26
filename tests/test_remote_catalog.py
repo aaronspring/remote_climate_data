@@ -18,3 +18,5 @@ def test_check_all_items():
             print('successfully tested',item_str,'\n',type(item),'\n',ds.dims, '\n',ds.coords, '\nsize = ',format_bytes(ds.nbytes),'\n')
         else:
             print('couldnt test',item_str,'\n',type(item),'\n',item,'\n')
+    import os
+    assert not os.path.exists('HadCRUT4'), print(os.listdir())
