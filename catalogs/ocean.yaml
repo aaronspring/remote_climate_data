@@ -12,7 +12,6 @@ sources:
       urlpath: simplecache::https://data.giss.nasa.gov/pub/gistemp/gistemp1200_GHCNv4_ERSSTv5.nc.gz
       storage_options:
         simplecache:
-          cache_storage: gistemp
           same_names: True
       chunks: {'time':'auto'}
 
@@ -27,7 +26,6 @@ sources:
       chunks: {'time': 'auto'}
       storage_options:
         simplecache:
-          cache_storage: HadISST1
           same_names: True
 
   HadSST4:
@@ -47,7 +45,6 @@ sources:
       chunks: {'time': 'auto'}
       storage_options:
         simplecache:
-          cache_storage: HadSST4
           same_names: True
 
   CSIR-ML6:
@@ -63,7 +60,6 @@ sources:
       chunks: {'time':'auto'}
       storage_options:
         simplecache:
-          cache_storage: CSIR-ML6
           same_names: True
 
   SOM_FFN:
@@ -110,7 +106,6 @@ sources:
       chunks: {'time':'120'}
       storage_options:
         simplecache:
-          cache_storage: SOM_FFN
           same_names: True
       xarray_kwargs:
         drop_variables: date
