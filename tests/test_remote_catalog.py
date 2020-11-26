@@ -4,6 +4,8 @@ import xarray as xr
 from dask.utils import format_bytes
 import pytest
 
+intake.config.conf['cache_disabled']=True
+
 cat = intake.open_catalog('https://raw.githubusercontent.com/aaronspring/remote_climate_data/master/master.yaml')
 
 def test_check_all_items():
