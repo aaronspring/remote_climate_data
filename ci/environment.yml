@@ -8,6 +8,7 @@ dependencies:
   - dask
   - fsspec
   - requests
+  - aiohttp
   - geopandas
   - regionmask
   - pip
@@ -19,7 +20,7 @@ dependencies:
   - pyviz_comms
   - hvplot
   - geoviews
-  - bokeh
+  #- bokeh
   - pip:  # get latest master from source
       - git+https://github.com/intake/filesystem_spec.git
       - git+https://github.com/intake/intake.git
