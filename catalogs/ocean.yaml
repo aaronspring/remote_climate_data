@@ -154,6 +154,9 @@ sources:
   OISST:
     driver: netcdf
     description: "Optimum Interpolation Sea Surface Temperature (OISST) v2.1 provided by the NOAA/NCEI from their Web site at https://www.ncdc.noaa.gov/oisst/data-access"
+    metadata:
+      url: https://www.ncdc.noaa.gov/oisst/optimum-interpolation-sea-surface-temperature-oisst-v21
+      doi: 10.1175/JTECH-D-19-0177.1
     parameters:
       year:
         description: year
@@ -178,6 +181,4 @@ sources:
       storage_options:
         simplecache:
           same_names: true
-      xarray_kwargs:
-        decode_times: True
       chunks: {}
