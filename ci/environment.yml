@@ -13,7 +13,6 @@ dependencies:
   - pip
   - pytest
   - ipywidgets
-  - aiohttp  # fsspec or dask should actually include this
   # Visualization
   - cartopy
   - matplotlib
