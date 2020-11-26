@@ -1,7 +1,7 @@
 # This is a basic workflow to help you get started with Actions
 name: testing
 
-# Controls when the action will run. 
+# Controls when the action will run.
 on: pull_request
 
 
@@ -19,7 +19,7 @@ jobs:
       matrix:
         python: [3.6]
       fail-fast: false
-   
+
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
@@ -37,7 +37,7 @@ jobs:
           python-version: 3.6
       - name: Set up conda environment
         run: |
-          mamba env update -f environment.yml
+          mamba env update -f ci/environment.yml
       - name: Conda info
         run: conda info
       - name: Conda list
@@ -45,7 +45,7 @@ jobs:
       - name: Run tests
         run: |
           pytest
-          
+
   test_notebooks:  # Checks that notebooks complete without failure.
     runs-on: ubuntu-latest
     defaults:
@@ -66,11 +66,11 @@ jobs:
           python-version: 3.6
       - name: Set up conda environment
         run: |
-          mamba env update -f environment.yml
+          mamba env update -f ci/environment.yml
       - name: Conda info
         run: conda info
       - name: Conda list
         run: conda list
       - name: Test notebooks
         run: |
-          jupyter nbconvert --inplace --execute demo.ipynb
+          jupyter nbconvert --inplace --execute notebooks/demo.ipynb
