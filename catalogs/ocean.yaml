@@ -151,33 +151,45 @@ sources:
       xarray_kwargs:
         decode_times: false
 
-  OISST:
+  OISSTv21:
     driver: netcdf
     description: "Optimum Interpolation Sea Surface Temperature (OISST) v2.1 provided by the NOAA/NCEI from their Web site at https://www.ncdc.noaa.gov/oisst/data-access"
     metadata:
       url: https://www.ncdc.noaa.gov/oisst/optimum-interpolation-sea-surface-temperature-oisst-v21
       doi: 10.1175/JTECH-D-19-0177.1
     parameters:
-      year:
-        description: year
-        type: int
-        default: 2010
-        min: 1981
-        max: 2020
-      month:
-        description: month
-        type: int
-        default: 1
-        min: 1
-        max: 12
-      day:
-        description: day
-        type: int
-        default: 1
-        min: 1
-        max: 31
+      date:
+        description: time
+        type: datetime
+        default: 1982.01.01
+        min: 1981.09.01
     args:
-      urlpath: simplecache::https://www.ncei.noaa.gov/data/sea-surface-temperature-optimum-interpolation/v2.1/access/avhrr/{{ "%04d" | format(year) }}{{ "%02d" | format(month) }}/oisst-avhrr-v02r01.{{ "%04d" | format(year) }}{{ "%02d" | format(month) }}{{ "%02d" | format(day) }}.nc
+      urlpath: simplecache::https://www.ncei.noaa.gov/data/sea-surface-temperature-optimum-interpolation/v2.1/access/avhrr/{{date.strftime("%Y%m")}}/oisst-avhrr-v02r01.{{date.strftime("%Y%m%d")}}.nc
+      storage_options:
+        simplecache:
+          same_names: true
+      chunks: {}
+
+  OISSTv2:
+    driver: netcdf
+    description: "Optimum Interpolation Sea Surface Temperature (OISST) v2.0 provided by the NOAA/NCEI from their Web site at https://www.ncdc.noaa.gov/oisst/data-access"
+    metadata:
+      url: https://www.ncdc.noaa.gov/oisst/optimum-interpolation-sea-surface-temperature-oisst-v20
+      doi: 10.1175/JTECH-D-19-0177.1
+    parameters:
+      date:
+        description: time
+        type: datetime
+        default: 2005.01.01
+        min: 1981.09.01 # 2002.06.01 amsr-avhrr
+        max: 2020.04.01 # avhrr-only # 2011.10.04 amsr-avhrr
+      kind:
+        description: There are two kinds of daily OISST, named after the relevant satellite SST sensors. These are the Advanced Very High Resolution Radiometer (AVHRR) and Advanced Microwave Scanning Radiometer on the Earth Observing System (AMSR-E). AVHRR has the longest record (from late 1981 to the present) of SST measurements from a single sensor design. Infrared instruments, like AVHRR, can make observations at relatively high resolution but cannot see through clouds. Microwave instruments like AMSR-E can measure SSTs in most weather conditions (except heavy rain) but not adjacent to land.
+        type: str
+        default: avhrr-only
+        allowed: [avhrr-only, amsr-avhrr]
+    args:
+      urlpath: simplecache::https://www.ncei.noaa.gov/data/sea-surface-temperature-optimum-interpolation/v2/access/{{kind}}/{{date.strftime("%Y%m")}}/{{kind}}-v2.{{date.strftime("%Y%m%d")}}.nc
       storage_options:
         simplecache:
           same_names: true
