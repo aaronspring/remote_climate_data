@@ -58,7 +58,7 @@ sources:
         type: str
         default: Monthly
         allowed: [Hourly, Daily, Monthly]
-      location:
+      station:
         description: location of the measurements
         type: str
         default: mlo
@@ -77,7 +77,7 @@ sources:
         use_cftime: True
 
   fossil_fuel_emissions_gridded:
-    description: 1x1 Gridded Fossil Fuel emissions from Open-source Data Inventory for Anthropogenic CO2 (ODIAC), Carbon Cycle Greenhouse Gases (CCGG), National Oceanic and Atmospheric Administration (NOAA), Earth System Research Laboratories (ESRL), Global Monitoring Laboratory (GML)
+    description: daily 1x1 Gridded Fossil Fuel emissions from Open-source Data Inventory for Anthropogenic CO2 (ODIAC), Carbon Cycle Greenhouse Gases (CCGG), National Oceanic and Atmospheric Administration (NOAA), Earth System Research Laboratories (ESRL), Global Monitoring Laboratory (GML)
     metadata:
       url: https://www.odiac.org/index.html
       doi:
