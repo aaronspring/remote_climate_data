@@ -35,6 +35,7 @@ sources:
           same_names: True
       xarray_kwargs:
         use_cftime: True
+
   CRU_TS:
     description: Climatic Research Unit (CRU) Time-Series (TS) of high-resolution gridded data of month-by-month variation in climate
     metadata:
@@ -43,3 +44,96 @@ sources:
     args:
       path: "{{CATALOG_DIR}}/catalogs/atmosphere/cru_ts.yaml"
     driver: intake.catalog.local.YAMLFileCatalog
+
+  trace_gases_at_stations:
+    description: surface insitu measurements of Carbon Cycle Greenhouse Gases (CCGG), National Oceanic and Atmospheric Administration (NOAA), Earth System Research Laboratories (ESRL), Global Monitoring Laboratory (GML), defaults to Mauna Loa monthly CO2 measurements
+    metadata:
+      url: https://www.esrl.noaa.gov/gmd/ccgg/
+      doi: add
+      readme: ftp://aftp.cmdl.noaa.gov/data/trace_gases/{{variable}}/in-situ/surface/
+    driver: netcdf
+    parameters:
+      freq:
+        description: frequency of the measurements
+        type: str
+        default: Monthly
+        allowed: [Hourly, Daily, Monthly]
+      station:
+        description: location of the measurements
+        type: str
+        default: mlo
+        allowed: [mlo, brw, smo, spo] # Mauna LOa, BarRoW, American SaMOa, and South POle
+      variable:
+        description: variable
+        type: str
+        default: co2
+        allowed: [co2, ch4]
+    args:
+      urlpath: simplecache::ftp://aftp.cmdl.noaa.gov/data/trace_gases/{{variable}}/in-situ/surface/{{location}}/{{variable}}_{{location}}_surface-insitu_1_ccgg_{{freq}}Data.nc
+      storage_options:
+        simplecache:
+          same_names: True
+      xarray_kwargs:
+        use_cftime: True
+
+  fossil_fuel_emissions_gridded:
+    description: daily 1x1 Gridded Fossil Fuel emissions from Open-source Data Inventory for Anthropogenic CO2 (ODIAC), Carbon Cycle Greenhouse Gases (CCGG), National Oceanic and Atmospheric Administration (NOAA), Earth System Research Laboratories (ESRL), Global Monitoring Laboratory (GML)
+    metadata:
+      url: https://www.odiac.org/index.html
+      doi:
+        - 10.17595/20170411.001 # data
+        - 10.5194/acp-11-543-2011﻿ # journal
+        - 10.5194/essd-10-87-2018 # journal
+    driver: netcdf
+    parameters:
+      date:
+        description: distribution of fossil fuel emissions
+        type: datetime
+        default: 2000.01.01
+        min: 2000.01.01
+      version:
+        description: release, version of the ODIAC emissions
+        type: str
+        default: 2018
+        allowed: [2015a, 2016, 2017, 2018]
+      variable:
+        description: variable
+        type: str
+        default: co2
+        allowed: [co2, ch4]
+    args:
+      urlpath: simplecache::ftp://aftp.cmdl.noaa.gov/data/ccgg/ODIAC/{{version}}/distrib/{{date.strftime("%Y")}}/{{date.strftime("%m")}}/fossil_fuel_1x1_{{date.strftime("%Y%m%d")}}.nc
+      storage_options:
+        simplecache:
+          same_names: True
+      xarray_kwargs:
+        use_cftime: True
+
+  NOAA_carbon_tracker:
+    description: CarbonTracker is a CO2 measurement and modeling system developed by NOAA to keep track of sources (emissions to the atmosphere) and sinks (removal from the atmosphere) of carbon dioxide around the world.
+    metadata:
+      url: https://www.esrl.noaa.gov/gmd/ccgg/carbontracker
+    driver: netcdf
+    parameters:
+      date:
+        description: date of measurements
+        type: datetime
+        default: 2018.01.01
+        min: 2000.01.01
+      version:
+        description: release, version of the ODIAC emissions
+        type: str
+        default: CT2019B
+        allowed: [CT-NRT.v2015-1, CT-NRT.v2017-1, CT-NRT.v2018-1, CT-NRT.v2019-1, CT-NRT.v2020-1, CT2019B,CT2019,CT2017,CT2016, CT2015]
+      variable:
+        description: variable
+        type: str
+        default: co2
+        allowed: [co2, ch4]
+    args:
+      urlpath: simplecache::ftp://aftp.cmdl.noaa.gov/products/carbontracker/co2/{{version}}/molefractions/co2_total_monthly/{{version}}.molefrac_glb3x2_{{date.strftime("%Y-%m")}}.nc
+      storage_options:
+        simplecache:
+          same_names: True
+      xarray_kwargs:
+        use_cftime: True
