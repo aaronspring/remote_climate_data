@@ -116,7 +116,7 @@ sources:
     driver: netcdf
     parameters:
       date:
-        description: distribution of fossil fuel emissions
+        description: date of measurements
         type: datetime
         default: 2018.01.01
         min: 2000.01.01
