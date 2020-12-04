@@ -12,7 +12,8 @@ sources:
           kind: line
     driver: excel
     args:    # todo: find more recent version with credible path
-      urlpath: http://cdiac.ess-dive.lbl.gov/ftp/Global_Carbon_Project/Global_Carbon_Budget_2016_v1.0.xlsx
+      #urlpath: http://cdiac.ess-dive.lbl.gov/ftp/Global_Carbon_Project/Global_Carbon_Budget_2016_v1.0.xlsx
+      urlpath: https://data.icos-cp.eu/objects/Z6S-dJJHB4RCe07mcmhMYxwx
       excel_kwargs:
         header: 21
         sheet_name: 'Global Carbon Budget'
