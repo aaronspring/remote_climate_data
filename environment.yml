@@ -25,6 +25,5 @@ dependencies:
       - git+https://github.com/intake/intake.git
       - git+https://github.com/edjdavid/intake-excel.git
       - git+https://github.com/intake/intake-xarray.git
-      - git+https://github.com/NCAR/intake-thredds.git
       - git+https://github.com/geopandas/geopandas.git 
       - git+https://github.com/intake/intake_geopandas.git # ordering is critical here, has to be last
