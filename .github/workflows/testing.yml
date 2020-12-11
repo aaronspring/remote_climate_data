@@ -46,7 +46,7 @@ jobs:
         run: |
           ls
           pwd
-          echo $branch
+          printenv
           wget https://raw.githubusercontent.com/aaronspring/remote_climate_data/${{branch}}/master.yaml
           ls
       - name: Run tests
