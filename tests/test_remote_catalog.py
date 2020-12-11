@@ -6,7 +6,7 @@ from dask.utils import format_bytes
 import pytest
 
 # dont test the online catalog but current branch
-cat = intake.open_catalog('remote_climate_data/master.yaml')
+cat = intake.open_catalog('master.yaml')
 
 def test_check_all_items():
     """Test all items.to_dask() except ceda requiring credentials"""
