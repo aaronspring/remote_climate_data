@@ -3,17 +3,20 @@ plugins:
     - module: intake_xarray, intake_excel
 sources:
   Global_Carbon_Budget:
-    description: GCP
+    description: GCP 2020
     metadata:
-      url: https://www.globalcarbonproject.org/
-      doi: find
+      url: https://www.globalcarbonproject.org/carbonbudget/20/publications.htm
+      doi:
+        - 10.18160/gcp-2020
+        - 10.5194/essd-12-3269-2020
       plots:
         over_time:
           kind: line
     driver: excel
-    args:    # todo: find more recent version with credible path
-      urlpath: https://data.icos-cp.eu/licence_accept?ids=%5B%226QlPjfn_7uuJtAeuGGFXuPwz%22%5D
+    args:
+      urlpath: simplecache::https://data.icos-cp.eu/licence_accept?ids=%5B%226QlPjfn_7uuJtAeuGGFXuPwz%22%5D
       excel_kwargs:
-        header: 21
+        header: 20
         sheet_name: 'Global Carbon Budget'
         index_col: Year
+        skipfooter: 4
