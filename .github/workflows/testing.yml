@@ -42,6 +42,11 @@ jobs:
         run: conda info
       - name: Conda list
         run: conda list
+      - name: get branch catalog
+        run: |
+          wget https://raw.githubusercontent.com/aaronspring/remote_climate_data/{branch}/master.yaml
+          pwd
+          ls
       - name: Run tests
         run: |
           pytest
