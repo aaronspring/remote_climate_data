@@ -1,18 +1,22 @@
 plugins:
   source:
-    - module: intake_xarray
-sources:  # template with required fields marked
-#  HadCRUT4:
-#    description: HadCRUT temperature anomalies wrt. 1960-1989  # required
-#    metadata:
-#      url: https://crudata.uea.ac.uk/cru/data/temperature/
-#      doi: 10.1029/2011JD017187
-#    driver: netcdf  # required
-#    args:    # required
-#      urlpath: simplecache::https://crudata.uea.ac.uk/cru/data/temperature/HadCRUT.4.6.0.0.median.nc  # required
-#      chunks: {'time': 'auto'}
-#      storage_options:
-#        simplecache:
-#          same_names: True  # cache the file with the same name and ending as in url
-#      xarray_kwargs:  # args passed to xarray.open_dataset or xarray.open_mfdataset
-#        concat_dim: time
+    - module: intake_xarray, intake_excel
+sources:
+  Global_Carbon_Budget:
+    description: GCP 2020
+    metadata:
+      url: https://www.globalcarbonproject.org/carbonbudget/20/publications.htm
+      doi:
+        - 10.18160/gcp-2020
+        - 10.5194/essd-12-3269-2020
+      plots:
+        over_time:
+          kind: line
+    driver: excel
+    args:
+      urlpath: simplecache::https://data.icos-cp.eu/licence_accept?ids=%5B%226QlPjfn_7uuJtAeuGGFXuPwz%22%5D
+      excel_kwargs:
+        header: 20
+        sheet_name: 'Global Carbon Budget'
+        index_col: Year
+        skipfooter: 4
