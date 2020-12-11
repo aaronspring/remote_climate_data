@@ -1,3 +1,4 @@
+import intake_excel
 import intake_xarray
 import intake_geopandas
 import intake
