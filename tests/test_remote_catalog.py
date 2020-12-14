@@ -14,7 +14,7 @@ def test_check_all_items():
     for item_str in cat.walk(depth=3):
         print(item_str)
         if 'CRU_TS' in item_str:
-            print('avoid testing CRU_TS requiring credentials at ceda')
+            print('avoid testing CRU_TS requiring credentials at ceda\n')
         else:
             item = getattr(cat, item_str)
             if isinstance(item, (intake_xarray.NetCDFSource,intake_xarray.OpenDapSource)) and item_str not in ['ocean.SOM_FFN', 'ocean.CSIR-ML6']:  # avoids too large (>500MB) datasets
