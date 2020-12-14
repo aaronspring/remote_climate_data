@@ -1,18 +1,10 @@
 plugins:
   source:
     - module: intake_xarray
-sources:  # template with required fields marked
-#  HadCRUT4:
-#    description: HadCRUT temperature anomalies wrt. 1960-1989  # required
-#    metadata:
-#      url: https://crudata.uea.ac.uk/cru/data/temperature/
-#      doi: 10.1029/2011JD017187
-#    driver: netcdf  # required
-#    args:    # required
-#      urlpath: simplecache::https://crudata.uea.ac.uk/cru/data/temperature/HadCRUT.4.6.0.0.median.nc  # required
-#      chunks: {'time': 'auto'}
-#      storage_options:
-#        simplecache:
-#          same_names: True  # cache the file with the same name and ending as in url
-#      xarray_kwargs:  # args passed to xarray.open_dataset or xarray.open_mfdataset
-#        concat_dim: time
+sources:
+  Leaf_Area_Index:
+    description: Leaf Area Index (LAI) for MODIS for obs4mip
+    args:
+      chunks: {'time': 'auto'}
+      urlpath: simplecache::https://dpesgf03.nccs.nasa.gov/thredds/fileServer/obs4MIPs/NASA-GSFC/MODIS/obs4MIPs/observations/land/lai/mon/grid/NASA-GSFC/MODIS/V5/lai_MODIS-level_3_v5_200002-200912.nc
+    driver: netcdf
