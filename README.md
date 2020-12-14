@@ -29,6 +29,7 @@ Make data access for climate data easy:
 - PRs for new remote climate datasets or useful shapefiles are very welcome
 - Extendable with THREDDS catalogs via https://github.com/NCAR/intake-thredds
 
+
 ## Relies on
 - `intake`: https://intake.readthedocs.io/en/latest/
 - `intake_xarray`: https://intake-xarray.readthedocs.io/en/latest/
