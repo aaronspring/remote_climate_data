@@ -4,7 +4,13 @@ import intake_geopandas
 import intake
 
 def cache_all_catalog_items(cat, cache_storage=None):
-    """Cache all catalog items from catalog `cat` that contain `cache::` in url to folder optionally specified by `cache_storage`."""
+    """Cache all catalog items from catalog `cat` that contain `cache::` in url to folder optionally specified by `cache_storage`.
+
+    Example:
+        >>> cat = intake.open_catalog('master.yaml')
+        >>> cache_all_catalog_items(cat, 'test_cache_folder')
+        >>> os.path.exists('test_cache_folder/HadCRUT.4.6.0.0.median.nc')
+    """
     fsspec.config.conf['simplecache']={'same_names': True}
     if cache_storage:
         fsspec.config.conf['simplecache']={'cache_storage': cache_storage, 'same_names':True}
@@ -14,9 +20,8 @@ def cache_all_catalog_items(cat, cache_storage=None):
             item = getattr(cat, item_str)
             if not isinstance(cat[item_str],intake.catalog.local.YAMLFileCatalog):
                 if 'cache::' in item.urlpath:
-                    print(item_str, item.urlpath)
                     filename = item.urlpath.split('/')[-1]
-                    print(f'try to cache {item_str} to {cache_storage}/{filename}')
+                    print(f'try to cache {item_str} from {item.urlpath} to {cache_storage}/{filename}')
                     try:
                         if isinstance(item, (intake_geopandas.RegionmaskSource, intake_geopandas.GeoPandasFileSource)):
                             ds = item.read()
