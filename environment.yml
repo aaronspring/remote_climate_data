@@ -13,14 +13,20 @@ dependencies:
   - geopandas
   - regionmask
   - pip
-  - pytest
-  - ipywidgets
+  # Currently 5.4.0 or greater breaks pytest-sugar. It looks like this will be fixed
+  # soon and we can revert back to the newest pytest.
+  # https://github.com/Teemu/pytest-sugar/issues/187
+  - pytest<5.4.0
+  - pytest-cov
+  - pytest-sugar
+  - pre-commit
   # Visualization
   - cartopy
   - matplotlib
   - nc-time-axis
   - pyviz_comms
   - hvplot
+  - ipywidgets
   - pip:  # get latest master from source
       - git+https://github.com/intake/filesystem_spec.git
       - git+https://github.com/intake/intake.git
