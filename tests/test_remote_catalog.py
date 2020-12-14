@@ -40,7 +40,7 @@ def test_check_all_items(cat):
                 region = item.read()
                 print(
                     f"successfully tested {item_str}: type = {type(item)}, "
-                    f"size = {region.index.size}."
+                    f"size = {len(region.names)}."
                 )
             elif isinstance(
                 item, (intake.source.csv.CSVSource, intake_excel.ExcelSource)
