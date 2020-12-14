@@ -55,7 +55,7 @@ sources:
         default: Nina34
         allowed: [CAR, EA, HAW, IND, Nina4, Nina34, NTA, STA]
     args:
-      urlpath: ftp://ftp.cdc.noaa.gov/Datasets/Timeseries/{{index}}_ersst.data
+      urlpath: simplecache::ftp://ftp.cdc.noaa.gov/Datasets/Timeseries/{{index}}_ersst.data
       csv_kwargs:
         sep: '   '
         skiprows: 2
