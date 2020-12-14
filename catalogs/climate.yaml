@@ -20,3 +20,46 @@ sources:
         sheet_name: 'Global Carbon Budget'
         index_col: Year
         skipfooter: 4
+
+  NOAA_correlation:
+    description: climate indices from psl.noaa.gov/data/correlation
+    metadata:
+      url: https://www.psl.noaa.gov/data/correlation/
+    driver: csv
+    parameters:
+      index:
+        description: name of the index
+        default: nina34
+        type: str
+        allowed: [pna, wp, ea, nao, jonesnao, soi, nina3, censo, oni, nina1, nina4, nina34, np, hurr, pacwarm, swmonsoon]
+    args:
+      urlpath: simplecache::https://psl.noaa.gov/data/correlation/{{index}}.data
+      csv_kwargs:
+        sep: '  '
+        skiprows: 3
+        skipfooter: 3
+        names: ['year', 'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+        #index_col: 'year' not allowed by dd.read_csv but pd.read_csv
+        na_values: [-999.90,'-999.90','-99.90',-99.90]
+        engine: python
+
+  NOAA_SST_anomaly_timeseries:
+    description: Sea Surface Temperature Anomaly Indices derived from ERSST
+    metadata:
+      url: https://www.psl.noaa.gov/forecasts/sstlim/timeseries/
+    driver: csv
+    parameters:
+      index:
+        description: name of the index
+        type: str
+        default: Nina34
+        allowed: [CAR, EA, HAW, IND, Nina4, Nina34, NTA, STA]
+    args:
+      urlpath: simplecache::ftp://ftp.cdc.noaa.gov/Datasets/Timeseries/{{index}}_ersst.data
+      csv_kwargs:
+        sep: '   '
+        skiprows: 2
+        skipfooter: 8
+        names: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+        #index_col: 'year' not allowed by dd.read_csv but pd.read_csv
+        engine: python
