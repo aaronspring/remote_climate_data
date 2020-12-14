@@ -2,7 +2,7 @@ import pandas as pd
 import xarray as xr
 
 
-def monthly_csv_to_DataArray(df, freq='MS'):
+def monthly_csv_to_DataArray(df, freq="MS"):
     df = df.set_index("year")
     df = df.apply(pd.to_numeric, errors="coerce")
     initial = df.first_valid_index()
