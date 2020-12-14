@@ -42,7 +42,7 @@ sources:
       url: https://crudata.uea.ac.uk/cru/data/hrg
       comment: CEDA archive requires authorization, for setting up a certificate, please follow instructions from https://help.ceda.ac.uk/article/4712-reading-netcdf-with-python-opendap
     args:
-      path: "{{CATALOG_DIR}}/catalogs/atmosphere/cru_ts.yaml"
+      path: "{{CATALOG_DIR}}/atmosphere/cru_ts.yaml"
     driver: intake.catalog.local.YAMLFileCatalog
 
   trace_gases_at_stations:
