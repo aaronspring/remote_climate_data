@@ -4,10 +4,10 @@ plugins:
 
 sources:
   CRU_TS4_04:
-    description: Climatic Research Unit (CRU) Time-Series (TS) of high-resolution gridded data of month-by-month variation in climate (Jan. 1901- Dec. 2019) 
+    description: Climatic Research Unit (CRU) Time-Series (TS) of high-resolution gridded data of month-by-month variation in climate (Jan. 1901- Dec. 2019)
     metadata:
       url: https://crudata.uea.ac.uk/cru/data/hrg
-      doi: null 
+      doi: null
       comment: CEDA archive requires authorization, for setting up a certificate, please follow instructions from https://help.ceda.ac.uk/article/4712-reading-netcdf-with-python-opendap
     parameters:
       variable:
@@ -20,7 +20,7 @@ sources:
       engine: netcdf4
     driver: opendap
   CRU_TS4_03:
-    description: Climatic Research Unit (CRU) Time-Series (TS) of high-resolution gridded data of month-by-month variation in climate (Jan. 1901- Dec. 2018) 
+    description: Climatic Research Unit (CRU) Time-Series (TS) of high-resolution gridded data of month-by-month variation in climate (Jan. 1901- Dec. 2018)
     metadata:
       url: https://crudata.uea.ac.uk/cru/data/hrg
       doi: 10.5285/10d3e3640f004c578403419aac167d82
@@ -36,7 +36,7 @@ sources:
       engine: netcdf4
     driver: opendap
   CRU_TS4_02:
-    description: Climatic Research Unit (CRU) Time-Series (TS) of high-resolution gridded data of month-by-month variation in climate (Jan. 1901- Dec. 2017) 
+    description: Climatic Research Unit (CRU) Time-Series (TS) of high-resolution gridded data of month-by-month variation in climate (Jan. 1901- Dec. 2017)
     metadata:
       url: https://crudata.uea.ac.uk/cru/data/hrg
       doi: 10.5285/b2f81914257c4188b181a4d8b0a46bff
@@ -52,10 +52,10 @@ sources:
       engine: netcdf4
     driver: opendap
   CRU_TS4_01:
-    description: Climatic Research Unit (CRU) Time-Series (TS) of high-resolution gridded data of month-by-month variation in climate (Jan. 1901- Dec. 2016) 
+    description: Climatic Research Unit (CRU) Time-Series (TS) of high-resolution gridded data of month-by-month variation in climate (Jan. 1901- Dec. 2016)
     metadata:
       url: https://crudata.uea.ac.uk/cru/data/hrg
-      doi: 10.5285/58a8802721c94c66ae45c3baa4d814d0 
+      doi: 10.5285/58a8802721c94c66ae45c3baa4d814d0
       comment: CEDA archive requires authorization, for setting up a certificate, please follow instructions from https://help.ceda.ac.uk/article/4712-reading-netcdf-with-python-opendap
     parameters:
       variable:
@@ -68,10 +68,10 @@ sources:
       engine: netcdf4
     driver: opendap
   CRU_TS4_00:
-    description: Climatic Research Unit (CRU) Time-Series (TS) of high-resolution gridded data of month-by-month variation in climate (Jan. 1901- Dec. 2015) 
+    description: Climatic Research Unit (CRU) Time-Series (TS) of high-resolution gridded data of month-by-month variation in climate (Jan. 1901- Dec. 2015)
     metadata:
       url: https://crudata.uea.ac.uk/cru/data/hrg
-      doi: 10.5285/edf8febfdaad48abb2cbaf7d7e846a86 
+      doi: 10.5285/edf8febfdaad48abb2cbaf7d7e846a86
       comment: CEDA archive requires authorization, for setting up a certificate, please follow instructions from https://help.ceda.ac.uk/article/4712-reading-netcdf-with-python-opendap
     parameters:
       variable:
