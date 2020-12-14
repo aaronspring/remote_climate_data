@@ -12,8 +12,8 @@ def monthly_csv_to_DataArray(df, freq="MS"):
         >>> da
         <xr.DataArray> ...
     """
-    df = df.set_index('year')
-    df = df.apply(pd.to_numeric,errors='coerce')
+    df = df.set_index("year")
+    df = df.apply(pd.to_numeric, errors="coerce")
     initial = df.first_valid_index()
     if len(str(initial)) >= 4:
         initial = str(initial)[:4]
