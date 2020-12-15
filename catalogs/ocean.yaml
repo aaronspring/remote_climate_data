@@ -209,9 +209,9 @@ sources:
       var:
         description: variable
         type: str
-        default: icec
+        default: sst
         allowed: [sst, icec]
     args:
       path:
-        - {{var}}.day.mean.{{year}}.v2.nc
+      - "{{var}}.day.mean.{{year}}.v2.nc"
       url: https://psl.noaa.gov/thredds/catalog/Datasets/noaa.oisst.v2.highres/catalog.xml
