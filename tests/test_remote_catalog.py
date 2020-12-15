@@ -1,6 +1,7 @@
 import intake
 import intake_excel
 import intake_geopandas
+import intake_thredds
 import intake_xarray
 import pytest
 import xarray as xr
@@ -42,6 +43,10 @@ def test_check_all_items(cat):
                     f"successfully tested {item_str}: type = {type(item)}, "
                     f"size = {len(region.names)}."
                 )
+            elif isinstance(item, intake_thredds.source.THREDDSMergedSource):
+                if 'IOSST' in item_str:
+                    ds = item(year='???0').to_dask()
+                    print(f"successfully tested {item_str}')
             elif isinstance(
                 item, (intake.source.csv.CSVSource, intake_excel.ExcelSource)
             ):
