@@ -52,10 +52,10 @@ sources:
       index:
         description: name of the index
         type: str
-        default: Nina34
+        default: Nina4
         allowed: [CAR, EA, HAW, IND, Nina4, Nina34, NTA, STA]
     args:
-      urlpath: simplecache::ftp://ftp.cdc.noaa.gov/Datasets/Timeseries/{{index}}_ersst.data
+      urlpath: ftp://ftp.cdc.noaa.gov/Datasets/Timeseries/{{index}}_ersst.data
       csv_kwargs:
         sep: '   '
         skiprows: 2
