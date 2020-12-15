@@ -44,8 +44,8 @@ def test_check_all_items(cat):
                     f"size = {len(region.names)}."
                 )
             elif isinstance(item, intake_thredds.source.THREDDSMergedSource):
-                if 'IOSST' in item_str:
-                    ds = item(year='???0').to_dask()
+                if "IOSST" in item_str:
+                    ds = item(year="???0").to_dask()
                     print(f"successfully tested {item_str}")
             elif isinstance(
                 item, (intake.source.csv.CSVSource, intake_excel.ExcelSource)
