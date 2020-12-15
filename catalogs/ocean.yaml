@@ -195,7 +195,7 @@ sources:
           same_names: true
       chunks: {}
 
-  OISSTv2:
+  OISSTv2_thredds
     description: "Optimum Interpolation Sea Surface Temperature (OISST) v2.0 via psl.noaa.gov/thredds"
     metadata:
       url: https://www.ncdc.noaa.gov/oisst/optimum-interpolation-sea-surface-temperature-oisst-v20
