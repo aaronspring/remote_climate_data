@@ -195,8 +195,8 @@ sources:
           same_names: true
       chunks: {}
 
-   OISSTv2_ice:
-    description: "Ice concentration from Optimum Interpolation Sea Surface Temperature (OISST) v2.0 via psl.noaa.gov/thredds"
+   OISSTv2:
+    description: "Optimum Interpolation Sea Surface Temperature (OISST) v2.0 via psl.noaa.gov/thredds"
     metadata:
       url: https://www.ncdc.noaa.gov/oisst/optimum-interpolation-sea-surface-temperature-oisst-v20
       doi: 10.1175/JTECH-D-19-0177.1
