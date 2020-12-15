@@ -212,6 +212,5 @@ sources:
         default: sst
         allowed: [sst, icec]
     args:
-      path:
-        - {{var}}.day.mean.{{year}}.v2.nc
+      path: {{var}}.day.mean.{{year}}.v2.nc
       url: https://psl.noaa.gov/thredds/catalog/Datasets/noaa.oisst.v2.highres/catalog.xml
