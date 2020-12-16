@@ -1,3 +1,4 @@
+import fsspec
 import intake
 import intake_excel
 import intake_geopandas
@@ -6,6 +7,8 @@ import intake_xarray
 import pytest
 import xarray as xr
 from dask.utils import format_bytes
+
+fsspec.config.conf["ftp"] = dict(timeout=120)
 
 
 # don't test the online catalog but current branch
