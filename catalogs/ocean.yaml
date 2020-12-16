@@ -194,3 +194,24 @@ sources:
         simplecache:
           same_names: true
       chunks: {}
+
+  OISSTv2_thredds:
+    description: "Optimum Interpolation Sea Surface Temperature (OISST) v2.0 via psl.noaa.gov/thredds"
+    metadata:
+      url: https://www.ncdc.noaa.gov/oisst/optimum-interpolation-sea-surface-temperature-oisst-v20
+      doi: 10.1175/JTECH-D-19-0177.1
+    driver: intake_thredds.source.THREDDSMergedSource
+    parameters:
+      year:
+        description: year
+        type: str
+        default: '*'  # merges all years
+      var:
+        description: variable
+        type: str
+        default: sst
+        allowed: [sst, icec]
+    args:
+      path:
+      - "{{var}}.day.mean.{{year}}.v2.nc"
+      url: https://psl.noaa.gov/thredds/catalog/Datasets/noaa.oisst.v2.highres/catalog.xml
