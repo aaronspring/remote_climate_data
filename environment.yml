@@ -27,7 +27,6 @@ dependencies:
   - nc-time-axis
   - pyviz_comms
   - hvplot
-  - nodejs
   - ipywidgets
   - pip:  # get latest master from source
       - git+https://github.com/intake/filesystem_spec.git
