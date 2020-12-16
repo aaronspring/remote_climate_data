@@ -125,8 +125,8 @@ sources:
           same_names: True
       chunks: {}
 
-  SOCATv2020:
-    description: Gridded SOCAT version 2020 data from BCDC Mirror (Zipped)
+  SOCATv2020_tracks:
+    description: Gridded tracks SOCAT version 2020 data from BCDC Mirror (Zipped)
     driver: netcdf
     metadata:
       doi:
@@ -140,6 +140,11 @@ sources:
         type: str
         default: yearly
         allowed: [decadal, yearly, monthly]
+      version:
+        description: version, tag
+        type: str
+        default: v2020
+        allowed: [v6, v2019, v2020]
     args:
-      urlpath: simplecache::zip://*.nc::https://www.socat.info/socat_files/v2020/SOCATv2020_tracks_gridded_{{time_average}}.nc.zip
+      urlpath: simplecache::zip://*.nc::https://www.socat.info/socat_files/{{version}}/SOCAT{{version}}_tracks_gridded_{{time_average}}.nc.zip
       chunks: {}
