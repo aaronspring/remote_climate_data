@@ -8,7 +8,7 @@ import xarray as xr
 from dask.utils import format_bytes
 
 
-# dont test the online catalog but current branch
+# don't test the online catalog but current branch
 @pytest.fixture
 def cat():
     return intake.open_catalog("master.yaml")
