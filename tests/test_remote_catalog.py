@@ -29,11 +29,14 @@ def test_item(cat, item_str):
         print("avoid testing CRU_TS requiring credentials at ceda\n")
     else:
         item = getattr(cat, item_str)
+        if "ftp" in item.urlpath:
+            print("{item} found source from ftp, skip testing")
+            return 0
         if isinstance(
             item, (intake_xarray.NetCDFSource, intake_xarray.OpenDapSource)
         ) and item_str not in [
-            "ocean.SOM_FFN",
-            "ocean.CSIR-ML6",
+            "ocean.carbon.MPI-SOM_FFN",
+            "ocean.carbon.CSIR-ML6",
         ]:  # avoids too large (>500MB) datasets
             ds = item.to_dask()
             assert isinstance(ds, xr.Dataset)

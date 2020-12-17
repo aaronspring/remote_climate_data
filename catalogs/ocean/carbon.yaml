@@ -1,0 +1,150 @@
+plugins:
+  source:
+    - module: intake_xarray
+sources:
+  CSIR-ML6:
+    description: CSIR
+    metadata:
+      url: https://figshare.com/articles/Global_surface_ocean_pCO2_from_CSIR-ML6_2020a_/12652100/4
+      doi:
+        paper: https://doi.org/10.5194/gmd-12-5113-2019
+        data: https://doi.org/10.6084/m9.figshare.12652100.v4
+    driver: netcdf
+    args:
+      urlpath: simplecache::https://ndownloader.figshare.com/files/23875943
+      chunks: {'time':'auto'}
+      storage_options:
+        simplecache:
+          same_names: True
+
+  MPI-SOM_FFN:
+    description: An observation-based global monthly gridded sea surface pCO2 product from 1982 onward and its monthly climatology
+    driver: netcdf
+    metadata:
+      url: https://www.nodc.noaa.gov/ocads/oceans/SPCO2_1982_present_ETH_SOM_FFN.html
+      doi:
+        paper: https://doi.org/10.1002/2015GB005359
+        data: https://doi.org/10.7289/V5Z899N6
+      plots:
+        fgco2_over_time:
+          title: SOM-FFN fgco2 over time
+          kind: contourf
+          x: lon
+          y: lat
+          z: fgco2_smoothed
+          groupby: time
+          cmap: RdBu_r
+          levels: 20
+          # clim: (-10, 10)  # once https://github.com/holoviz/hvplot/pull/492 is merged
+        fgco2_timeseries_location:
+          title: fgco2 timeseries at (lon,lat) location
+          kind: line
+          x: time
+          y: fgco2_smoothed
+          groupby: ['lon','lat']
+        fgco2_timeseries_latitude:
+          title: fgco2 timeseries at latitude
+          kind: contourf
+          y: time
+          x: lon
+          z: fgco2_smoothed
+          groupby: lat
+          levels: 20
+    parameters:
+      version:
+        description: version release in year
+        type: int
+        default: 2020
+        allowed: [2017,2018,2020]
+    args:
+      # urlpath only works for 2020 version, slight changes in URL
+      urlpath: simplecache::https://data.nodc.noaa.gov/ncei/ocads/data/0160558/MPI_SOM-FFN_v{{version}}/spco2_MPI-SOM_FFN_v{{version}}.nc
+      chunks: {'time':'120'}
+      storage_options:
+        simplecache:
+          same_names: True
+      xarray_kwargs:
+        drop_variables: date
+
+  MPI-ULB-SOM_FFN:
+    description: A combined global ocean pCO2climatology combining open ocean and coastal areas
+    driver: netcdf
+    metadata:
+      url: https://www.nodc.noaa.gov/ocads/oceans/MPI-ULB-SOM_FFN_clim.html
+      doi:
+        paper: https://doi.org/10.5194/essd-12-2537-2020
+        data: https://doi.org/10.25921/qb25-f418
+      readme: https://www.ncei.noaa.gov/data/oceans/ncei/ocads/data/0209633/README_merged.pdf
+      plots:
+        fgco2_over_time:
+          title: MPI-ULB-SOM_FFN fgco2 over time
+          kind: contourf
+          x: lon
+          y: lat
+          z: fgco2_smoothed
+          groupby: time
+          cmap: RdBu_r
+          levels: 20
+          # clim: (-10, 10)  # once https://github.com/holoviz/hvplot/pull/492 is merged
+        fgco2_timeseries_location:
+          title: fgco2 timeseries at (lon,lat) location
+          kind: line
+          x: time
+          y: fgco2_smoothed
+          groupby: ['lon','lat']
+        fgco2_timeseries_latitude:
+          title: fgco2 timeseries at latitude
+          kind: contourf
+          y: time
+          x: lon
+          z: fgco2_smoothed
+          groupby: lat
+          levels: 20
+    args:
+      urlpath: simplecache::https://www.ncei.noaa.gov/data/oceans/ncei/ocads/data/0209633/MPI-ULB-SOM_FFN_clim.nc
+      chunks: {'time':'120'}
+      storage_options:
+        simplecache:
+          same_names: True
+      xarray_kwargs:
+        drop_variables: ['lat_bnds','lon_bnds']
+
+  MOBO-DIC_MPIM:
+    description: Mapped Observation-Based Oceanic Dissolved Inorganic Carbon (DIC), monthly climatology from January to December (based on observations between 2004 and 2017), from the Max-Planck-Institute for Meteorology (MOBO-DIC_MPIM)
+    driver: netcdf
+    metadata:
+      doi:
+        paper: https://doi.org/10.1029/2020GB006571
+        data: https://doi.org/10.25921/yvzj-zx46
+      url: https://www.ncei.noaa.gov/data/oceans/ncei/ocads/metadata/0221526.html
+      readme: https://www.ncei.noaa.gov/data/oceans/ncei/ocads/data/0221526/ReadMe.pdf
+    args:
+      urlpath: simplecache::https://www.ncei.noaa.gov/data/oceans/ncei/ocads/data/0221526/MOBO-DIC_MPIM_monthly_clim.nc
+      storage_options:
+        simplecache:
+          same_names: True
+      chunks: {}
+
+  SOCATv2020_tracks:
+    description: Gridded tracks SOCAT version 2020 data from BCDC Mirror (Zipped)
+    driver: netcdf
+    metadata:
+      doi:
+        data: https://doi.org/10.25921/4xkx-ss49
+        paper: https://doi.org/10.5194/essd-8-383-2016
+      url: https://www.socat.info/index.php/data-access/
+      readme: https://www.ncei.noaa.gov/data/oceans/ncei/ocads/data/0210711/2020_SOCATv2020_summary.pdf
+    parameters:
+      time_average:
+        description: temporal average
+        type: str
+        default: yearly
+        allowed: [decadal, yearly, monthly]
+      version:
+        description: version, tag
+        type: str
+        default: v2020
+        allowed: [v6, v2019, v2020]
+    args:
+      urlpath: simplecache::zip://*.nc::https://www.socat.info/socat_files/{{version}}/SOCAT{{version}}_tracks_gridded_{{time_average}}.nc.zip
+      chunks: {}
