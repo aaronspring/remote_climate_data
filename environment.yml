@@ -30,6 +30,8 @@ dependencies:
   - ipywidgets
   - nodejs
   - dask-labextension
+  - dfviz
+  - xrviz
   - pip:  # get latest master from source
       - git+https://github.com/intake/filesystem_spec.git
       - git+https://github.com/edjdavid/intake-excel.git
