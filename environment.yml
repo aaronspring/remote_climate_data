@@ -28,9 +28,12 @@ dependencies:
   - pyviz_comms
   - hvplot
   - ipywidgets
+  - nodejs
+  - dask-labextension
+  - dfviz
+  - xrviz
   - pip:  # get latest master from source
       - git+https://github.com/intake/filesystem_spec.git
-      - git+https://github.com/intake/intake.git
       - git+https://github.com/edjdavid/intake-excel.git
       - xlrd==1.2.0  # newer versions dont support xlsx
       - git+https://github.com/intake/intake-xarray.git
