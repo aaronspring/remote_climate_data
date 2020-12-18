@@ -11,7 +11,7 @@ dependencies:
   - fsspec
   - requests
   - aiohttp
-  - importlib_metadata
+  - pyarrow
   - geopandas
   - regionmask
   - pip
