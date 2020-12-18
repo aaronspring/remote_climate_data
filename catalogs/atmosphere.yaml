@@ -4,7 +4,7 @@ plugins:
 
 sources:
   HadCRUT4:
-    description: HadCRUT temperature anomalies wrt. 1960-1989
+    description: Combined land [CRUTEM4] and marine [SST anomalies from HadSST3] temperature anomalies on a 5° by 5° grid (Morice et al., 2012)
     metadata:
       url: https://crudata.uea.ac.uk/cru/data/temperature/
       doi: 10.1029/2011JD017187
@@ -35,6 +35,24 @@ sources:
           same_names: True
       xarray_kwargs:
         use_cftime: True
+
+  HadCRUT5:
+    description: Combined land [CRUTEM5] and marine [HadSST4] temperature anomalies on a 5° by 5° grid with greater geographical coverage via statistical infilling (Morice et al., 2020)
+    metadata:
+      url: https://www.metoffice.gov.uk/hadobs/hadcrut5/
+      doi: 10.1029/2019JD032361
+    driver: netcdf
+    args:
+      urlpath: simplecache::https://crudata.uea.ac.uk/cru/data/temperature/HadCRUT.5.0.0.0.analysis.anomalies.ensemble_mean.nc
+
+  HadCRUT5_Non-Infilled:
+    description: Combined land [CRUTEM5] and marine [HadSST4] temperature anomalies on a 5° by 5° grid with geographical coverage limited to grid cells close to where we have measurements (Morice et al., 2020)
+    metadata:
+      url: https://www.metoffice.gov.uk/hadobs/hadcrut5/
+      doi: 10.1029/2019JD032361
+    driver: netcdf
+    args:
+      urlpath: simplecache::https://crudata.uea.ac.uk/cru/data/temperature/HadCRUT.5.0.0.0.anomalies.ensemble_mean.nc
 
   CRU_TS:
     description: Climatic Research Unit (CRU) Time-Series (TS) of high-resolution gridded data of month-by-month variation in climate
