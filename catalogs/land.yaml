@@ -6,7 +6,7 @@ sources:
     description: Land air temperature anomalies on a 5° by 5° grid (Jones et al., 2012)
     metadata:
       url: https://www.metoffice.gov.uk/hadobs/crutem4/
-      doi: 10.1029/2011JD017139
+      doi: http://doi.org/10.1029/2011JD017139
     driver: netcdf
     parameters:
       file:
@@ -22,7 +22,7 @@ sources:
     description: Variance adjusted version of CRUTEM4
     metadata:
       url: https://www.metoffice.gov.uk/hadobs/crutem4/
-      doi: 10.1029/2011JD017139
+      doi: http://doi.org/10.1029/2011JD017139
     driver: netcdf
     args:
       urlpath: simplecache::https://crudata.uea.ac.uk/cru/data/temperature/CRUTEM.4.6.0.0.variance_adjusted.nc
@@ -33,7 +33,7 @@ sources:
     description: Land air temperature anomalies on a 5° by 5° grid, not infilled (Osborn et al., 2020)
     metadata:
       url: https://www.metoffice.gov.uk/hadobs/crutem5/
-      doi: 10.1029/2019JD032352
+      doi: http://doi.org/10.1029/2019JD032352
     driver: netcdf
     parameters:
       file:
@@ -49,10 +49,23 @@ sources:
     description: Land air temperature anomalies on a 5° by 5° grid, not infilled but with better representation of high-latitude stations (Osborn et al., 2020)
     metadata:
       url: https://www.metoffice.gov.uk/hadobs/crutem5/
-      doi: 10.1029/2019JD032352
+      doi: http://doi.org/10.1029/2019JD032352
     driver: netcdf
     args:
       urlpath: simplecache::https://crudata.uea.ac.uk/cru/data/temperature/CRUTEM.5.0.0.0.alt.anomalies.nc
+      chunks: {}
+
+  scPDSI:
+    description: Self-calibrating Palmer Drought Severity Index (scPDSI) for global land (1901-2019 using preliminary CRU TS 4.04, 0.5° lat-lon resolution)
+    metadata:
+      url: https://crudata.uea.ac.uk/cru/data/drought/
+      doi:
+        - http://doi.org/10.1175/2020BAMSStateoftheClimate.1
+        - http://doi.org/10.1002/jgrd.50355
+      readme: https://crudata.uea.ac.uk/cru/data/drought/scpdsi.global2019.readme.txt
+    driver: netcdf
+    args:
+      urlpath: simplecache::https://crudata.uea.ac.uk/cru/data/drought/scPDSI.cru_ts4.04early1.1901.2019.cal_1901_19.bams.2020.GLOBAL.1901.2019.nc.gz
       chunks: {}
 
   Leaf_Area_Index:
