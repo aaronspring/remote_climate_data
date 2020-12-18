@@ -55,19 +55,6 @@ sources:
       urlpath: simplecache::https://crudata.uea.ac.uk/cru/data/temperature/CRUTEM.5.0.0.0.alt.anomalies.nc
       chunks: {}
 
-  scPDSI:
-    description: Self-calibrating Palmer Drought Severity Index (scPDSI) for global land (1901-2019 using preliminary CRU TS 4.04, 0.5° lat-lon resolution)
-    metadata:
-      url: https://crudata.uea.ac.uk/cru/data/drought/
-      doi:
-        - http://doi.org/10.1175/2020BAMSStateoftheClimate.1
-        - http://doi.org/10.1002/jgrd.50355
-      readme: https://crudata.uea.ac.uk/cru/data/drought/scpdsi.global2019.readme.txt
-    driver: netcdf
-    args:
-      urlpath: simplecache::https://crudata.uea.ac.uk/cru/data/drought/scPDSI.cru_ts4.04early1.1901.2019.cal_1901_19.bams.2020.GLOBAL.1901.2019.nc.gz
-      chunks: {}
-
   Leaf_Area_Index:
     description: Leaf Area Index (LAI) for MODIS for obs4mip
     args:
