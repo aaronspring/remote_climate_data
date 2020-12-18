@@ -2,6 +2,58 @@ plugins:
   source:
     - module: intake_xarray
 sources:
+  CRUTEM4:
+    description: Land air temperature anomalies on a 5° by 5° grid (Jones et al., 2012)
+    metadata:
+      url: https://www.metoffice.gov.uk/hadobs/crutem4/
+      doi: http://doi.org/10.1029/2011JD017139
+    driver: netcdf
+    parameters:
+      file:
+        description: name of file
+        type: str
+        default: anomalies
+        allowed: [anomalies, nobs, sampling_error, station_error, biased_97.5pc, biased_2.5pc]
+    args:
+      urlpath: simplecache::https://www.metoffice.gov.uk/hadobs/crutem4/data/gridded_fields/CRUTEM.4.6.0.0.{{file}}.nc.gz
+      chunks: {}
+
+  CRUTEM4v:
+    description: Variance adjusted version of CRUTEM4
+    metadata:
+      url: https://www.metoffice.gov.uk/hadobs/crutem4/
+      doi: http://doi.org/10.1029/2011JD017139
+    driver: netcdf
+    args:
+      urlpath: simplecache::https://crudata.uea.ac.uk/cru/data/temperature/CRUTEM.4.6.0.0.variance_adjusted.nc
+      chunks: {}
+
+  CRUTEM5:
+    description: Land air temperature anomalies on a 5° by 5° grid, not infilled (Osborn et al., 2020)
+    metadata:
+      url: https://www.metoffice.gov.uk/hadobs/crutem5/
+      doi: http://doi.org/10.1029/2019JD032352
+    driver: netcdf
+    parameters:
+      file:
+        description: name of file
+        type: str
+        default: anomalies
+        allowed: [anomalies, measurement_sampling, station_uncertainty, upper_bias, lower_bias, alt.anomalies, station_counts]
+    args:
+      urlpath: simplecache::https://crudata.uea.ac.uk/cru/data/temperature/CRUTEM.5.0.0.0.{{file}}.nc
+      chunks: {}
+
+  CRUTEM5alt:
+    description: Land air temperature anomalies on a 5° by 5° grid, not infilled but with better representation of high-latitude stations (Osborn et al., 2020)
+    metadata:
+      url: https://www.metoffice.gov.uk/hadobs/crutem5/
+      doi: http://doi.org/10.1029/2019JD032352
+    driver: netcdf
+    args:
+      urlpath: simplecache::https://crudata.uea.ac.uk/cru/data/temperature/CRUTEM.5.0.0.0.alt.anomalies.nc
+      chunks: {}
+
   Leaf_Area_Index:
     description: Leaf Area Index (LAI) for MODIS for obs4mip
     args:
