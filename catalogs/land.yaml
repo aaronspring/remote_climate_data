@@ -28,7 +28,6 @@ sources:
       urlpath: simplecache::https://crudata.uea.ac.uk/cru/data/temperature/CRUTEM.4.6.0.0.variance_adjusted.nc
       chunks: {}
 
-
   CRUTEM5:
     description: Land air temperature anomalies on a 5° by 5° grid, not infilled (Osborn et al., 2020)
     metadata:
