@@ -29,10 +29,7 @@ sources:
     driver: netcdf
     args:
       urlpath: simplecache::https://crudata.uea.ac.uk/cru/data/temperature/HadCRUT.4.6.0.0.median.nc
-      chunks: {'time': 'auto'}
-      storage_options:
-        simplecache:
-          same_names: True
+      chunks: {}
       xarray_kwargs:
         use_cftime: True
 
@@ -44,6 +41,7 @@ sources:
     driver: netcdf
     args:
       urlpath: simplecache::https://crudata.uea.ac.uk/cru/data/temperature/HadCRUT.5.0.0.0.analysis.anomalies.ensemble_mean.nc
+      chunks: {}
 
   HadCRUT5_Non-Infilled:
     description: Combined land [CRUTEM5] and marine [HadSST4] temperature anomalies on a 5° by 5° grid with geographical coverage limited to grid cells close to where we have measurements (Morice et al., 2020)
@@ -53,6 +51,7 @@ sources:
     driver: netcdf
     args:
       urlpath: simplecache::https://crudata.uea.ac.uk/cru/data/temperature/HadCRUT.5.0.0.0.anomalies.ensemble_mean.nc
+      chunks: {}
 
   CRU_TS:
     description: Climatic Research Unit (CRU) Time-Series (TS) of high-resolution gridded data of month-by-month variation in climate
