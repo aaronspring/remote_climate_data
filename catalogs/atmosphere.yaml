@@ -79,8 +79,13 @@ sources:
         type: str
         default: combined
         allowed: [landonly, combined]
+      t_res:
+        description: time span
+        type: str
+        default: anom
+        allowed: [anom, ltm] # long-term mean
     args:
-      urlpath: simplecache::https://psl.noaa.gov/thredds/fileServer/Datasets/gistemp/{{realm}}/{{s_res}}/air.2x2.{{s_res[:-2]}}.mon.anom.{{realm[:4]}}.nc
+      urlpath: simplecache::https://psl.noaa.gov/thredds/fileServer/Datasets/gistemp/{{realm}}/{{s_res}}/air.2x2.{{s_res[:-2]}}.mon.{{t_res}}.{{realm[:4]}}.nc
         #simplecache::https://data.giss.nasa.gov/pub/gistemp/gistemp1200_GHCNv4_ERSSTv5.nc.gz
       chunks: {}
 
