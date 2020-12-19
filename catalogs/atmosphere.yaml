@@ -62,6 +62,112 @@ sources:
       path: "{{CATALOG_DIR}}/atmosphere/cru_ts.yaml"
     driver: intake.catalog.local.YAMLFileCatalog
 
+  GISTEMP:
+    description: GISS Surface Temperature Analysis (GISTEMP v4)
+    metadata:
+      url: https://data.giss.nasa.gov/gistemp/
+      doi: http://doi.org/10.1029/2018JD029522
+    driver: netcdf
+    parameters:
+      s_res:
+        description: spatial resolution
+        type: str
+        default: 1200km
+        allowed: [1200km, 250km]
+      realm:
+        description: data region including or excluding ocean
+        type: str
+        default: combined
+        allowed: [landonly, combined]
+      t_res:
+        description: time span
+        type: str
+        default: anom
+        allowed: [anom, ltm] # long-term mean
+    args:
+      urlpath: simplecache::https://psl.noaa.gov/thredds/fileServer/Datasets/gistemp/{{realm}}/{{s_res}}/air.2x2.{{s_res[:-2]}}.mon.{{t_res}}.{{realm[:4]}}.nc
+        #simplecache::https://data.giss.nasa.gov/pub/gistemp/gistemp1200_GHCNv4_ERSSTv5.nc.gz
+      chunks: {}
+
+  NOAA_GlobalTemp:
+    description: Monthly gridded anomalies of air temperature from the GHCN-M and the NOAA ERSST V4 dataset.
+    metadata:
+      url: https://www.ncdc.noaa.gov/monitoring-references/faq/anomalies.php
+      doi:
+        - http://doi.org/10.1175/2007JCLI2100.1
+        - http://doi.org/10.1175/BAMS-D-11-00241.1.
+    driver: netcdf
+    args:
+      urlpath: simplecache::ftp://ftp.cdc.noaa.gov/Datasets/noaaglobaltemp/air.mon.anom.nc
+      chunks: {}
+
+  BerkeleyEarth_land:
+    description: Monthly gridded land temperature by BerkeleyEarth
+    metadata:
+      url: http://berkeleyearth.org/archive/data/
+    driver: netcdf
+    parameters:
+      var:
+        description: name of variable
+        type: str
+        default: TAVG
+        allowed: [TAVG, TMAX, TMIN]
+      s_res:
+        description: spatial resolution; either in 15984 equal-area grid cells or a latitude-longitude grid. The equal area grid is the primary data format used in most of our analyses and provides generally smaller files; however, that format may be less convenient for many users.
+        type: str
+        default: EqualArea
+        allowed: [LatLong1, EqualArea]
+    args:
+      urlpath: simplecache::http://berkeleyearth.lbl.gov/auto/Global/Gridded/Complete_{{var}}_{{s_res}}.nc
+      chunks: {}
+
+  BerkeleyEarth_land_and_ocean:
+    description: Monthly gridded land and ocean temperature by BerkeleyEarth
+    metadata:
+      url: http://berkeleyearth.org/archive/data/
+    driver: netcdf
+    parameters:
+      s_res:
+        description: spatial resolution; either in 15984 equal-area grid cells or a latitude-longitude grid. The equal area grid is the primary data format used in most of our analyses and provides generally smaller files; however, that format may be less convenient for many users.
+        type: str
+        default: EqualArea
+        allowed: [LatLong1, EqualArea]
+    args:
+      urlpath: simplecache::http://berkeleyearth.lbl.gov/auto/Global/Gridded/Land_and_Ocean_{{s_res}}.nc
+      chunks: {}
+
+  Cowtan_and_Way_Long:
+    description: Monthly gridded land and ocean temperature anomalies by Cowtan and Way. 1850-present, infilled by kriging. The version 2.0 series are based on a more rigorous treatment in which the land and ocean data are reconstructed separately and then blended. Version 2.0 data are also based on the full HadCRUT4 ensemble, and include ensemble as well as coverage uncertainty estimates. The data are described in this update. The land temperature reconstruction is used for air temperatures over land and sea ice, and the sea surface temperature reconstruction for open sea. Sea ice coverage is fixed for each month of the year, and is determined from HadISST using the period 1981-2010. For the long reconstruction (i.e. 1850-present) the median ice coverage in the given month of the year is used for each cell. Hybrid data use the hybrid approach for air temperatures over land or sea ice, and kriging for sea surface temperatures.
+    metadata:
+      url: https://www-users.york.ac.uk/~kdc3/papers/coverage2013/series.html
+      doi: https://doi.org/10.1002/qj.2297
+    driver: netcdf
+    parameters:
+      datasets:
+        description: base datasets used
+        type: str
+        default: had4
+        allowed: [had4, had4sst4, cobe2cru]
+    args:
+      urlpath: simplecache::https://www-users.york.ac.uk/~kdc3/papers/coverage2013/{{datasets}}_krig_v2_0_0.nc.gz
+      chunks: {}
+
+  Cowtan_and_Way_Short:
+    description: Monthly gridded land and ocean temperature anomalies by Cowtan and Way. 1850-present, infilled by kriging. The version 2.0 series are based on a more rigorous treatment in which the land and ocean data are reconstructed separately and then blended. Version 2.0 data are also based on the full HadCRUT4 ensemble, and include ensemble as well as coverage uncertainty estimates. The data are described in this update. All except the long (1850-present) reconstruction are rebaselined on 1981-2010. Rebaselining the data on the period 1981-2010 enables the satellite data to be used for infilling, and in the v1.0 calculation increases the reliability of recent trends, but also discards some data which may impact the reliability of long term trends. The land temperature reconstruction is used for air temperatures over land and sea ice, and the sea surface temperature reconstruction for open sea. Sea ice coverage is fixed for each month of the year, and is determined from HadISST using the period 1981-2010. For the short reconstructions (i.e. 1979-present) the minimum ice is used. Hybrid data use the hybrid approach for air temperatures over land or sea ice, and kriging for sea surface temperatures.
+    metadata:
+      url: https://www-users.york.ac.uk/~kdc3/papers/coverage2013/series.html
+      doi: https://doi.org/10.1002/qj.2297
+    driver: netcdf
+    parameters:
+      datasets:
+        description: base datasets used
+        type: str
+        default: had4_short_uah
+        allowed: [had4_short_uah, had4_short_merra, had4_short_krig, ghcn_short_uah, ghcn_short_merra]
+    args:
+      urlpath: simplecache::https://www-users.york.ac.uk/~kdc3/papers/coverage2013/{{datasets}}_v2_0_0.nc.gz
+      chunks: {}
+
   trace_gases_at_stations:
     description: surface insitu measurements of Carbon Cycle Greenhouse Gases (CCGG), National Oceanic and Atmospheric Administration (NOAA), Earth System Research Laboratories (ESRL), Global Monitoring Laboratory (GML), defaults to Mauna Loa monthly CO2 measurements
     metadata:

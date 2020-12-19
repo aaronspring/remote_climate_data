@@ -8,16 +8,6 @@ sources:
       path: "{{CATALOG_DIR}}ocean/carbon.yaml"
     driver: intake.catalog.local.YAMLFileCatalog
 
-  GISTEMP:
-    description: GISS Surface Temperature Analysis (GISTEMP v4)
-    metadata:
-      url: https://data.giss.nasa.gov/gistemp/
-      doi: http://doi.org/10.1029/2018JD029522
-    driver: netcdf
-    args:
-      urlpath: simplecache::https://data.giss.nasa.gov/pub/gistemp/gistemp1200_GHCNv4_ERSSTv5.nc.gz
-      chunks: {}
-
   HadSST3:
     description: Sea surface temperature anomalies on a 5° by 5° grid (Kennedy et al., 2011)
     metadata:
