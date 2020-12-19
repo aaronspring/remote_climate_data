@@ -80,7 +80,7 @@ sources:
         default: combined
         allowed: [landonly, combined]
     args:
-      urlpath: simplecache::https://psl.noaa.gov/thredds/fileServer/Datasets/gistemp/{{realm}}/{{s_res}}/air.2x2.{{s_res[:-2]}}.mon.anom.{{relam[:4]}}.nc
+      urlpath: simplecache::https://psl.noaa.gov/thredds/fileServer/Datasets/gistemp/{{realm}}/{{s_res}}/air.2x2.{{s_res[:-2]}}.mon.anom.{{realm[:4]}}.nc
         #simplecache::https://data.giss.nasa.gov/pub/gistemp/gistemp1200_GHCNv4_ERSSTv5.nc.gz
       chunks: {}
 
