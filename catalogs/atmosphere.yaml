@@ -199,7 +199,7 @@ sources:
       xarray_kwargs:
         use_cftime: True
 
-  NCEP:
+  NCEP_6h:
     description: NCEP reanalysis 6h
     metadata:
       url: https://psl.noaa.gov/data/reanalysis/reanalysis.shtml
@@ -215,10 +215,37 @@ sources:
         type: str
         default: air.sig995
         allowed: [air.sig995, lftx.sfc, lftx4.sfc, omega.sig995,  pottmp.sig995, pr_wtr.eatm, pres.sfc,   rhum.sig995, slp, uwnd.sig995,  vwnd.sig995]
+      freq:
+        description: frequency
+        type: str
+        default: ncep.reanalysis
+        allowed: [ncep.reanalysis, ncep.reanalysis.dailyavgs]
     args:
       path:
       - "{{var}}.{{year}}.nc"
-      url: https://psl.noaa.gov/thredds/catalog/Datasets/ncep.reanalysis/surface/catalog.xml
+      url: https://psl.noaa.gov/thredds/catalog/Datasets/{{freq}}/surface/catalog.xml
+
+  NCEP_6h_gauss:
+    description: NCEP reanalysis 6h surface_gauss
+    metadata:
+      url: https://psl.noaa.gov/data/reanalysis/reanalysis.shtml
+      doi: https://doi.org/10.1175/1520-0477(1996)077<0437:TNYRP>2.0.CO;2
+    driver: intake_thredds.source.THREDDSMergedSource
+    parameters:
+      year:
+        description: year
+        type: str
+        default: *
+      var:
+        description: variable
+        type: str
+        default: air.2m
+        allowed: [air.2m, cfnlf.sfc,   cprat.sfc,    csdlf.sfc,  csdsf.sfc,  csusf.sfc,  dlwrf.sfc, dswrf.sfc,  gflux.sfc,  icec.sfc,     lhtfl.sfc, nbdsf.sfc,  nddsf.sfc,  nlwrf.sfc,  nswrs.sfc,  pevpr.sfc, prate, runof.sfc, sfcr.sfc,     shtfl.sfc, shum.2m, skt, soilw.0-10cm,    soilw.10-200cm, soilw, soilw200, tmax.2m, tmin.2m, tmp.0-10cm, tmp.10-200cm, temp.300cm, uflx.sfc, ugwd.sfc, ulwrf.sfc, uswrf.sfc, uwnd.10m,  vwnd.10m, vbdsf.sfc, vddsf.sfc, vflx.sfc, vgwd.sfc, weasd.sfc, wspd]
+    args:
+      path:
+      - "{{var}}.gauss.{{year}}.nc"
+      url: https://psl.noaa.gov/thredds/catalog/Datasets/ncep.reanalysis/surface_gauss/catalog.xml
+
 
   NCEP_monthly:
     description: NCEP reanalysis derived monthly
