@@ -243,7 +243,7 @@ sources:
         default: air
         allowed: [air, air.sig995, lftx,  pr_wtr.eatm,  pr_wtr, omega.sig995,  pottmp.sig995, pr_wtr.eatm, pres, rhum, rhum.sig995, slp, uwnd.sig995,  vwnd.sig995, uwnd, vwnd, wspd, wspd.sig995]
     args:
-      urlpath: simplecache::https://psl.noaa.gov/thredds/fileServer/Datasets/ncep.reanalysis.derived/surface/{{var}}.{{freq}}.{{time_average}}.nc
+      urlpath: simplecache::https://psl.noaa.gov/thredds/fileServer/Datasets/ncep.reanalysis.derived/surface_gauss/{{var}}.{{freq}}.{{time_average}}.nc
 
   NCEP_monthly_gauss:
     description: NCEP reanalysis derived monthly gaussian
