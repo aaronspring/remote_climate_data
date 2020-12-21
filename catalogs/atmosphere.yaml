@@ -220,6 +220,31 @@ sources:
       - "{{var}}.{{year}}.nc"
       url: https://psl.noaa.gov/thredds/catalog/Datasets/ncep.reanalysis/surface/catalog.xml
 
+  NCEP_monthly:
+    description: NCEP reanalysis monthly
+    metadata:
+      url: https://psl.noaa.gov/data/reanalysis/reanalysis.shtml
+      doi: https://doi.org/10.1175/1520-0477(1996)077<0437:TNYRP>2.0.CO;2
+    driver: netcdf
+    parameters:
+      freq:
+        description: frequency
+        type: str
+        default: mon
+        allowed: [mon, day, 4Xday]
+      time_average:
+        description: time_average
+        type: str
+        default: mean
+        allowed: [mean, ltm, 1981-2010.ltm]
+      var:
+        description: variable
+        type: str
+        default: air
+        allowed: [air, air.sig995, lftx,  pr_wtr.eatm,  pr_wtr, omega.sig995,  pottmp.sig995, pr_wtr.eatm, pres, rhum, rhum.sig995, slp, uwnd.sig995,  vwnd.sig995, uwnd, vwnd, wspd, wspd.sig995]
+    args:
+      urlpath: simplecache::https://psl.noaa.gov/thredds/fileServer/Datasets/ncep.reanalysis.derived/surface/{{var}}.{{freq}}.{{time_average}}.nc
+
   fossil_fuel_emissions_gridded:
     description: daily 1x1 Gridded Fossil Fuel emissions from Open-source Data Inventory for Anthropogenic CO2 (ODIAC), Carbon Cycle Greenhouse Gases (CCGG), National Oceanic and Atmospheric Administration (NOAA), Earth System Research Laboratories (ESRL), Global Monitoring Laboratory (GML)
     metadata:
