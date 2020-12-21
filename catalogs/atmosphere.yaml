@@ -199,6 +199,27 @@ sources:
       xarray_kwargs:
         use_cftime: True
 
+  NCEP:
+    description: NCEP reanalysis 6h
+    metadata:
+      url: https://psl.noaa.gov/data/reanalysis/reanalysis.shtml
+      doi: https://doi.org/10.1175/1520-0477(1996)077<0437:TNYRP>2.0.CO;2
+    driver: intake_thredds.source.THREDDSMergedSource
+    parameters:
+      year:
+        description: year
+        type: str
+        default: '*'  # merges all years from 1948 to 2020
+      var:
+        description: variable
+        type: str
+        default: air.sig995
+        allowed: [air.sig995, lftx.sfc, lftx4.sfc, omega.sig995,  pottmp.sig995, pr_wtr.eatm, pres.sfc,   rhum.sig995, slp, uwnd.sig995,  vwnd.sig995]
+    args:
+      path:
+      - "{{var}}.{{year}}.nc"
+      url: https://psl.noaa.gov/thredds/catalog/Datasets/ncep.reanalysis/surface/catalog.xml
+
   fossil_fuel_emissions_gridded:
     description: daily 1x1 Gridded Fossil Fuel emissions from Open-source Data Inventory for Anthropogenic CO2 (ODIAC), Carbon Cycle Greenhouse Gases (CCGG), National Oceanic and Atmospheric Administration (NOAA), Earth System Research Laboratories (ESRL), Global Monitoring Laboratory (GML)
     metadata:
