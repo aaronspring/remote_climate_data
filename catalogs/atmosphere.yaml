@@ -235,7 +235,7 @@ sources:
       year:
         description: year
         type: str
-        default: *
+        default: '*'
       var:
         description: variable
         type: str
@@ -270,7 +270,7 @@ sources:
         default: air
         allowed: [air, air.sig995, lftx,  pr_wtr.eatm,  pr_wtr, omega.sig995,  pottmp.sig995, pr_wtr.eatm, pres, rhum, rhum.sig995, slp, uwnd.sig995,  vwnd.sig995, uwnd, vwnd, wspd, wspd.sig995]
     args:
-      urlpath: simplecache::https://psl.noaa.gov/thredds/fileServer/Datasets/ncep.reanalysis.derived/surface_gauss/{{var}}.{{freq}}.{{time_average}}.nc
+      urlpath: simplecache::https://psl.noaa.gov/thredds/fileServer/Datasets/ncep.reanalysis.derived/surface/{{var}}.{{freq}}.{{time_average}}.nc
 
   NCEP_monthly_gauss:
     description: NCEP reanalysis derived monthly gaussian
@@ -292,8 +292,8 @@ sources:
       var:
         description: variable
         type: str
-        default: air.2m
-        allowed: [air.2m, cfnlf.sfc,   cprat.sfc,    csdlf.sfc,  csdsf.sfc,  csusf.sfc,  dlwrf.sfc, dswrf.sfc,  gflux.sfc,  icec.sfc,     lhtfl.sfc, nbdsf.sfc,  nddsf.sfc,  nlwrf.sfc,  nswrs.sfc,  pevpr.sfc, prate, runof.sfc, sfcr.sfc,     shtfl.sfc, shum.2m, skt, soilw.0-10cm,    soilw.10-200cm, soilw, soilw200, tmax.2m, tmin.2m, tmp.0-10cm, tmp.10-200cm, temp.300cm, uflx.sfc, ugwd.sfc, ulwrf.sfc, uswrf.sfc, uwnd.10m,  vwnd.10m, vbdsf.sfc, vddsf.sfc, vflx.sfc, vgwd.sfc, weasd.sfc, wspd]
+        default: 'air.2m'
+        allowed: ['air.2m', 'cfnlf.sfc', 'cprat.sfc', 'csdlf.sfc',  'csdsf.sfc', 'csusf.sfc', 'dlwrf.sfc', "dswrf.sfc",  "gflux.sfc",  'icec.sfc', 'lhtfl.sfc', nbdsf.sfc,  'nddsf.sfc',  'nlwrf.sfc',  'nswrs.sfc',  'pevpr.sfc', 'prate', 'runof.sfc', 'sfcr.sfc', 'shtfl.sfc', 'shum.2m', 'skt', 'soilw.0-10cm', 'soilw.10-200cm', 'soilw', 'soilw200', 'tmax.2m', 'tmin.2m', 'tmp.0-10cm', 'tmp.10-200cm', 'temp.300cm', 'uflx.sfc', 'ugwd.sfc', 'ulwrf.sfc', 'uswrf.sfc', 'uwnd.10m',  'vwnd.10m', 'vbdsf.sfc', 'vddsf.sfc', 'vflx.sfc', 'vgwd.sfc', 'weasd.sfc', 'wspd']
     args:
       urlpath: simplecache::https://psl.noaa.gov/thredds/fileServer/Datasets/ncep.reanalysis.derived/surface_gauss/{{var}}.{{freq}}.{{time_average}}.nc
 
