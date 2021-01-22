@@ -17,16 +17,13 @@ jobs:
         shell: bash -l {0}
     strategy:
       matrix:
-        python: [3.6]
+        python: [3.7]
       fail-fast: false
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
-        with:
-          ref: ${{github.event.pull_request.head.ref}}
-          repository: ${{github.event.pull_request.head.repo.full_name}}
       - name: Set up conda
         uses: conda-incubator/setup-miniconda@v2
         with:
@@ -34,7 +31,7 @@ jobs:
           channels: conda-forge
           mamba-version: '*'
           activate-environment: remote_climate_data-dev
-          python-version: 3.6
+          python-version: 3.7
       - name: Set up conda environment
         run: |
           mamba env update -f environment.yml
@@ -53,9 +50,6 @@ jobs:
         shell: bash -l {0}
     steps:
       - uses: actions/checkout@v2
-        with:
-          ref: ${{github.event.pull_request.head.ref}}
-          repository: ${{github.event.pull_request.head.repo.full_name}}
       - name: Set up conda
         uses: conda-incubator/setup-miniconda@v2
         with:
@@ -63,7 +57,7 @@ jobs:
           channels: conda-forge
           mamba-version: '*'
           activate-environment: remote_climate_data-dev
-          python-version: 3.6
+          python-version: 3.7
       - name: Set up conda environment
         run: |
           mamba env update -f environment.yml
