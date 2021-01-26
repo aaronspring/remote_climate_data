@@ -148,3 +148,43 @@ sources:
     args:
       urlpath: simplecache::zip://*.nc::https://www.socat.info/socat_files/{{version}}/SOCAT{{version}}_tracks_gridded_{{time_average}}.nc.zip
       chunks: {}
+
+  ESACCI:
+    description: |
+        download ocean color from https://www.oceancolour.org
+        aggregate output of one year via intake-thredds
+        Surface ocean chlorophyll-a @ Global level 3 binned multi-sensor merged data
+        spatial resolution = 4 km resolution
+    driver: intake_thredds.source.THREDDSMergedSource
+    metadata:
+      url: https://www.oceancolour.org/
+      doi: https://doi.org/10.3389/fmars.2019.00485
+    parameters:
+      time:
+        description: time as string to subset, must at least be four char for year
+        type: str
+        default: '1998' # starting 1998
+      var:
+        description: variable name
+        type: str
+        default: chlor_a
+        allowed: ['iop', 'chlor_a', 'rrs'] #'kd' expands to K_490 # all_products to products
+      t_res:
+        description: temporal resolution
+        type: str
+        default: 'daily'
+        allowed: ['daily','monthly'] # 5day and 8day dont expand nicely
+      version:
+        description: version name
+        type: str
+        default: 3.0
+        allowed: [3.0, 3.1, 4.2, 5.0]
+      proj:
+        description: projection
+        type: str
+        default: geographic
+        allowed: [geographic, sinusoidal]
+    args:
+      path:
+        - 'ESACCI-OC-L3S-{{var.upper()}}-MERGED-1{{t_res[0].upper()}}_{{t_res.upper()}}_4km_{{proj[:3].upper()}}_PML_*-{{time}}*-fv{{version}}.nc'
+      url: https://www.oceancolour.org/thredds/catalog/cci/v{{version}}-release/{{proj.lower()}}/{{t_res.lower()}}/{{var.lower()}}/{{time[:4]}}/catalog.xml
