@@ -1,10 +1,14 @@
 name: remote_climate_data-dev
 channels:
   - conda-forge
+  - edjdavid
 dependencies:
   - python=3.7
   - intake[dataframe]
   - xarray
+  - intake-excel
+  - intake-xarray
+  - intake-thredds
   - pydap
   - dask
   - h5netcdf
@@ -36,9 +40,8 @@ dependencies:
   - xrviz
   - pip:  # get latest master from source
       - git+https://github.com/intake/filesystem_spec.git
-      - git+https://github.com/edjdavid/intake-excel.git
+      # - git+https://github.com/edjdavid/intake-excel.git
       - xlrd==1.2.0  # newer versions dont support xlsx
-      - git+https://github.com/intake/intake-xarray.git
-      - intake-thredds
+      #- git+https://github.com/intake/intake-xarray.git
       - git+https://github.com/geopandas/geopandas.git
       - git+https://github.com/intake/intake_geopandas.git # ordering is critical here, has to be last
