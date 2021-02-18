@@ -89,7 +89,7 @@ sources:
         default: '01'
         allowed: ['5d', '01', '04']
     args:
-      urlpath: https://data.nodc.noaa.gov/thredds/dodsC/ncei/woa/{{variable}}/{{DDDD}}/{{GG}}/woa18_{{DDDD}}_{{variable[0]}}{{ "%02d" | format(TT) }}_{{GG2}}.nc
+      urlpath: https://www.ncei.noaa.gov/thredds-ocean/dodsC/ncei/woa/{{variable}}/{{DDDD}}/{{GG}}/woa18_{{DDDD}}_{{variable[0]}}{{ "%02d" | format(TT) }}_{{GG2}}.nc
       xarray_kwargs:
         decode_times: false
 
