@@ -42,4 +42,5 @@ dependencies:
       - xlrd==1.2.0  # newer versions dont support xlsx
       #- git+https://github.com/intake/intake-xarray.git
       - git+https://github.com/geopandas/geopandas.git
+      - intake_geopandas
       #- git+https://github.com/intake/intake_geopandas.git # ordering is critical here, has to be last
