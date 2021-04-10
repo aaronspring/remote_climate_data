@@ -1,5 +1,6 @@
 name: remote_climate_data-dev
 channels:
+  - pyviz
   - conda-forge
 dependencies:
   - python=3.7
@@ -30,7 +31,6 @@ dependencies:
   - matplotlib
   - nc-time-axis
   - pyviz_comms
-  - pyviz
   - hvplot
   - ipywidgets
   - nodejs
