@@ -19,10 +19,7 @@ sources:
         abbrevs: _from_name
 
   IPCCAR6:
-    description: >
-      IPCC regions AR6 reference regions - Iturbide et al., 2020
-      equivalent to regiomask.defined_regions.ar6
-      Use shapefiles.IPCCAR6 to subselect only land or ocean regions.
+    description: IPCC regions AR6 reference regions - Iturbide et al., 2020 equivalent to regiomask.defined_regions.ar6 Use shapefiles.IPCCAR6 to subselect only land or ocean regions.
     metadata:
       doi: https://doi.org/10.5194/essd-12-2959-2020
     driver: intake_geopandas.regionmask.RegionmaskSource
