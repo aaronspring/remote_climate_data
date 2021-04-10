@@ -31,7 +31,7 @@ dependencies:
   - matplotlib
   - nc-time-axis
   - pyviz_comms
-  - hvplot
+  - hvplot==0.7.0
   - ipywidgets
   - nodejs
   - dask-labextension
