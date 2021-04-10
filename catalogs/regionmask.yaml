@@ -5,6 +5,8 @@ plugins:
 sources:
   Countries:
     description: Natural Earth Data Admin 0 Countries
+    metadata:
+      foo: 'bar'
     driver: intake_geopandas.regionmask.RegionmaskSource
     args:
       urlpath: simplecache::https://www.naturalearthdata.com/http//www.naturalearthdata.com/download/10m/cultural/ne_10m_admin_0_countries.zip
@@ -19,6 +21,8 @@ sources:
 
   IPCCAR6:
     description: dess
+    metadata:
+      foo: 'bar'
     driver: intake_geopandas.regionmask.RegionmaskSource
     args:
       urlpath: simplecache::https://github.com/mathause/regionmask/raw/master/data/IPCC-WGI-reference-regions-v4.zip
@@ -33,6 +37,8 @@ sources:
 
   MEOW:
     description: des2
+    metadata:
+      foo: 'bar'
     driver: intake_geopandas.regionmask.RegionmaskSource
     args:
       urlpath: simplecache::http://maps.tnc.org/files/shp/MEOW-TNC.zip
@@ -48,6 +54,8 @@ sources:
 
 FEOW:
   description: des2
+  metadata:
+    foo: 'bar'
   driver: intake_geopandas.regionmask.RegionmaskSource
   args:
     urlpath: simplecache::http://maps.tnc.org/files/shp/FEOW-TNC.zip
@@ -64,6 +72,8 @@ FEOW:
 
 TEOW:
   description: des4
+  metadata:
+    foo: 'bar'
   driver: intake_geopandas.regionmask.RegionmaskSource
   args:
     urlpath: simplecache::http://maps.tnc.org/files/shp/terr-ecoregions-TNC.zip
