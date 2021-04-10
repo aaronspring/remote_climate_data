@@ -5,8 +5,6 @@ plugins:
 sources:
   Countries:
     description: Natural Earth Data Admin 0 Countries
-    metadata:
-      url: https://www.naturalearthdata.com/downloads/10m-cultural-vectors/10m-admin-0-countries/
     driver: intake_geopandas.regionmask.RegionmaskSource
     args:
       urlpath: simplecache::https://www.naturalearthdata.com/http//www.naturalearthdata.com/download/10m/cultural/ne_10m_admin_0_countries.zip
@@ -17,6 +15,7 @@ sources:
       regionmask_kwargs:
         names: NAME_EN
         abbrevs: _from_name
+
 
   IPCCAR6:
     description: dess
@@ -33,12 +32,9 @@ sources:
         names: Name
         abbrevs: Acronym
 
+
   MEOW:
     description: des2
-    metadata:
-      url:
-        - http://maps.tnc.org/gis_data.html
-        - http://maps.tnc.org/files/metadata/MEOW.xml
     driver: intake_geopandas.regionmask.RegionmaskSource
     args:
       urlpath: simplecache::http://maps.tnc.org/files/shp/MEOW-TNC.zip
@@ -69,10 +65,7 @@ FEOW:
 
 
 TEOW:
-  description: des
-  metadata:
-    - http://maps.tnc.org/gis_data.html#TerrEcos
-    - http://maps.tnc.org/files/metadata/TerrEcos.xml
+  description: des4
   driver: intake_geopandas.regionmask.RegionmaskSource
   args:
     urlpath: simplecache::http://maps.tnc.org/files/shp/terr-ecoregions-TNC.zip
