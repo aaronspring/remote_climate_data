@@ -19,7 +19,7 @@ sources:
         abbrevs: _from_name
 
   IPCCAR6:
-    description: IPCC regions AR6 reference regions - Iturbide et al., 2020 equivalent to regiomask.defined_regions.ar6 Use shapefiles.IPCCAR6 to subselect only land or ocean regions.
+    description: des
     metadata:
       doi: https://doi.org/10.5194/essd-12-2959-2020
     driver: intake_geopandas.regionmask.RegionmaskSource
@@ -34,7 +34,7 @@ sources:
         abbrevs: Acronym
 
   MEOW:
-    description: The Marine Ecoregions Of the World (MEOW) data set is a biogeographic classification of the worlds coasts and shelves. The ecoregions nest within the broader biogeographic tiers of Realms and Provinces.
+    description: des
     metadata:
       url:
         http://maps.tnc.org/gis_data.html
