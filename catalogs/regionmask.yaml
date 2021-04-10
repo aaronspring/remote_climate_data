@@ -19,7 +19,7 @@ sources:
         abbrevs: _from_name
 
   IPCCAR6:
-    description: des
+    description: dess
     metadata:
       doi: https://doi.org/10.5194/essd-12-2959-2020
     driver: intake_geopandas.regionmask.RegionmaskSource
@@ -34,11 +34,11 @@ sources:
         abbrevs: Acronym
 
   MEOW:
-    description: des
+    description: des2
     metadata:
       url:
-        http://maps.tnc.org/gis_data.html
-        http://maps.tnc.org/files/metadata/MEOW.xml
+        - http://maps.tnc.org/gis_data.html
+        - http://maps.tnc.org/files/metadata/MEOW.xml
     driver: intake_geopandas.regionmask.RegionmaskSource
     args:
       urlpath: simplecache::http://maps.tnc.org/files/shp/MEOW-TNC.zip
@@ -53,10 +53,7 @@ sources:
       abbrevs: construct
 
 FEOW:
-  description: des
-  metadata:
-    - http://maps.tnc.org/files/metadata/FEOW.xml
-    - http://maps.tnc.org/gis_data.html
+  description: des2
   driver: intake_geopandas.regionmask.RegionmaskSource
   args:
     urlpath: simplecache::http://maps.tnc.org/files/shp/FEOW-TNC.zip
