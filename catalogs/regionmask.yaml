@@ -19,7 +19,7 @@ sources:
         abbrevs: _from_name
 
   IPCCAR6:
-    description: >- # https://stackoverflow.com/questions/3790454/how-do-i-break-a-string-in-yaml-over-multiple-lines
+    description: |
       IPCC regions AR6 reference regions - Iturbide et al., 2020
       equivalent to regiomask.defined_regions.ar6
       Use shapefiles.IPCCAR6 to subselect only land or ocean regions.
@@ -37,7 +37,7 @@ sources:
         abbrevs: Acronym
 
   MEOW:
-    description: >-
+    description: |
       The Marine Ecoregions Of the World (MEOW) data set is a biogeographic
       classification of the worlds coasts and shelves. The ecoregions nest within the
       broader biogeographic tiers of Realms and Provinces.
@@ -60,7 +60,7 @@ sources:
 
 
 FEOW:
-  description: >-
+  description: |
     The Freshwater Ecoregions Of the World (FEOW) provide a global biogeographic
     regionalization of the Earths freshwater biodiversity. This version of the FEOW,
     modified by The Nature Conservancy, includes additional tabular data describing
@@ -84,7 +84,7 @@ FEOW:
 
 
 TEOW:
-  description: >-
+  description: |
     This is the master spatial data layer for TNCs Terrestrial Ecoregions Of the World,
     exported from the geodatabase listed above. Note that it includes Mangroves, Inland
     Water, and Rock and Ice MHTs, although they are not being handled by terrestrial
