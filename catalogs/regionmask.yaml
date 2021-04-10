@@ -19,8 +19,6 @@ sources:
 
   IPCCAR6:
     description: dess
-    metadata:
-      doi: https://doi.org/10.5194/essd-12-2959-2020
     driver: intake_geopandas.regionmask.RegionmaskSource
     args:
       urlpath: simplecache::https://github.com/mathause/regionmask/raw/master/data/IPCC-WGI-reference-regions-v4.zip
