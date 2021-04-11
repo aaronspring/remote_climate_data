@@ -17,11 +17,7 @@ dependencies:
   - pyarrow
   - geopandas
   - regionmask
-  - pip
-  # Currently 5.4.0 or greater breaks pytest-sugar. It looks like this will be fixed
-  # soon and we can revert back to the newest pytest.
-  # https://github.com/Teemu/pytest-sugar/issues/187
-  - pytest<5.4.0
+  - pytest
   - pytest-cov
   - pytest-sugar
   - pre-commit
@@ -36,6 +32,7 @@ dependencies:
   - dask-labextension
   - dfviz
   - xrviz
+  - pip
   - pip:  # get latest master from source
       #- git+https://github.com/intake/filesystem_spec.git
       - git+https://github.com/edjdavid/intake-excel.git
