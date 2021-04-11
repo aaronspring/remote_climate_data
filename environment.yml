@@ -10,7 +10,7 @@ dependencies:
   - pydap
   - dask
   - h5netcdf
-  - fsspec
+  - fsspec==0.8.7
   - requests
   - aiohttp
   - importlib_metadata
