@@ -29,7 +29,7 @@ dependencies:
   - hvplot==0.7.0
   - holoviews=1.14.1
   - jupyter-server-proxy
-  - ipywidgets
+  - ipywidgets==7.5.1
   - nodejs
   - dask-labextension
   - dfviz
