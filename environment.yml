@@ -26,8 +26,8 @@ dependencies:
   - matplotlib
   - nc-time-axis
   - pyviz_comms
-  - hvplot==0.7.0
-  - holoviews=1.14.1
+  - hvplot
+  - panel
   - jupyter-server-proxy
   - ipywidgets==7.5.1
   - nodejs
