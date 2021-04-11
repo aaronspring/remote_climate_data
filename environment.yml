@@ -1,6 +1,7 @@
 name: remote_climate_data-dev
 channels:
   - conda-forge
+  - pyviz
 dependencies:
   - python=3.8
   - intake[dataframe]
