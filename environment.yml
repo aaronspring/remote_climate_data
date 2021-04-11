@@ -1,8 +1,9 @@
 name: remote_climate_data-dev
 channels:
+  - pyviz
   - conda-forge
 dependencies:
-  - python=3.7
+  - python=3.8
   - intake[dataframe]
   - xarray
   - intake-xarray
@@ -10,18 +11,14 @@ dependencies:
   - pydap
   - dask
   - h5netcdf
-  - fsspec
+  - fsspec==0.8.7
   - requests
   - aiohttp
   - importlib_metadata
   - pyarrow
   - geopandas
   - regionmask
-  - pip
-  # Currently 5.4.0 or greater breaks pytest-sugar. It looks like this will be fixed
-  # soon and we can revert back to the newest pytest.
-  # https://github.com/Teemu/pytest-sugar/issues/187
-  - pytest<5.4.0
+  - pytest
   - pytest-cov
   - pytest-sugar
   - pre-commit
@@ -31,16 +28,15 @@ dependencies:
   - nc-time-axis
   - pyviz_comms
   - hvplot
+  - panel
+  - jupyter-server-proxy
   - ipywidgets
   - nodejs
   - dask-labextension
   - dfviz
   - xrviz
+  - pip
   - pip:  # get latest master from source
-      #- git+https://github.com/intake/filesystem_spec.git
       - git+https://github.com/edjdavid/intake-excel.git
       - xlrd==1.2.0  # newer versions dont support xlsx
-      #- git+https://github.com/intake/intake-xarray.git
-      - git+https://github.com/geopandas/geopandas.git
       - intake_geopandas
-      #- git+https://github.com/intake/intake_geopandas.git # ordering is critical here, has to be last
