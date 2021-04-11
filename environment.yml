@@ -27,6 +27,8 @@ dependencies:
   - nc-time-axis
   - pyviz_comms
   - hvplot==0.7.0
+  - holoviews
+  - bokeh
   - ipywidgets
   - nodejs
   - dask-labextension
@@ -34,8 +36,6 @@ dependencies:
   - xrviz
   - pip
   - pip:  # get latest master from source
-      #- git+https://github.com/intake/filesystem_spec.git
       - git+https://github.com/edjdavid/intake-excel.git
       - xlrd==1.2.0  # newer versions dont support xlsx
-      #- git+https://github.com/intake/intake-xarray.git
       - intake_geopandas
