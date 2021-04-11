@@ -29,7 +29,7 @@ dependencies:
   - hvplot
   - panel
   - jupyter-server-proxy
-  - ipywidgets==7.5.1
+  - ipywidgets
   - nodejs
   - dask-labextension
   - dfviz
