@@ -19,7 +19,7 @@ sources:
         abbrevs: _from_name
 
   IPCCAR6:
-    description: |
+    description: >-
       IPCC regions AR6 reference regions - Iturbide et al., 2020
       equivalent to regiomask.defined_regions.ar6
       Use shapefiles.IPCCAR6 to subselect only land or ocean regions.
@@ -37,14 +37,12 @@ sources:
         abbrevs: Acronym
 
   MEOW:
-    description: |
+    description: >-
       The Marine Ecoregions Of the World (MEOW) data set is a biogeographic
       classification of the worlds coasts and shelves. The ecoregions nest within the
       broader biogeographic tiers of Realms and Provinces.
     metadata:
-      url:
-        http://maps.tnc.org/gis_data.html
-        http://maps.tnc.org/files/metadata/MEOW.xml
+      xml: http://maps.tnc.org/files/metadata/MEOW.xml
     driver: intake_geopandas.regionmask.RegionmaskSource
     args:
       urlpath: simplecache::http://maps.tnc.org/files/shp/MEOW-TNC.zip
@@ -59,15 +57,14 @@ sources:
       abbrevs: construct
 
   FEOW:
-    description: |
+    description: >-
       The Freshwater Ecoregions Of the World (FEOW) provide a global biogeographic
       regionalization of the Earths freshwater biodiversity. This version of the FEOW,
       modified by The Nature Conservancy, includes additional tabular data describing
       Major Habitat Types (MHTs, similar to terrestrial biomes, but unpublished).You can
       read more about the FEOW, and obtain the unmodified shapefile at www.feow.org.
     metadata:
-      - http://maps.tnc.org/files/metadata/FEOW.xml
-      - http://maps.tnc.org/gis_data.html
+      xml: http://maps.tnc.org/files/metadata/FEOW.xml
     driver: intake_geopandas.regionmask.RegionmaskSource
     args:
       urlpath: simplecache::http://maps.tnc.org/files/shp/FEOW-TNC.zip
@@ -82,7 +79,7 @@ sources:
       abbrevs: _from_name
 
   TEOW:
-    description: |
+    description: >-
       This is the master spatial data layer for TNCs Terrestrial Ecoregions Of the World,
       exported from the geodatabase listed above. Note that it includes Mangroves, Inland
       Water, and Rock and Ice MHTs, although they are not being handled by terrestrial
@@ -90,8 +87,7 @@ sources:
       loosely based on Baileys ecoregions (from the USDA Forest Service) within the
       United States.
     metadata:
-      - http://maps.tnc.org/gis_data.html#TerrEcos
-      - http://maps.tnc.org/files/metadata/TerrEcos.xml
+      xml: http://maps.tnc.org/files/metadata/TerrEcos.xml
     driver: intake_geopandas.regionmask.RegionmaskSource
     args:
       urlpath: simplecache::http://maps.tnc.org/files/shp/terr-ecoregions-TNC.zip
