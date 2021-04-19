@@ -39,7 +39,7 @@ sources:
         default: median
         allowed: [median, total_incertainty, measurement_and_sampling_uncertainty, uncorrelated_measurement_uncertainty, correlated_measurement_uncertainty, number_of_observations, number_of_superobservations, unadjusted, actuals_median, actuals_ensemble]
     args:
-      urlpath: simplecache::https://www.metoffice.gov.uk/hadobs/hadsst4/data/netcdf/HadSST.4.0.0.0_{{file}}.nc
+      urlpath: simplecache::https://www.metoffice.gov.uk/hadobs/hadsst4/data/netcdf/HadSST.4.0.1.0_{{file}}.nc
       chunks: {}
 
   HadISST1:
