@@ -5,9 +5,9 @@ jobs:
     runs-on: ubuntu-latest
     name: An example job to comment a PR
     steps:
-      - name: Checkout
+      - name: Git checkout
         uses: actions/checkout@v1
-     - name: Extract branch name
+      - name: Branch name
         run: echo running on branch ${GITHUB_REF##*/}
       - name: Comment PR
         uses: thollander/actions-comment-pull-request@master
