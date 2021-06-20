@@ -18,5 +18,5 @@ jobs:
       - name: Comment PR
         uses: thollander/actions-comment-pull-request@master
         with:
-          message: 'Example of message ${GIT_BRANCH_NAME} ${{GIT_BRANCH_NAME}}'
+          message: 'Dynamic message your current branch is ${{ GIT_BRANCH_NAME }} or ${{ github.head_ref }}'
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
