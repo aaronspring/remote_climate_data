@@ -3,7 +3,7 @@ name: binder PR link
 on: pull_request
 
 jobs:
-  main_job:
+  comment_PR_link_binder:
     runs-on: ubuntu-latest
     steps:
       - name: Comment PR
