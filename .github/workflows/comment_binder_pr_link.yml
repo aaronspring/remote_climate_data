@@ -1,15 +1,16 @@
 name: comment binder PR link
 
-on: [pull_request, push]
+on: pull_request
 
 jobs:
-  which_branch:
+  set-env:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-
-      # extract branch name
-      - name: Extract branch name
-        if: github.event_name != 'pull_request'
-        shell: bash
-        run: echo ${GITHUB_REF#refs/heads/}
+      - name: Set environment variables
+        run: |
+          echo "GIT_SHA=${GITHUB_SHA}" >> $GITHUB_ENV
+          echo "GIT_BRANCH=${GITHUB_REF##*/}" >> $GITHUB_ENV
+      - name: Use environment variables
+        run: |
+          echo "GIT_SHA=${GIT_SHA}"
+          echo "GIT_BRANCH=${GIT_BRANCH}"
