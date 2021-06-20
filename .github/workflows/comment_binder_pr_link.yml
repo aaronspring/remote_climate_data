@@ -3,27 +3,20 @@ name: comment binder PR link
 on: pull_request
 
 jobs:
-  set-env:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Set environment variables
-        run: |
-          echo "GIT_SHA=${GITHUB_SHA}" >> $GITHUB_ENV
-          echo "GIT_BRANCH=${GITHUB_REF##*/}" >> $GITHUB_ENV
-      - name: Use environment variables
-        run: |
-          echo "GIT_SHA=${GIT_SHA}"
-          echo "GIT_BRANCH=${GIT_BRANCH}"
-      - name: Extract branch name
-        shell: bash
-        run: echo "##[set-output name=branch;]$(echo ${GITHUB_REF#refs/heads/})"
-        id: extract_branch
-
   main_job:
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout
+        uses: actions/checkout@v1
+     
       - name: Git branch name
         id: git-branch-name
         uses: EthanSK/git-branch-name-action@v1
       - name: Echo the branch name
         run: echo "Branch name ${GIT_BRANCH_NAME}"
+
+      - name: Comment PR
+        uses: thollander/actions-comment-pull-request@master
+        with:
+          message: 'Example of message ${GIT_BRANCH_NAME}'
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
