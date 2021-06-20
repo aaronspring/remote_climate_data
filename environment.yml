@@ -27,6 +27,7 @@ dependencies:
   - matplotlib
   - nc-time-axis
   - pyviz_comms
+  - jupyter_bokeh
   - hvplot
   - panel
   - jupyter-server-proxy
