@@ -1,16 +1,23 @@
 name: comment binder PR link
 
-on: push
+on: [pull_request, push]
 
 jobs:
-  build:
+  which_branch:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v1
-    - run: npm ci
-    - uses: nelonoel/branch-name@v1
-    # Use branch name for whatever purpose
-    - run: echo ${BRANCH_NAME}
+      # extract branch name
+      - name: Extract branch name
+        if: github.event_name != 'pull_request'
+        shell: bash
+        run: echo "::set-env name=BRANCH_NAME::$(echo ${GITHUB_REF#refs/heads/})"
+        id: extract_branch
 
-          #message: 'Try your PR on binder: https://mybinder.org/v2/gh/aaronspring/remote_climate_data/BRANCH_NAME?urlpath=lab?filepath=demo.ipynb!'
-          #GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      # extract branch name on pull request
+      - name: Print branch name
+        if: github.event_name == 'pull_request'
+        run: echo "::set-env name=BRANCH_NAME::$(echo ${GITHUB_HEAD_REF})"
+
+      # print branch name
+      - name: Get branch name
+        run: echo 'The branch name is' $BRANCH_NAME
