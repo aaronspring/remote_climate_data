@@ -13,7 +13,11 @@ jobs:
         run: |
           echo running on branch ${{ github.ref }}
           echo running on branch ${{ github.ref_head }}
+          echo running on branch ${GITHUB_REF##*/}
           printenv
+      - name: Extract branch name
+        shell: bash
+        run: echo "##[set-output name=branch;]$(echo ${GITHUB_REF#refs/heads/})"
       - name: Comment PR
         uses: thollander/actions-comment-pull-request@master
         with:
