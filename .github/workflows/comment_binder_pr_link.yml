@@ -6,6 +6,8 @@ jobs:
   which_branch:
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v2
+
       # extract branch name
       - name: Extract branch name
         if: github.event_name != 'pull_request'
