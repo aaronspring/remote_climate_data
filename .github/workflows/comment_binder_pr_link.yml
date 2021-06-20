@@ -14,3 +14,8 @@ jobs:
         run: |
           echo "GIT_SHA=${GIT_SHA}"
           echo "GIT_BRANCH=${GIT_BRANCH}"
+      - name: Extract branch name
+        shell: bash
+        run: echo "##[set-output name=branch;]$(echo ${GITHUB_REF#refs/heads/})"
+        id: extract_branch
+
