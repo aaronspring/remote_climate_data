@@ -1,14 +1,18 @@
+name: comment binder PR link
+
 on: pull_request
 
 jobs:
-  example_comment_pr:
+  comment_pr_for_binder:
     runs-on: ubuntu-latest
     name: An example job to comment a PR
     steps:
       - name: Git checkout
         uses: actions/checkout@v1
       - name: Branch name
-        run: echo running on branch ${{ github.ref }}
+        run:
+          - echo running on branch ${{ github.ref }}
+          - echo running on branch ${{ github.ref_head }}
       - name: Comment PR
         uses: thollander/actions-comment-pull-request@master
         with:
