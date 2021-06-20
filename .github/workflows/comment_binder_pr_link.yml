@@ -16,6 +16,7 @@ jobs:
           echo running on branch ${GITHUB_REF##*/}
           printenv
           echo $GITHUB_REF
+          echo ${GITHUB_REF##*/}
       - name: Comment PR
         uses: thollander/actions-comment-pull-request@master
         with:
