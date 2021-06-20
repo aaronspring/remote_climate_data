@@ -7,10 +7,8 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v1
-      - name: get branch name
-        run:
-          BRANCH_NAME=${GITHUB_REF##*/}
-          echo $BRANCH_NAME
+     - name: Extract branch name
+        run: echo running on branch ${GITHUB_REF##*/}
       - name: Comment PR
         uses: thollander/actions-comment-pull-request@master
         with:
