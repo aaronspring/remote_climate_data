@@ -1,6 +1,9 @@
 name: binder PR link
 
-on: pull_request
+on:
+  pull_request:
+    types: [opened]
+
 
 jobs:
   comment_PR_link_binder:
