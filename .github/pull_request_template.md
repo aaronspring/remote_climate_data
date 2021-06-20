@@ -18,5 +18,3 @@
    - [ ] ensure new dataset is covered by tests
 
 👍 Mark PR as ready for review!
-
-➡️ Checkout your PR on binder: https://mybinder.org/v2/gh/aaronspring/remote_climate_data/NEW_BRANCH_NAME?urlpath=lab?filepath=demo.ipynb
