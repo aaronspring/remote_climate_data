@@ -9,9 +9,9 @@ jobs:
         uses: actions/checkout@v1
       - name: get branch name
         run:
-          release=${GITHUB_REF##*/}
+          BRANCH_NAME=${GITHUB_REF##*/}
       - name: Comment PR
         uses: thollander/actions-comment-pull-request@master
         with:
-          message: 'Try your PR on binder: $release}!'
+          message: 'Try your PR on binder: $BRANCH_NAME https://mybinder.org/v2/gh/aaronspring/remote_climate_data/$BRANCH_NAME?urlpath=lab?filepath=demo.ipynb!'
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
