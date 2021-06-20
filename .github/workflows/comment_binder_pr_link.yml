@@ -14,5 +14,5 @@ jobs:
       - name: Comment PR
         uses: thollander/actions-comment-pull-request@master
         with:
-          message: 'Try your PR on binder: ${{BRANCH_NAME}} https://mybinder.org/v2/gh/aaronspring/remote_climate_data/${{BRANCH_NAME}}?urlpath=lab?filepath=demo.ipynb!'
+          message: 'Try your PR on binder: https://mybinder.org/v2/gh/aaronspring/remote_climate_data/BRANCH_NAME?urlpath=lab?filepath=demo.ipynb!'
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
