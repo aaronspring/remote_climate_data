@@ -1,24 +1,16 @@
 name: comment binder PR link
 
-on: pull_request
+on: push
 
 jobs:
-  comment_pr_for_binder:
+  build:
     runs-on: ubuntu-latest
-    name: An example job to comment a PR
     steps:
-      - name: Git checkout
-        uses: actions/checkout@v1
-      - name: Branch name
-        run: |
-          echo running on branch ${{ github.ref }}
-          echo running on branch ${{ github.ref_head }}
-          echo running on branch ${GITHUB_REF##*/}
-          printenv
-          echo $GITHUB_REF
-          echo ${GITHUB_REF##*/}
-      - name: Comment PR
-        uses: thollander/actions-comment-pull-request@master
-        with:
-          message: 'Try your PR on binder: https://mybinder.org/v2/gh/aaronspring/remote_climate_data/BRANCH_NAME?urlpath=lab?filepath=demo.ipynb!'
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    - uses: actions/checkout@v1
+    - run: npm ci
+    - uses: nelonoel/branch-name@v1
+    # Use branch name for whatever purpose
+    - run: echo ${BRANCH_NAME}
+
+          #message: 'Try your PR on binder: https://mybinder.org/v2/gh/aaronspring/remote_climate_data/BRANCH_NAME?urlpath=lab?filepath=demo.ipynb!'
+          #GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
