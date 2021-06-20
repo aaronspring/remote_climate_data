@@ -13,6 +13,7 @@ jobs:
         run: |
           echo running on branch ${{ github.ref }}
           echo running on branch ${{ github.ref_head }}
+          printenv
       - name: Comment PR
         uses: thollander/actions-comment-pull-request@master
         with:
