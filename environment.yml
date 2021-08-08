@@ -11,7 +11,7 @@ dependencies:
   - pydap
   - dask
   - h5netcdf
-  - fsspec==0.8.7
+  - fsspec
   - requests
   - aiohttp
   - importlib_metadata
@@ -27,6 +27,7 @@ dependencies:
   - matplotlib
   - nc-time-axis
   - pyviz_comms
+  - jupyter_bokeh
   - hvplot
   - panel
   - jupyter-server-proxy
