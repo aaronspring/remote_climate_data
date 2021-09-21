@@ -22,11 +22,6 @@ sources:
           label: Temperature Anomaly [K]
           cmap: RdBu_r
           levels: 20
-        GMSTa:
-          title: Global mean surface temperature anomaly wrt. 1960-1989
-          kind: line
-          x: time
-          y: temperature_anomaly
     driver: netcdf
     args:
       urlpath: simplecache::https://crudata.uea.ac.uk/cru/data/temperature/HadCRUT.4.6.0.0.median.nc
