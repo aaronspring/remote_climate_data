@@ -27,15 +27,13 @@ dependencies:
   - matplotlib
   - nc-time-axis
   - pyviz_comms
-  - jupyter_bokeh
   - hvplot
-  - panel
+  - holoviews
+  - geoviews
   - jupyter-server-proxy
   - ipywidgets
   - nodejs
   - dask-labextension
-  - dfviz
-  - xrviz
   - pip
   - pip:  # get latest master from source
       - git+https://github.com/edjdavid/intake-excel.git
