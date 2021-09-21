@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Comment PR
-        uses: thollander/actions-comment-pull-request@master
+        uses: thollander/actions-comment-pull-request@main
         with:
           message: 'Checkout your PR on [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/aaronspring/remote_climate_data/${{ github.head_ref }}?urlpath=lab%2Ftree%2Fnotebooks%2Fdemo.ipynb)'
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
