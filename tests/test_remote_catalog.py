@@ -55,11 +55,11 @@ def test_item(cat, item_str):
             # don't cache
             urlpath = item.urlpath.replace("simplecache::", "")
             if "IOSST" in item_str:
-                ds = item(year="???0", urlpath=urpath).to_dask()
+                ds = item(year="???0", urlpath=urlpath).to_dask()
                 assert isinstance(ds, xr.Dataset)
                 print(f"successfully tested {item_str}")
             if "NCEP" in item_str:
-                ds = item(year="19?0", urlpath=urpath).to_dask()
+                ds = item(year="19?0", urlpath=urlpath).to_dask()
                 assert isinstance(ds, xr.Dataset)
                 print(f"successfully tested {item_str}")
         elif isinstance(item, (intake.source.csv.CSVSource, intake_excel.ExcelSource)):
