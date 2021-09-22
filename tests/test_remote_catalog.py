@@ -23,6 +23,7 @@ item_strs = [
 ]
 
 
+@pytest.mark.timeout(300)
 @pytest.mark.parametrize("item_str", item_strs)
 def test_plots(cat, item_str):
     """Test all items.plot.my_plot()"""
