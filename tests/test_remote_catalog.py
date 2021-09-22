@@ -24,6 +24,16 @@ item_strs = [
 
 
 @pytest.mark.parametrize("item_str", item_strs)
+def test_plots(cat, item_str):
+    """Test all items.plot.my_plot()"""
+    item = getattr(cat, item_str)
+    plots = item.plots
+    if len(plots) > 0:
+        for plot in plots:
+            getattr(item.plot, plot)()
+
+
+@pytest.mark.parametrize("item_str", item_strs)
 def test_item(cat, item_str):
     """Test all items.to_dask() except ceda requiring credentials and too large files"""
     if "CRU_TS" in item_str:
@@ -70,13 +80,3 @@ def test_item(cat, item_str):
             print(f"successfully tested {item_str} type = {type(df)}\n {df.head()}")
         else:
             print(f"couldnt test {item_str} type = {type(item)} {item}\n")
-
-
-@pytest.mark.parametrize("item_str", item_strs)
-def test_plots(cat, item_str):
-    """Test all items.plot.my_plot()"""
-    item = getattr(cat, item_str)
-    plots = item.plots
-    if len(plots) > 0:
-        for plot in plots:
-            getattr(item.plot, plot)()
