@@ -71,14 +71,12 @@ def test_item(cat, item_str):
         else:
             print(f"couldnt test {item_str} type = {type(item)} {item}\n")
 
+
 @pytest.mark.parametrize("item_str", item_strs)
 def test_plots(cat, item_str):
     """Test all items.plot.my_plot()"""
-    if "CRU_TS" in item_str:
-        print("avoid testing CRU_TS requiring credentials at ceda\n")
-    else:
-        item = getattr(cat, item_str)
-        plots = item.plots
-        if len(plots) > 0:
-            for plot in plots:
-                getattr(item.plot, plot)()
+    item = getattr(cat, item_str)
+    plots = item.plots
+    if len(plots) > 0:
+        for plot in plots:
+            getattr(item.plot, plot)()
