@@ -36,7 +36,10 @@ def test_item(cat, item_str):
         if isinstance(item, (intake_xarray.NetCDFSource, intake_xarray.OpenDapSource)):
             # don't cache
             urlpath = item.urlpath.replace("simplecache::", "")
-            ds = item(urlpath=urlpath).to_dask()
+            try:
+                ds = item(urlpath=urlpath).to_dask()
+            except:
+                ds = item.to_dask()
             assert isinstance(ds, xr.Dataset)
             print(
                 f"successfully tested {item_str} type = {type(item)}\n {ds.dims}"
@@ -53,13 +56,13 @@ def test_item(cat, item_str):
             )
         elif isinstance(item, intake_thredds.source.THREDDSMergedSource):
             # don't cache
-            urlpath = item.urlpath.replace("simplecache::", "")
+            urlpath = item.urlpath.replace("simplecache::", "") #?
             if "IOSST" in item_str:
-                ds = item(year="???0", urlpath=urlpath).to_dask()
+                ds = item(year="???0").to_dask()
                 assert isinstance(ds, xr.Dataset)
                 print(f"successfully tested {item_str}")
             if "NCEP" in item_str:
-                ds = item(year="19?0", urlpath=urlpath).to_dask()
+                ds = item(year="19?0").to_dask()
                 assert isinstance(ds, xr.Dataset)
                 print(f"successfully tested {item_str}")
         elif isinstance(item, (intake.source.csv.CSVSource, intake_excel.ExcelSource)):
