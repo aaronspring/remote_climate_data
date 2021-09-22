@@ -56,7 +56,7 @@ def test_item(cat, item_str):
             )
         elif isinstance(item, intake_thredds.source.THREDDSMergedSource):
             # don't cache
-            urlpath = item.urlpath.replace("simplecache::", "") # ?
+            urlpath = item.urlpath.replace("simplecache::", "")  # ?
             if "IOSST" in item_str:
                 ds = item(year="???0").to_dask()
                 assert isinstance(ds, xr.Dataset)
