@@ -160,7 +160,7 @@ sources:
       readme: https://www.ncei.noaa.gov/data/oceans/ncei/ocads/data/0220059/OceanSODA-ETHZ_v2020a_README.pdf
       preview: https://www.ncei.noaa.gov/data/oceans/ncei/ocads/data/0220059/OceanSODA-ETHZ_v2020a_mean-state-carbsys.png
     args:
-      urlpath: simplecache::https://www.ncei.noaa.gov/data/oceans/ncei/ocads/data/0220059/OceanSODA-ETHZ_1985-2019_v2020b.nc
+      urlpath: simplecache::https://www.ncei.noaa.gov/data/oceans/ncei/ocads/data/0220059/OceanSODA-ETHZ_GRaCER_v2021a_1982-2020.nc
       storage_options:
         simplecache:
           same_names: True

@@ -11,6 +11,7 @@ dependencies:
   - pydap
   - dask
   - h5netcdf
+  - netcdf4
   - fsspec
   - requests
   - aiohttp
@@ -30,14 +31,16 @@ dependencies:
   - jupyter_bokeh
   - hvplot
   - panel
+  - xrviz
+  - geoviews
+  - holoviews
   - jupyter-server-proxy
   - ipywidgets
   - nodejs
   - dask-labextension
-  - dfviz
-  - xrviz
   - pip
   - pip:  # get latest master from source
       - git+https://github.com/edjdavid/intake-excel.git
+      - openpyxl
       - xlrd==1.2.0  # newer versions dont support xlsx
       - intake_geopandas
