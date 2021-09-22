@@ -37,7 +37,7 @@ sources:
       csv_kwargs:
         sep: '  '
         skiprows: 3
-        skipfooter: 3
+        skipfooter: 4
         names: ['year', 'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
         #index_col: 'year' not allowed by dd.read_csv but pd.read_csv
         na_values: [-999.90,'-999.90','-99.90',-99.90]
