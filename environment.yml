@@ -20,7 +20,7 @@ dependencies:
   - geopandas
   - regionmask
   - pytest
-  - pytest-cov
+  - pytest-timeout
   - pytest-sugar
   - pre-commit
   # Visualization
