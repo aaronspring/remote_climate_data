@@ -55,7 +55,8 @@ jobs:
         run: conda list
       - name: Run tests
         run: |
-          pytest
+          pip install pytest-sugar
+          pytest --durations=20
 
   test_notebooks:  # Checks that notebooks complete without failure.
     runs-on: ubuntu-latest
