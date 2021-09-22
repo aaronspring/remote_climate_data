@@ -23,7 +23,6 @@ item_strs = [
 ]
 
 
-@pytest.mark.timeout(40)
 @pytest.mark.parametrize("item_str", item_strs)
 def test_plots(cat, item_str):
     """Test all items.plot.my_plot()"""
@@ -35,6 +34,8 @@ def test_plots(cat, item_str):
             getattr(item.plot, plot)()
 
 
+            
+@pytest.mark.timeout(300)
 @pytest.mark.parametrize("item_str", item_strs)
 def test_item(cat, item_str):
     """Test all items.to_dask() except ceda requiring credentials and too large files"""
