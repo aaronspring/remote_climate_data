@@ -14,7 +14,7 @@ def cat():
     return intake.open_catalog("master.yaml")
 
 
-don't test the online catalog but current branch
+# don't test the online catalog but current branch
 cat2 = intake.open_catalog("master.yaml")
 item_strs = [
     i
