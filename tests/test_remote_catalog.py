@@ -30,6 +30,7 @@ def test_plots(cat, item_str):
     plots = item.plots
     if len(plots) > 0:
         for plot in plots:
+            print("test", item_str, plot)
             getattr(item.plot, plot)()
 
 
