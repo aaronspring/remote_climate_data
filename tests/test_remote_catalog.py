@@ -36,7 +36,7 @@ def test_item(cat, item_str):
         if isinstance(item, (intake_xarray.NetCDFSource, intake_xarray.OpenDapSource)):
             # don't cache
             urlpath = item.urlpath.replace("simplecache::", "")
-            ds = item(urlpath=urpath).to_dask()
+            ds = item(urlpath=urlpath).to_dask()
             assert isinstance(ds, xr.Dataset)
             print(
                 f"successfully tested {item_str} type = {type(item)}\n {ds.dims}"
