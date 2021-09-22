@@ -33,7 +33,7 @@ jobs:
         shell: bash -l {0}
     strategy:
       matrix:
-        python: [3.8]
+        python: [3.7]
       fail-fast: false
 
     steps:
@@ -45,7 +45,7 @@ jobs:
           channels: conda-forge
           mamba-version: '*'
           activate-environment: remote_climate_data-dev
-          python-version: 3.8
+          python-version: 3.7
       - name: Set up conda environment
         run: |
           mamba env update -f environment.yml
@@ -55,7 +55,6 @@ jobs:
         run: conda list
       - name: Run tests
         run: |
-          pip install pytest-sugar
           pytest --durations=20
 
   test_notebooks:  # Checks that notebooks complete without failure.
@@ -74,7 +73,7 @@ jobs:
           channels: conda-forge
           mamba-version: '*'
           activate-environment: remote_climate_data-dev
-          python-version: 3.8
+          python-version: 3.7
       - name: Set up conda environment
         run: |
           mamba env update -f environment.yml
