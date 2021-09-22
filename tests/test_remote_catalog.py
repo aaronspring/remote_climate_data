@@ -34,7 +34,6 @@ def test_plots(cat, item_str):
             getattr(item.plot, plot)()
 
 
-            
 @pytest.mark.timeout(300)
 @pytest.mark.parametrize("item_str", item_strs)
 def test_item(cat, item_str):
