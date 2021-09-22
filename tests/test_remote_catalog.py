@@ -34,8 +34,8 @@ def test_plots(cat, item_str):
             getattr(item.plot, plot)()
 
 
-@pytest.mark.timeout(300)
 @pytest.mark.parametrize("item_str", item_strs)
+@pytest.mark.timeout(300)
 def test_item(cat, item_str):
     """Test all items.to_dask() except ceda requiring credentials and too large files"""
     if "CRU_TS" in item_str:
@@ -67,8 +67,6 @@ def test_item(cat, item_str):
                 f"size = {len(region)}."
             )
         elif isinstance(item, intake_thredds.source.THREDDSMergedSource):
-            # don't cache
-            urlpath = item.urlpath.replace("simplecache::", "")  # ?
             if "IOSST" in item_str:
                 ds = item(year="???0").to_dask()
                 assert isinstance(ds, xr.Dataset)
