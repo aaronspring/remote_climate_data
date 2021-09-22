@@ -35,7 +35,6 @@ def test_plots(cat, item_str):
 
 
 @pytest.mark.parametrize("item_str", item_strs)
-@pytest.mark.timeout(300)
 def test_item(cat, item_str):
     """Test all items.to_dask() except ceda requiring credentials and too large files"""
     if "CRU_TS" in item_str:
