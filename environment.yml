@@ -11,6 +11,7 @@ dependencies:
   - pydap
   - dask
   - h5netcdf
+  - netcdf4
   - fsspec
   - requests
   - aiohttp
