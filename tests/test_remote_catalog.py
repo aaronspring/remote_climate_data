@@ -8,12 +8,13 @@ import xarray as xr
 from dask.utils import format_bytes
 
 
-# don't test the online catalog but current branch
 @pytest.fixture
 def cat():
+    """don't test the online master catalog but current branch"""
     return intake.open_catalog("master.yaml")
 
 
+don't test the online catalog but current branch
 cat2 = intake.open_catalog("master.yaml")
 item_strs = [
     i
@@ -34,11 +35,10 @@ def test_item(cat, item_str):
             return 0
         if isinstance(
             item, (intake_xarray.NetCDFSource, intake_xarray.OpenDapSource)
-        ) and item_str not in [
-            "ocean.carbon.MPI-SOM_FFN",
-            "ocean.carbon.CSIR-ML6",
-        ]:  # avoids too large (>500MB) datasets
-            ds = item.to_dask()
+        ):
+            # don't cache
+            urlpath = item.urlpath.replace("simplecache::", "")
+            ds = item(urlpath=urpath).to_dask()
             assert isinstance(ds, xr.Dataset)
             print(
                 f"successfully tested {item_str} type = {type(item)}\n {ds.dims}"
@@ -54,12 +54,14 @@ def test_item(cat, item_str):
                 f"size = {len(region)}."
             )
         elif isinstance(item, intake_thredds.source.THREDDSMergedSource):
+            # don't cache
+            urlpath = item.urlpath.replace("simplecache::", "")
             if "IOSST" in item_str:
-                ds = item(year="???0").to_dask()
+                ds = item(year="???0", urlpath=urpath).to_dask()
                 assert isinstance(ds, xr.Dataset)
                 print(f"successfully tested {item_str}")
             if "NCEP" in item_str:
-                ds = item(year="19?0").to_dask()
+                ds = item(year="19?0", urlpath=urpath).to_dask()
                 assert isinstance(ds, xr.Dataset)
                 print(f"successfully tested {item_str}")
         elif isinstance(item, (intake.source.csv.CSVSource, intake_excel.ExcelSource)):
