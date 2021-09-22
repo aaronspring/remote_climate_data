@@ -28,6 +28,8 @@ dependencies:
   - nc-time-axis
   - pyviz_comms
   - hvplot
+  - panel
+  - xrviz
   - geoviews
   - holoviews
   - jupyter-server-proxy
