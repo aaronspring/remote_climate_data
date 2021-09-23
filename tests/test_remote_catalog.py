@@ -32,7 +32,7 @@ def test_plots(cat, item_str):
         for plot in plots:
             print("test", item_str, plot)
             p = getattr(item.plot, plot)()
-            del p
+            del p  # noqa: F841
 
 
 @pytest.mark.parametrize("item_str", item_strs)
