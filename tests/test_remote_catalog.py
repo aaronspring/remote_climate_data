@@ -24,10 +24,24 @@ item_strs = [
 
 
 @pytest.mark.parametrize("item_str", item_strs)
+def test_plots(cat, item_str):
+    """Test all items.plot.my_plot()"""
+    item = getattr(cat, item_str)
+    plots = item.plots
+    if len(plots) > 0:
+        for plot in plots:
+            print("test", item_str, plot)
+            p = getattr(item.plot, plot)()  # noqa: F841
+            del p
+
+
+@pytest.mark.parametrize("item_str", item_strs)
 def test_item(cat, item_str):
     """Test all items.to_dask() except ceda requiring credentials and too large files"""
     if "CRU_TS" in item_str:
         print("avoid testing CRU_TS requiring credentials at ceda\n")
+    elif "WOA2018" in item_str:
+        print("skip WOA")
     else:
         item = getattr(cat, item_str)
         if "ftp" in item.urlpath:
@@ -55,8 +69,6 @@ def test_item(cat, item_str):
                 f"size = {len(region)}."
             )
         elif isinstance(item, intake_thredds.source.THREDDSMergedSource):
-            # don't cache
-            urlpath = item.urlpath.replace("simplecache::", "")  # ?
             if "IOSST" in item_str:
                 ds = item(year="???0").to_dask()
                 assert isinstance(ds, xr.Dataset)
