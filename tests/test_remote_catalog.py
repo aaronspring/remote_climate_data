@@ -39,7 +39,7 @@ def test_item(cat, item_str):
     """Test all items.to_dask() except ceda requiring credentials and too large files"""
     if "CRU_TS" in item_str:
         print("avoid testing CRU_TS requiring credentials at ceda\n")
-    elif "WOAdontuser" in item_str:
+    elif "WOA" in item_str:
         print("skip WOA")
     else:
         item = getattr(cat, item_str)
