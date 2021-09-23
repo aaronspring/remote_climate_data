@@ -31,8 +31,8 @@ def test_plots(cat, item_str):
     if len(plots) > 0:
         for plot in plots:
             print("test", item_str, plot)
-            p = getattr(item.plot, plot)()
-            del p  # noqa: F841
+            p = getattr(item.plot, plot)()  # noqa: F841
+            del p
 
 
 @pytest.mark.parametrize("item_str", item_strs)
