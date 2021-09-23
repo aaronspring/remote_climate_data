@@ -103,7 +103,7 @@ sources:
       url: https://www.ncdc.noaa.gov/monitoring-references/faq/anomalies.php
       doi:
         - http://doi.org/10.1175/2007JCLI2100.1
-        - http://doi.org/10.1175/BAMS-D-11-00241.1.
+        - http://doi.org/10.1175/BAMS-D-11-00241.1
     driver: netcdf
     args:
       urlpath: simplecache::ftp://ftp.cdc.noaa.gov/Datasets/noaaglobaltemp/air.mon.anom.nc
