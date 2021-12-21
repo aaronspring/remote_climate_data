@@ -55,7 +55,7 @@ sources:
         simplecache:
           same_names: true
       xarray_kwargs:
-        engine: netcdf4
+        engine: scipy
       
 
   WOA2018:
