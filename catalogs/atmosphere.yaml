@@ -25,6 +25,9 @@ sources:
     args:
       urlpath: simplecache::https://crudata.uea.ac.uk/cru/data/temperature/HadCRUT.4.6.0.0.median.nc
       chunks: {}
+      storage_options:
+        simplecache:
+          same_names: True
       xarray_kwargs:
         use_cftime: True
 
