@@ -39,7 +39,7 @@ sources:
       realm:
         description: realm
         type: str
-        default: ocean 
+        default: ocean
         allowed: [bedmachine, bedmap2, iceshelves, landice, ocean]
       type:
         description: type
