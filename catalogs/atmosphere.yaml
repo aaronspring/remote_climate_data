@@ -159,6 +159,9 @@ sources:
     args:
       urlpath: simplecache::https://www-users.york.ac.uk/~kdc3/papers/coverage2013/{{datasets}}_krig_v2_0_0.nc.gz
       chunks: {}
+      storage_options:
+        simplecache:
+          same_names: True
 
   Cowtan_and_Way_Short:
     description: Monthly gridded land and ocean temperature anomalies by Cowtan and Way. 1850-present, infilled by kriging. The version 2.0 series are based on a more rigorous treatment in which the land and ocean data are reconstructed separately and then blended. Version 2.0 data are also based on the full HadCRUT4 ensemble, and include ensemble as well as coverage uncertainty estimates. The data are described in this update. All except the long (1850-present) reconstruction are rebaselined on 1981-2010. Rebaselining the data on the period 1981-2010 enables the satellite data to be used for infilling, and in the v1.0 calculation increases the reliability of recent trends, but also discards some data which may impact the reliability of long term trends. The land temperature reconstruction is used for air temperatures over land and sea ice, and the sea surface temperature reconstruction for open sea. Sea ice coverage is fixed for each month of the year, and is determined from HadISST using the period 1981-2010. For the short reconstructions (i.e. 1979-present) the minimum ice is used. Hybrid data use the hybrid approach for air temperatures over land or sea ice, and kriging for sea surface temperatures.
