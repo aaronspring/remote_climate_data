@@ -56,7 +56,6 @@ sources:
           same_names: true
       xarray_kwargs:
         engine: scipy
-      
 
   WOA2018:
     description: World Ocean Atlas 2018
