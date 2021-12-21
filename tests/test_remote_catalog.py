@@ -66,7 +66,7 @@ def test_item(cat, item_str):
             (
                 intake_geopandas.RegionmaskSource,
                 intake_geopandas.ShapefileSource,
-                intake_geopandas.GeoJSONSource
+                intake_geopandas.GeoJSONSource,
             ),
         ):
             region = item.read()
