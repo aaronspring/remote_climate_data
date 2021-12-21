@@ -61,7 +61,7 @@ def test_item(cat, item_str):
             )
         elif isinstance(
             item,
-            (intake_geopandas.RegionmaskSource, intake_geopandas.ShapefileSource),
+            (intake_geopandas.RegionmaskSource, intake_geopandas.ShapefileSource, intake_geopandas.GeoJSONSource),
         ):
             region = item.read()
             print(
