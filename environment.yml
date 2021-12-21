@@ -18,7 +18,7 @@ dependencies:
   - importlib_metadata
   - pyarrow
   - geopandas
-  - intake_geopandas
+  - intake-geopandas
   - regionmask
   - pytest
   - pytest-sugar
