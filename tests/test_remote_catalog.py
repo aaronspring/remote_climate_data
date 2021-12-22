@@ -13,7 +13,7 @@ timeout = ClientTimeout(total=600)
 fsspec.config.conf["https"] = dict(client_kwargs={"timeout": timeout})
 
 
-""@pytest.fixture
+@pytest.fixture
 def cat():
     """don't test the online master catalog but current branch"""
     return intake.open_catalog("master.yaml")
@@ -26,18 +26,6 @@ item_strs = [
     for i in cat2.walk(depth=3)
     if not isinstance(cat2[i], intake.catalog.local.YAMLFileCatalog)
 ]
-
-
-@pytest.mark.parametrize("item_str", item_strs)
-def test_plots(cat, item_str):
-    """Test all items.plot.my_plot()"""
-    item = getattr(cat, item_str)
-    plots = item.plots
-    if len(plots) > 0:
-        for plot in plots:
-            print("test", item_str, plot)
-            p = getattr(item.plot, plot)()  # noqa: F841
-            del p
 
 
 @pytest.mark.parametrize("item_str", item_strs)
@@ -91,3 +79,15 @@ def test_item(cat, item_str):
             print(f"successfully tested {item_str} type = {type(df)}\n {df.head()}")
         else:
             print(f"couldnt test {item_str} type = {type(item)} {item}\n")
+
+
+@pytest.mark.parametrize("item_str", item_strs)
+def test_plots(cat, item_str):
+    """Test all items.plot.my_plot()"""
+    item = getattr(cat, item_str)
+    plots = item.plots
+    if len(plots) > 0:
+        for plot in plots:
+            print("test", item_str, plot)
+            p = getattr(item.plot, plot)()  # noqa: F841
+            del p
