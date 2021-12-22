@@ -9,7 +9,7 @@ import xarray as xr
 from aiohttp import ClientTimeout
 from dask.utils import format_bytes
 
-timeout = ClientTimeout(total=300)
+timeout = ClientTimeout(total=600)
 fsspec.config.conf['https'] = dict(client_kwargs={'timeout': timeout})
 
 @pytest.fixture
