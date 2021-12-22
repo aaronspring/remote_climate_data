@@ -37,12 +37,12 @@ def test_item(cat, item_str):
         print("skip WOA")
     else:
         item = getattr(cat, item_str)
+        # don't cache
+        urlpath = item.urlpath.replace("simplecache::", "")
         if "ftp" in item.urlpath:
             print("{item} found source from ftp, skip testing")
             return 0
         if isinstance(item, (intake_xarray.NetCDFSource, intake_xarray.OpenDapSource)):
-            # don't cache
-            urlpath = item.urlpath.replace("simplecache::", "")
             try:
                 ds = item(urlpath=urlpath).to_dask()
             except:
@@ -60,18 +60,18 @@ def test_item(cat, item_str):
                 intake_geopandas.GeoJSONSource,
             ),
         ):
-            region = item.read()
+            region = item(urlpath=urlpath).read()
             print(
                 f"successfully tested {item_str}: type = {type(item)}, "
                 f"size = {len(region)}."
             )
         elif isinstance(item, intake_thredds.source.THREDDSMergedSource):
             if "IOSST" in item_str:
-                ds = item(year="???0").to_dask()
+                ds = item(urlpath=urlpath,year="???0").to_dask()
                 assert isinstance(ds, xr.Dataset)
                 print(f"successfully tested {item_str}")
             if "NCEP" in item_str:
-                ds = item(year="19?0").to_dask()
+                ds = item(urlpath=urlpath,year="19?0").to_dask()
                 assert isinstance(ds, xr.Dataset)
                 print(f"successfully tested {item_str}")
         elif isinstance(item, (intake.source.csv.CSVSource, intake_excel.ExcelSource)):
