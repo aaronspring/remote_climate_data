@@ -27,4 +27,4 @@ def test_cache_all_catalog_items_nc(cat):
     folder = "test_cache2"
     cache_all_catalog_items(cat.atmosphere, folder)
     assert "HadCRUT.4.6.0.0.median.nc" in os.listdir(folder)
-    shutil.rmtree(folder)
+    # shutil.rmtree(folder)
