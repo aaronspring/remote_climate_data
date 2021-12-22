@@ -1,3 +1,4 @@
+import fsspec
 import intake
 import intake_excel
 import intake_geopandas
@@ -5,8 +6,11 @@ import intake_thredds
 import intake_xarray
 import pytest
 import xarray as xr
+from aiohttp import ClientTimeout
 from dask.utils import format_bytes
 
+timeout = ClientTimeout(total=300)
+fsspec.config.conf['https'] = dict(client_kwargs={'timeout': timeout})
 
 @pytest.fixture
 def cat():
