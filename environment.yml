@@ -22,7 +22,6 @@ dependencies:
   - regionmask
   - pytest
   - pytest-sugar
-  - pytest-xdist
   - pre-commit
   # Visualization
   - cartopy
