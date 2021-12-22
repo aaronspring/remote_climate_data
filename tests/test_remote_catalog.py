@@ -10,11 +10,10 @@ from aiohttp import ClientTimeout
 from dask.utils import format_bytes
 
 timeout = ClientTimeout(total=600)
-fsspec.config.conf['https'] = dict(client_kwargs={'timeout': timeout})
+fsspec.config.conf["https"] = dict(client_kwargs={"timeout": timeout})
 
 
-
-@pytest.fixture
+""@pytest.fixture
 def cat():
     """don't test the online master catalog but current branch"""
     return intake.open_catalog("master.yaml")
