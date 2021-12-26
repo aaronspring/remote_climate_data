@@ -20,6 +20,7 @@ dependencies:
   - pytest
   - pytest-sugar
   - pre-commit
+  - jupyterlab
   # Visualization
   - matplotlib-base
   - nc-time-axis
