@@ -29,7 +29,7 @@ jobs:
     name: Test remote_climate_data
     needs: detect-ci-trigger
     if: needs.detect-ci-trigger.outputs.triggered == 'false'
-    runs-on: ubuntu-latest
+    runs-on: macos-latest  # larger ram see https://docs.github.com/en/actions/using-github-hosted-runners/about-github-hosted-runners#supported-runners-and-hardware-resources
     defaults:
       run:
         shell: bash -l {0}
