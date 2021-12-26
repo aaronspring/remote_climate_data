@@ -42,6 +42,9 @@ def test_item(cat, item_str):
         if "ftp" in item.urlpath:
             print("{item} found source from ftp, skip testing")
             return 0
+        if "MPI-SOM_FFN" in item.urlpath:
+            print("detected MPI-SOM_FFN to skip")
+            return 0
         if isinstance(item, (intake_xarray.NetCDFSource, intake_xarray.OpenDapSource)):
             try:
                 ds = item(urlpath=urlpath).to_dask()
@@ -89,7 +92,7 @@ def test_plots(cat, item_str):
     """Test all items.plot.my_plot()"""
     item = getattr(cat, item_str)
     plots = item.plots
-    if len(plots) > 0:
+    if len(plots) > 0 and "MPI-SOM_FFN" not in item.urlpath:
         for plot in plots:
             print("test", item_str, plot)
             p = getattr(item.plot, plot)()  # noqa: F841
