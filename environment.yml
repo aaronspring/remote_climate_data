@@ -4,7 +4,7 @@ channels:
   - conda-forge
 dependencies:
   - python
-  - intake[dataframe]
+  - intake
   - xarray
   - intake-xarray
   - intake-thredds
@@ -15,28 +15,16 @@ dependencies:
   - fsspec
   - requests
   - aiohttp
-  - importlib_metadata
-  - pyarrow
   - geopandas
   - regionmask
   - pytest
   - pytest-sugar
   - pre-commit
   # Visualization
-  - cartopy
-  - matplotlib
+  - matplotlib-base
   - nc-time-axis
-  - pyviz_comms
-  - jupyter_bokeh
   - hvplot
-  - panel
   - xrviz
-  - geoviews
-  - holoviews
-  - jupyter-server-proxy
-  - ipywidgets
-  - nodejs
-  - dask-labextension
   - pip
   - pip:  # get latest master from source
       - git+https://github.com/edjdavid/intake-excel.git
