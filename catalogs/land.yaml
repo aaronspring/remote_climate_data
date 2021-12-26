@@ -17,6 +17,9 @@ sources:
     args:
       urlpath: simplecache::https://www.metoffice.gov.uk/hadobs/crutem4/data/gridded_fields/CRUTEM.4.6.0.0.{{file}}.nc.gz
       chunks: {}
+      storage_options:
+        simplecache:
+          same_names: True
 
   CRUTEM4v:
     description: Variance adjusted version of CRUTEM4

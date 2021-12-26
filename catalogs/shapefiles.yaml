@@ -26,3 +26,30 @@ sources:
       storage_options:
         simplecache:
           same_names: true
+
+  geometric_features:
+    description: MPAS geometric features
+    metadata:
+      url: https://github.com/MPAS-Dev/geometric_features
+    parameters:
+      region:
+        description: region
+        type: str
+        default: Baltic_Sea
+      realm:
+        description: realm
+        type: str
+        default: ocean
+        allowed: [bedmachine, bedmap2, iceshelves, landice, ocean]
+      type:
+        description: type
+        type: str
+        default: region
+        allowed: [region, transect]  # transect only in ocean
+    driver: intake_geopandas.geopandas.GeoJSONSource
+    args:
+      urlpath: simplecache::https://raw.githubusercontent.com/MPAS-Dev/geometric_features/master/geometric_data/{{realm}}/{{type}}/{{region}}/{{type}}.geojson
+      use_fsspec: true
+      storage_options:
+        simplecache:
+          same_names: true

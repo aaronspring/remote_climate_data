@@ -1,21 +1,21 @@
 name: remote_climate_data-dev
 channels:
-  - pyviz
   - conda-forge
 dependencies:
   - python=3.8
-  - intake
+  - intake[dataframe]
   - xarray
   - intake-xarray
   - intake-thredds
   - pydap
-  - dask
+  - dask-core
   - h5netcdf
   - netcdf4
   - fsspec
   - requests
   - aiohttp
   - geopandas
+  - intake-geopandas
   - regionmask
   - pytest
   - pytest-sugar
@@ -23,6 +23,8 @@ dependencies:
   # Visualization
   - matplotlib-base
   - nc-time-axis
+  - cartopy
+  - geoviews
   - hvplot
   - xrviz
   - pip
@@ -30,4 +32,3 @@ dependencies:
       - git+https://github.com/edjdavid/intake-excel.git
       - openpyxl
       - xlrd==1.2.0  # newer versions dont support xlsx
-      - intake_geopandas
