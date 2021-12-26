@@ -73,11 +73,11 @@ def test_item(cat, item_str):
             )
         elif isinstance(item, intake_thredds.source.THREDDSMergedSource):
             if "IOSST" in item_str:
-                ds = item(urlpath=urlpath, year="???0").to_dask()
+                ds = item(year="???0").to_dask()
                 assert isinstance(ds, xr.Dataset)
                 print(f"successfully tested {item_str}")
             if "NCEP" in item_str:
-                ds = item(urlpath=urlpath, year="19?0").to_dask()
+                ds = item(year="19?0").to_dask()
                 assert isinstance(ds, xr.Dataset)
                 print(f"successfully tested {item_str}")
         elif isinstance(item, (intake.source.csv.CSVSource, intake_excel.ExcelSource)):
