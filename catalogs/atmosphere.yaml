@@ -180,6 +180,9 @@ sources:
     args:
       urlpath: simplecache::https://www-users.york.ac.uk/~kdc3/papers/coverage2013/{{datasets}}_v2_0_0.nc.gz
       chunks: {}
+      storage_options:
+         simplecache:
+           same_names: True
       xarray_kwargs:
         engine: scipy
 
@@ -208,6 +211,9 @@ sources:
         allowed: [co2, ch4]
     args:
       urlpath: ftp://aftp.cmdl.noaa.gov/data/trace_gases/{{variable}}/in-situ/surface/{{station}}/{{variable}}_{{station}}_surface-insitu_1_ccgg_{{freq}}Data.nc
+      storage_options:
+         simplecache:
+           same_names: True
       xarray_kwargs:
         use_cftime: True
 
