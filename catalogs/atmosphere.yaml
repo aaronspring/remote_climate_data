@@ -212,8 +212,8 @@ sources:
     args:
       urlpath: ftp://aftp.cmdl.noaa.gov/data/trace_gases/{{variable}}/in-situ/surface/{{station}}/{{variable}}_{{station}}_surface-insitu_1_ccgg_{{freq}}Data.nc
       storage_options:
-         simplecache:
-           same_names: True
+        simplecache:
+          same_names: True
       xarray_kwargs:
         use_cftime: True
 
