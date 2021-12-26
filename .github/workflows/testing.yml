@@ -27,7 +27,7 @@ jobs:
     name: Test remote_climate_data
     needs: detect-ci-trigger
     if: needs.detect-ci-trigger.outputs.triggered == 'false'
-    runs-on: ubuntu-latest
+    runs-on: macos-latest
     defaults:
       run:
         shell: bash -l {0}
