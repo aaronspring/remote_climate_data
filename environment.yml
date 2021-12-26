@@ -3,7 +3,7 @@ channels:
   - pyviz
   - conda-forge
 dependencies:
-  - python
+  - python=3.8
   - intake
   - xarray
   - intake-xarray
