@@ -35,7 +35,7 @@ sources:
           groupby: time
           cmap: RdBu_r
           levels: 20
-          # clim: (-10, 10)  # once https://github.com/holoviz/hvplot/pull/492 is merged
+          zlim: (-10, 10)
         fgco2_timeseries_location:
           title: fgco2 timeseries at (lon,lat) location
           kind: line
@@ -83,8 +83,8 @@ sources:
           z: pco2
           groupby: time
           cmap: viridis
-          # levels: 20
-          # clim: (-10, 10)  # once https://github.com/holoviz/hvplot/pull/492 is merged
+          levels: 20
+          zlim: (-10, 10)
         pco2_timeseries_location:
           title: pco2 timeseries at (lon,lat) location
           kind: line
