@@ -41,7 +41,7 @@ sources:
           z: tas_mean
           ylim: [-90, 90]
           xlim: [-180, 180]
-          # clim: [-5, 5]
+          zlim: [-5, 5]
           groupby: time
           label: Temperature Anomaly [K]
           cmap: RdBu_r
