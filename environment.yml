@@ -25,6 +25,7 @@ dependencies:
   - cartopy
   - geoviews
   - hvplot
+  - xrviz
   - pip
   - pip:  # get latest master from source
       - git+https://github.com/edjdavid/intake-excel.git
