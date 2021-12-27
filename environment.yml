@@ -3,20 +3,18 @@ channels:
   - conda-forge
 dependencies:
   - python=3.8
-  - intake[dataframe]
+  - intake
   - xarray
   - intake-xarray
   - intake-thredds
+  - geopandas
+  - regionmask
+  - intake-geopandas
   - pydap
-  - dask-core
   - h5netcdf
   - netcdf4
   - fsspec
-  - requests
   - aiohttp
-  - geopandas
-  - intake-geopandas
-  - regionmask
   - pytest
   - pytest-sugar
   - pre-commit
@@ -27,7 +25,6 @@ dependencies:
   - cartopy
   - geoviews
   - hvplot
-  - xrviz
   - pip
   - pip:  # get latest master from source
       - git+https://github.com/edjdavid/intake-excel.git
