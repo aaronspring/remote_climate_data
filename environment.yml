@@ -1,43 +1,31 @@
 name: remote_climate_data-dev
 channels:
-  - pyviz
   - conda-forge
 dependencies:
-  - python=3.9
-  - intake[dataframe]
+  - python=3.8
+  - intake
   - xarray
   - intake-xarray
   - intake-thredds
+  - geopandas
+  - regionmask
+  - intake-geopandas
   - pydap
-  - dask-core
   - h5netcdf
   - netcdf4
   - fsspec
-  - requests
   - aiohttp
-  - importlib_metadata
-  - pyarrow
-  - geopandas
-  - intake-geopandas
-  - regionmask
   - pytest
   - pytest-sugar
   - pre-commit
+  - jupyterlab
   # Visualization
-  - cartopy
-  - matplotlib
+  - matplotlib-base
   - nc-time-axis
-  - pyviz_comms
-  - jupyter_bokeh
-  - hvplot
-  - panel
-  - xrviz
+  - cartopy
   - geoviews
-  - holoviews
-  - jupyter-server-proxy
-  - ipywidgets
-  - nodejs
-  - dask-labextension
+  - hvplot
+  - xrviz
   - pip
   - pip:  # get latest master from source
       - git+https://github.com/edjdavid/intake-excel.git
