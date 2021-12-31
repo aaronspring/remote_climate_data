@@ -9,7 +9,7 @@ sources:
     driver: intake.catalog.local.YAMLFileCatalog
 
   HadSST3:
-    description: Sea surface temperature anomalies on a 5° by 5° grid (Kennedy et al., 2011)
+    description: Sea surface temperature anomalies on 5°x5° grid (Kennedy et al., 2011)
     metadata:
       url: https://www.metoffice.gov.uk/hadobs/hadsst3/
       doi:
@@ -21,7 +21,11 @@ sources:
         description: name of file
         type: str
         default: median
-        allowed: [median, total_incertainty, measurement_and_sampling_uncertainty, number_of_observations]
+        allowed:
+          - median
+          - total_incertainty
+          - measurement_and_sampling_uncertainty
+          - number_of_observations
     args:
       urlpath: simplecache::zip://*.nc::https://www.metoffice.gov.uk/hadobs/hadsst3/data/HadSST.3.1.1.0/netcdf/HadSST.3.1.1.0.{{file}}_netcdf.zip
       chunks: {}
@@ -37,7 +41,17 @@ sources:
         description: name of file
         type: str
         default: median
-        allowed: [median, total_incertainty, measurement_and_sampling_uncertainty, uncorrelated_measurement_uncertainty, correlated_measurement_uncertainty, number_of_observations, number_of_superobservations, unadjusted, actuals_median, actuals_ensemble]
+        allowed:
+          - median
+          - total_incertainty
+          - measurement_and_sampling_uncertainty
+          - uncorrelated_measurement_uncertainty
+          - correlated_measurement_uncertainty
+          - number_of_observations
+          - number_of_superobservations
+          - unadjusted
+          - actuals_median
+          - actuals_ensemble
     args:
       urlpath: simplecache::https://www.metoffice.gov.uk/hadobs/hadsst4/data/netcdf/HadSST.4.0.1.0_{{file}}.nc
       chunks: {}
@@ -68,31 +82,65 @@ sources:
         description: version release in year
         type: str
         default: temperature
-        allowed: [temperature, salinity, oxygen, phosphate, nitrate, AOU] # silicate(i), o2sat(O) overlapping first string
+        allowed:
+          - temperature
+          - salinity
+          - oxygen
+          - phosphate
+          - nitrate
+          - AOU
+          # - silicate(i), o2sat(O) overlapping first string
       DDDD:
         description: decade
         type: str
         default: decav
-        # average, 1955-1964, 1965-1974, 1975-1984, 1985-1994, 1995-2004, 2005-2017, 1981-2010
-        allowed: [decav, 5564, 6574, 7584, 8594, 95A4, A5B7, 81B0]
+        allowed:
+          - decav # average
+          - 5564 # 1955-1964
+          - 6574
+          - 7584
+          - 8594
+          - 95A4 # 1995-2004
+          - A5B7 # 2005-2017
+          - 81B0 # 1981-2010
       TT:
         description: time period
         type: int
-        default: '00'
-        # annual: 0 , J: 1, F: 2 ... winter:13, spring:14, summer:15, autumn:16
-        min: 0
-        max: 16
+        default: 0
+        allowed:
+          - 0 # annual
+          - 1 # Jan
+          - 2 # Feb
+          - 3 # Mar
+          - 4 # Apr
+          - 5 # May
+          - 6 # Jun
+          - 7 # Jul
+          - 8 # Aug
+          - 9 # Sep
+          - 10 # Oct
+          - 11 # Nov
+          - 12 # Dec
+          - 13 # winter
+          - 14 # spring
+          - 15 # summer
+          - 16 # autumn
       GG:
         description: grid
         type: str
-        default: '1.00'
-        #     [GG] - grid (5deg- 5°, 01- 1°, 04 - 1/4°)
-        allowed: ['5.00', '1.00', '0.25']
+        default: 1.00
+        allowed:
+          - 5.00 # 5°
+          - 1.00 # 1°
+          - 0.25 # 1/4°
       GG2:
         description: matching grid GG # inconsistency in WOA2018 file naming
         type: str
-        default: '01'
-        allowed: ['5d', '01', '04']
+        default: 01
+        allowed:
+          - 5d
+          - 01
+          - 04
     args:
       urlpath: https://www.ncei.noaa.gov/thredds-ocean/fileServer/ncei/woa/{{variable}}/{{DDDD}}/{{GG}}/woa18_{{DDDD}}_{{variable[0]}}{{ "%02d" | format(TT) }}_{{GG2}}.nc
       xarray_kwargs:
@@ -100,7 +148,9 @@ sources:
 
   OISSTv21:
     driver: netcdf
-    description: "Optimum Interpolation Sea Surface Temperature (OISST) v2.1 provided by the NOAA/NCEI from their Web site at https://www.ncdc.noaa.gov/oisst/data-access"
+    description: >-
+      Optimum Interpolation Sea Surface Temperature (OISST) v2.1 provided by the NOAA/
+      NCEI from their Web site at https://www.ncdc.noaa.gov/oisst/data-access
     metadata:
       url: https://www.ncdc.noaa.gov/oisst/optimum-interpolation-sea-surface-temperature-oisst-v21
       doi: 10.1175/JTECH-D-19-0177.1
@@ -119,7 +169,9 @@ sources:
 
   OISSTv2:
     driver: netcdf
-    description: "Optimum Interpolation Sea Surface Temperature (OISST) v2.0 provided by the NOAA/NCEI from their Web site at https://www.ncdc.noaa.gov/oisst/data-access"
+    description: >-
+      Optimum Interpolation Sea Surface Temperature (OISST) v2.0 provided by the NOAA/
+      NCEI from their Web site at https://www.ncdc.noaa.gov/oisst/data-access
     metadata:
       url: https://www.ncdc.noaa.gov/oisst/optimum-interpolation-sea-surface-temperature-oisst-v20
       doi: 10.1175/JTECH-D-19-0177.1
@@ -131,10 +183,20 @@ sources:
         min: 1981.09.01 # 2002.06.01 amsr-avhrr
         max: 2020.04.01 # avhrr-only # 2011.10.04 amsr-avhrr
       kind:
-        description: There are two kinds of daily OISST, named after the relevant satellite SST sensors. These are the Advanced Very High Resolution Radiometer (AVHRR) and Advanced Microwave Scanning Radiometer on the Earth Observing System (AMSR-E). AVHRR has the longest record (from late 1981 to the present) of SST measurements from a single sensor design. Infrared instruments, like AVHRR, can make observations at relatively high resolution but cannot see through clouds. Microwave instruments like AMSR-E can measure SSTs in most weather conditions (except heavy rain) but not adjacent to land.
+        description: >-
+          There are two kinds of daily OISST, named after the relevant satellite SST
+          sensors. These are the Advanced Very High Resolution Radiometer (AVHRR) and
+          Advanced Microwave Scanning Radiometer on the Earth Observing System
+          (AMSR-E). AVHRR has the longest record (from late 1981 to the present) of SST
+          measurements from a single sensor design. Infrared instruments, like AVHRR,
+          can make observations at relatively high resolution but cannot see through
+          clouds. Microwave instruments like AMSR-E can measure SSTs in most weather
+          conditions (except heavy rain) but not adjacent to land.
         type: str
         default: avhrr-only
-        allowed: [avhrr-only, amsr-avhrr]
+        allowed:
+          - avhrr-only
+          - amsr-avhrr
     args:
       urlpath: simplecache::https://www.ncei.noaa.gov/data/sea-surface-temperature-optimum-interpolation/v2/access/{{kind}}/{{date.strftime("%Y%m")}}/{{kind}}-v2.{{date.strftime("%Y%m%d")}}.nc
       storage_options:
@@ -143,7 +205,8 @@ sources:
       chunks: {}
 
   OISSTv2_thredds:
-    description: "Optimum Interpolation Sea Surface Temperature (OISST) v2.0 via psl.noaa.gov/thredds"
+    description: >-
+      Optimum Interpolation Sea Surface Temperature (OISST)v2.0 via psl.noaa.gov/thredds
     metadata:
       url: https://www.ncdc.noaa.gov/oisst/optimum-interpolation-sea-surface-temperature-oisst-v20
       doi: 10.1175/JTECH-D-19-0177.1
@@ -152,12 +215,14 @@ sources:
       year:
         description: year
         type: str
-        default: '*'  # merges all years
+        default: "*"  # merges all years
       var:
         description: variable
         type: str
         default: sst
-        allowed: [sst, icec]
+        allowed:
+          - sst
+          - icec
     args:
       path:
       - "{{var}}.day.mean.{{year}}.v2.nc"
