@@ -4,7 +4,9 @@ plugins:
 
 sources:
   HadCRUT4:
-    description: Combined land [CRUTEM4] and marine [SST anomalies from HadSST3] temperature anomalies on a 5° by 5° grid (Morice et al., 2012)
+    description: >-
+      Combined land [CRUTEM4] and marine [SST anomalies from HadSST3] temperature
+      anomalies on a 5° by 5° grid (Morice et al., 2012)
     metadata:
       url: https://crudata.uea.ac.uk/cru/data/temperature/
       doi: http://doi.org/10.1029/2011JD017187
@@ -29,7 +31,10 @@ sources:
         use_cftime: True
 
   HadCRUT5:
-    description: Combined land [CRUTEM5] and marine [HadSST4] temperature anomalies on a 5° by 5° grid with greater geographical coverage via statistical infilling (Morice et al., 2020)
+    description: >-
+      Combined land [CRUTEM5] and marine [HadSST4] temperature anomalies on a 5° by 5°
+      grid with greater geographical coverage via statistical infilling (Morice et al.,
+      2020)
     metadata:
       url: https://www.metoffice.gov.uk/hadobs/hadcrut5/
       doi: http://doi.org/10.1029/2019JD032361
@@ -52,7 +57,10 @@ sources:
       chunks: {}
 
   HadCRUT5_Non-Infilled:
-    description: Combined land [CRUTEM5] and marine [HadSST4] temperature anomalies on a 5° by 5° grid with geographical coverage limited to grid cells close to where we have measurements (Morice et al., 2020)
+    description: >-
+      Combined land [CRUTEM5] and marine [HadSST4] temperature anomalies on a 5° by 5°
+      grid with geographical coverage limited to grid cells close to where we have
+      measurements (Morice et al., 2020)
     metadata:
       url: https://www.metoffice.gov.uk/hadobs/hadcrut5/
       doi: http://doi.org/10.1029/2019JD032361
@@ -62,10 +70,15 @@ sources:
       chunks: {}
 
   CRU_TS:
-    description: Climatic Research Unit (CRU) Time-Series (TS) of high-resolution gridded data of month-by-month variation in climate
+    description: >-
+      Climatic Research Unit (CRU) Time-Series (TS) of high-resolution gridded data of
+      month-by-month variation in climate
     metadata:
       url: https://crudata.uea.ac.uk/cru/data/hrg
-      comment: CEDA archive requires authorization, for setting up a certificate, please follow instructions from https://help.ceda.ac.uk/article/4712-reading-netcdf-with-python-opendap
+      comment: >-
+        CEDA archive requires authorization, for setting up a certificate, please
+        follow instructions from
+        https://help.ceda.ac.uk/article/4712-reading-netcdf-with-python-opendap
     args:
       path: "{{CATALOG_DIR}}/atmosphere/cru_ts.yaml"
     driver: intake.catalog.local.YAMLFileCatalog
@@ -81,24 +94,32 @@ sources:
         description: spatial resolution
         type: str
         default: 1200km
-        allowed: [1200km, 250km]
+        allowed:
+          - 1200km
+          - 250km
       realm:
         description: data region including or excluding ocean
         type: str
         default: combined
-        allowed: [landonly, combined]
+        allowed:
+          - landonly
+          - combined
       t_res:
         description: time span
         type: str
         default: anom
-        allowed: [anom, ltm] # long-term mean
+        allowed:
+          - anom
+          - ltm # long-term mean
     args:
       urlpath: simplecache::https://psl.noaa.gov/thredds/fileServer/Datasets/gistemp/{{realm}}/{{s_res}}/air.2x2.{{s_res[:-2]}}.mon.{{t_res}}.{{realm[:4]}}.nc
-        #simplecache::https://data.giss.nasa.gov/pub/gistemp/gistemp1200_GHCNv4_ERSSTv5.nc.gz
+        #alternatively simplecache::https://data.giss.nasa.gov/pub/gistemp/gistemp1200_GHCNv4_ERSSTv5.nc.gz
       chunks: {}
 
   NOAA_GlobalTemp:
-    description: Monthly gridded anomalies of air temperature from the GHCN-M and the NOAA ERSST V4 dataset.
+    description: >-
+      Monthly gridded anomalies of air temperature from the GHCN-M and the NOAA ERSST
+      V4 dataset.
     metadata:
       url: https://www.ncdc.noaa.gov/monitoring-references/faq/anomalies.php
       doi:
@@ -121,10 +142,16 @@ sources:
         default: TAVG
         allowed: [TAVG, TMAX, TMIN]
       s_res:
-        description: spatial resolution; either in 15984 equal-area grid cells or a latitude-longitude grid. The equal area grid is the primary data format used in most of our analyses and provides generally smaller files; however, that format may be less convenient for many users.
+        description: >-
+          spatial resolution; either in 15984 equal-area grid cells or a latitude-
+          longitude grid. The equal area grid is the primary data format used in most
+          of our analyses and provides generally smaller files; however, that format
+          may be less convenient for many users.
         type: str
         default: EqualArea
-        allowed: [LatLong1, EqualArea]
+        allowed:
+          - LatLong1
+          - EqualArea
     args:
       urlpath: simplecache::http://berkeleyearth.lbl.gov/auto/Global/Gridded/Complete_{{var}}_{{s_res}}.nc
       chunks: {}
@@ -136,16 +163,34 @@ sources:
     driver: netcdf
     parameters:
       s_res:
-        description: spatial resolution; either in 15984 equal-area grid cells or a latitude-longitude grid. The equal area grid is the primary data format used in most of our analyses and provides generally smaller files; however, that format may be less convenient for many users.
+        description: >-
+          spatial resolution; either in 15984 equal-area grid cells or a latitude-
+          longitude grid. The equal area grid is the primary data format used in most
+          of our analyses and provides generally smaller files; however, that format
+          may be less convenient for many users.
         type: str
         default: EqualArea
-        allowed: [LatLong1, EqualArea]
+        allowed:
+          - LatLong1
+          - EqualArea
     args:
       urlpath: simplecache::http://berkeleyearth.lbl.gov/auto/Global/Gridded/Land_and_Ocean_{{s_res}}.nc
       chunks: {}
 
   Cowtan_and_Way_Long:
-    description: Monthly gridded land and ocean temperature anomalies by Cowtan and Way. 1850-present, infilled by kriging. The version 2.0 series are based on a more rigorous treatment in which the land and ocean data are reconstructed separately and then blended. Version 2.0 data are also based on the full HadCRUT4 ensemble, and include ensemble as well as coverage uncertainty estimates. The data are described in this update. The land temperature reconstruction is used for air temperatures over land and sea ice, and the sea surface temperature reconstruction for open sea. Sea ice coverage is fixed for each month of the year, and is determined from HadISST using the period 1981-2010. For the long reconstruction (i.e. 1850-present) the median ice coverage in the given month of the year is used for each cell. Hybrid data use the hybrid approach for air temperatures over land or sea ice, and kriging for sea surface temperatures.
+    description: >-
+      Monthly gridded land and ocean temperature anomalies by Cowtan and Way.
+      1850-present, infilled by kriging. The version 2.0 series are based on a more
+      rigorous treatment in which the land and ocean data are reconstructed separately
+      and then blended. Version 2.0 data are also based on the full HadCRUT4 ensemble,
+      and include ensemble as well as coverage uncertainty estimates. The data are
+      described in this update. The land temperature reconstruction is used for air
+      temperatures over land and sea ice, and the sea surface temperature
+      reconstruction for open sea. Sea ice coverage is fixed for each month of the
+      year, and is determined from HadISST using the period 1981-2010. For the long
+      reconstruction (i.e. 1850-present) the median ice coverage in the given month of
+      the year is used for each cell. Hybrid data use the hybrid approach for air
+      temperatures over land or sea ice, and kriging for sea surface temperatures.
     metadata:
       url: https://www-users.york.ac.uk/~kdc3/papers/coverage2013/series.html
       doi: https://doi.org/10.1002/qj.2297
@@ -155,7 +200,10 @@ sources:
         description: base datasets used
         type: str
         default: had4
-        allowed: [had4, had4sst4, cobe2cru]
+        allowed:
+          - had4
+          - had4sst4
+          - cobe2cru
     args:
       urlpath: simplecache::https://www-users.york.ac.uk/~kdc3/papers/coverage2013/{{datasets}}_krig_v2_0_0.nc.gz
       chunks: {}
@@ -166,7 +214,23 @@ sources:
         engine: scipy
 
   Cowtan_and_Way_Short:
-    description: Monthly gridded land and ocean temperature anomalies by Cowtan and Way. 1850-present, infilled by kriging. The version 2.0 series are based on a more rigorous treatment in which the land and ocean data are reconstructed separately and then blended. Version 2.0 data are also based on the full HadCRUT4 ensemble, and include ensemble as well as coverage uncertainty estimates. The data are described in this update. All except the long (1850-present) reconstruction are rebaselined on 1981-2010. Rebaselining the data on the period 1981-2010 enables the satellite data to be used for infilling, and in the v1.0 calculation increases the reliability of recent trends, but also discards some data which may impact the reliability of long term trends. The land temperature reconstruction is used for air temperatures over land and sea ice, and the sea surface temperature reconstruction for open sea. Sea ice coverage is fixed for each month of the year, and is determined from HadISST using the period 1981-2010. For the short reconstructions (i.e. 1979-present) the minimum ice is used. Hybrid data use the hybrid approach for air temperatures over land or sea ice, and kriging for sea surface temperatures.
+    description: >-
+      Monthly gridded land and ocean temperature anomalies by Cowtan and Way.
+      1850-present, infilled by kriging. The version 2.0 series are based on a more
+      rigorous treatment in which the land and ocean data are reconstructed separately
+      and then blended. Version 2.0 data are also based on the full HadCRUT4 ensemble,
+      and include ensemble as well as coverage uncertainty estimates. The data are
+      described in this update. All except the long (1850-present) reconstruction are
+      rebaselined on 1981-2010. Rebaselining the data on the period 1981-2010 enables
+      the satellite data to be used for infilling, and in the v1.0 calculation
+      increases the reliability of recent trends, but also discards some data which may
+      impact the reliability of long term trends. The land temperature reconstruction
+      is used for air temperatures over land and sea ice, and the sea surface
+      temperature reconstruction for open sea. Sea ice coverage is fixed for each month
+      of the year, and is determined from HadISST using the period 1981-2010. For the
+      short reconstructions (i.e. 1979-present) the minimum ice is used. Hybrid data
+      use the hybrid approach for air temperatures over land or sea ice, and kriging
+      for sea surface temperatures.
     metadata:
       url: https://www-users.york.ac.uk/~kdc3/papers/coverage2013/series.html
       doi: https://doi.org/10.1002/qj.2297
@@ -176,7 +240,12 @@ sources:
         description: base datasets used
         type: str
         default: had4_short_uah
-        allowed: [had4_short_uah, had4_short_merra, had4_short_krig, ghcn_short_uah, ghcn_short_merra]
+        allowed:
+          - had4_short_uah
+          - had4_short_merra
+          - had4_short_krig
+          - ghcn_short_uah
+          - ghcn_short_merra
     args:
       urlpath: simplecache::https://www-users.york.ac.uk/~kdc3/papers/coverage2013/{{datasets}}_v2_0_0.nc.gz
       chunks: {}
@@ -187,7 +256,11 @@ sources:
         engine: scipy
 
   trace_gases_at_stations:
-    description: surface insitu measurements of Carbon Cycle Greenhouse Gases (CCGG), National Oceanic and Atmospheric Administration (NOAA), Earth System Research Laboratories (ESRL), Global Monitoring Laboratory (GML), defaults to Mauna Loa monthly CO2 measurements
+    description: >-
+      surface insitu measurements of Carbon Cycle Greenhouse Gases (CCGG), National
+      Oceanic and Atmospheric Administration (NOAA), Earth System Research Laboratories
+      (ESRL), Global Monitoring Laboratory (GML), defaults to Mauna Loa monthly CO2
+      measurements
     metadata:
       url: https://www.esrl.noaa.gov/gmd/ccgg/
       doi: add
@@ -198,17 +271,26 @@ sources:
         description: frequency of the measurements
         type: str
         default: Monthly
-        allowed: [Hourly, Daily, Monthly]
+        allowed:
+          - Hourly
+          - Daily
+          - Monthly
       station:
         description: location of the measurements
         type: str
         default: mlo
-        allowed: [mlo, brw, smo, spo] # Mauna LOa, BarRoW, American SaMOa, and South POle
+        allowed:
+          - mlo # Mauna LOa
+          - brw # BarRow
+          - smo # American SaMOa
+          - spo # South POle
       variable:
         description: variable
         type: str
         default: co2
-        allowed: [co2, ch4]
+        allowed:
+          - co2
+          - ch4
     args:
       urlpath: ftp://aftp.cmdl.noaa.gov/data/trace_gases/{{variable}}/in-situ/surface/{{station}}/{{variable}}_{{station}}_surface-insitu_1_ccgg_{{freq}}Data.nc
       storage_options:
@@ -232,12 +314,25 @@ sources:
         description: variable
         type: str
         default: air.sig995
-        allowed: [air.sig995, lftx.sfc, lftx4.sfc, omega.sig995,  pottmp.sig995, pr_wtr.eatm, pres.sfc,   rhum.sig995, slp, uwnd.sig995,  vwnd.sig995]
+        allowed:
+          - air.sig995
+          - lftx.sfc
+          - lftx4.sfc
+          - omega.sig995
+          - pottmp.sig995
+          - pr_wtr.eatm
+          - pres.sfc
+          - rhum.sig995
+          - slp
+          - uwnd.sig995
+          - vwnd.sig995
       freq:
         description: frequency
         type: str
         default: ncep.reanalysis
-        allowed: [ncep.reanalysis, ncep.reanalysis.dailyavgs]
+        allowed:
+          - ncep.reanalysis
+          - ncep.reanalysis.dailyavgs
     args:
       path:
       - "{{var}}.{{year}}.nc"
@@ -258,7 +353,50 @@ sources:
         description: variable
         type: str
         default: air.2m
-        allowed: [air.2m, cfnlf.sfc,   cprat.sfc,    csdlf.sfc,  csdsf.sfc,  csusf.sfc,  dlwrf.sfc, dswrf.sfc,  gflux.sfc,  icec.sfc,     lhtfl.sfc, nbdsf.sfc,  nddsf.sfc,  nlwrf.sfc,  nswrs.sfc,  pevpr.sfc, prate, runof.sfc, sfcr.sfc,     shtfl.sfc, shum.2m, skt, soilw.0-10cm,    soilw.10-200cm, soilw, soilw200, tmax.2m, tmin.2m, tmp.0-10cm, tmp.10-200cm, temp.300cm, uflx.sfc, ugwd.sfc, ulwrf.sfc, uswrf.sfc, uwnd.10m,  vwnd.10m, vbdsf.sfc, vddsf.sfc, vflx.sfc, vgwd.sfc, weasd.sfc, wspd]
+        allowed:
+          - air.2m
+          - cfnlf.sfc
+          - cprat.sfc
+          - csdlf.sfc
+          - csdsf.sfc
+          - csusf.sfc
+          - dlwrf.sfc
+          - dswrf.sfc
+          - gflux.sfc
+          - icec.sfc
+          - lhtfl.sfc
+          - nbdsf.sfc
+          - nddsf.sfc
+          - nlwrf.sfc
+          - nswrs.sfc
+          - pevpr.sfc
+          - prate
+          - runof.sfc
+          - sfcr.sfc
+          - shtfl.sfc
+          - shum.2m
+          - skt
+          - soilw.0-10cm
+          - soilw.10-200cm
+          - soilw
+          - soilw200
+          - tmax.2m
+          - tmin.2m
+          - tmp.0-10cm
+          - tmp.10-200cm
+          - temp.300cm
+          - uflx.sfc
+          - ugwd.sfc
+          - ulwrf.sfc
+          - uswrf.sfc
+          - uwnd.10m
+          - vwnd.10m
+          - vbdsf.sfc
+          - vddsf.sfc
+          - vflx.sfc
+          - vgwd.sfc
+          - weasd.sfc
+          - wspd
     args:
       path:
       - "{{var}}.gauss.{{year}}.nc"
@@ -276,17 +414,41 @@ sources:
         description: frequency
         type: str
         default: mon
-        allowed: [mon, day, 4Xday]
+        allowed:
+          - mon
+          - day
+          - 4Xday
       time_average:
         description: time_average
         type: str
         default: mean
-        allowed: [mean, ltm, 1981-2010.ltm]
+        allowed:
+          - mean
+          - ltm
+          - 1981-2010.ltm
       var:
         description: variable
         type: str
         default: air
-        allowed: [air, air.sig995, lftx,  pr_wtr.eatm,  pr_wtr, omega.sig995,  pottmp.sig995, pr_wtr.eatm, pres, rhum, rhum.sig995, slp, uwnd.sig995,  vwnd.sig995, uwnd, vwnd, wspd, wspd.sig995]
+        allowed:
+          - air
+          - air.sig995
+          - lftx
+          - pr_wtr.eatm
+          - pr_wtr
+          - omega.sig995
+          - pottmp.sig995
+          - pr_wtr.eatm
+          - pres
+          - rhum
+          - rhum.sig995
+          - slp
+          - uwnd.sig995
+          - vwnd.sig995
+          - uwnd
+          - vwnd
+          - wspd
+          - wspd.sig995
     args:
       urlpath: simplecache::https://psl.noaa.gov/thredds/fileServer/Datasets/ncep.reanalysis.derived/surface/{{var}}.{{freq}}.{{time_average}}.nc
 
@@ -301,22 +463,75 @@ sources:
         description: frequency
         type: str
         default: mon
-        allowed: [mon, day, 4Xday]
+        allowed:
+          - mon
+          - day
+          - 4Xday
       time_average:
         description: time_average
         type: str
         default: mean
-        allowed: [mean, ltm, 1981-2010.ltm]
+        allowed:
+          - mean
+          - ltm
+          - 1981-2010.ltm
       var:
         description: variable
         type: str
-        default: 'air.2m'
-        allowed: ['air.2m', 'cfnlf.sfc', 'cprat.sfc', 'csdlf.sfc',  'csdsf.sfc', 'csusf.sfc', 'dlwrf.sfc', "dswrf.sfc",  "gflux.sfc",  'icec.sfc', 'lhtfl.sfc', nbdsf.sfc,  'nddsf.sfc',  'nlwrf.sfc',  'nswrs.sfc',  'pevpr.sfc', 'prate', 'runof.sfc', 'sfcr.sfc', 'shtfl.sfc', 'shum.2m', 'skt', 'soilw.0-10cm', 'soilw.10-200cm', 'soilw', 'soilw200', 'tmax.2m', 'tmin.2m', 'tmp.0-10cm', 'tmp.10-200cm', 'temp.300cm', 'uflx.sfc', 'ugwd.sfc', 'ulwrf.sfc', 'uswrf.sfc', 'uwnd.10m',  'vwnd.10m', 'vbdsf.sfc', 'vddsf.sfc', 'vflx.sfc', 'vgwd.sfc', 'weasd.sfc', 'wspd']
+        default: air.2m
+        allowed:
+          - air.2m
+          - cfnlf.sfc
+          - cprat.sfc
+          - csdlf.sfc
+          - csdsf.sfc
+          - csusf.sfc
+          - dlwrf.sfc
+          - dswrf.sfc
+          - gflux.sfc
+          - icec.sfc
+          - lhtfl.sfc
+          - nbdsf.sfc
+          - nddsf.sfc
+          - nlwrf.sfc
+          - nswrs.sfc
+          - pevpr.sfc
+          - prate
+          - runof.sfc
+          - sfcr.sfc
+          - shtfl.sfc
+          - shum.2m
+          - skt
+          - soilw.0-10cm
+          - soilw.10-200cm
+          - soilw
+          - soilw200
+          - tmax.2m
+          - tmin.2m
+          - tmp.0-10cm
+          - tmp.10-200cm
+          - temp.300cm
+          - uflx.sfc
+          - ugwd.sfc
+          - ulwrf.sfc
+          - uswrf.sfc
+          - uwnd.10m
+          - vwnd.10m
+          - vbdsf.sfc
+          - vddsf.sfc
+          - vflx.sfc
+          - vgwd.sfc
+          - weasd.sfc
+          - wspd
     args:
       urlpath: simplecache::https://psl.noaa.gov/thredds/fileServer/Datasets/ncep.reanalysis.derived/surface_gauss/{{var}}.{{freq}}.{{time_average}}.nc
 
   fossil_fuel_emissions_gridded:
-    description: daily 1x1 Gridded Fossil Fuel emissions from Open-source Data Inventory for Anthropogenic CO2 (ODIAC), Carbon Cycle Greenhouse Gases (CCGG), National Oceanic and Atmospheric Administration (NOAA), Earth System Research Laboratories (ESRL), Global Monitoring Laboratory (GML)
+    description: >-
+      daily 1x1 Gridded Fossil Fuel emissions from Open-source Data Inventory for
+      Anthropogenic CO2 (ODIAC), Carbon Cycle Greenhouse Gases (CCGG), National Oceanic
+      and Atmospheric Administration (NOAA), Earth System Research Laboratories (ESRL),
+      Global Monitoring Laboratory (GML)
     metadata:
       url: https://www.odiac.org/index.html
       doi:
@@ -334,12 +549,18 @@ sources:
         description: release, version of the ODIAC emissions
         type: str
         default: 2018
-        allowed: [2015a, 2016, 2017, 2018]
+        allowed:
+          - 2015a
+          - 2016
+          - 2017
+          - 2018
       variable:
         description: variable
         type: str
         default: co2
-        allowed: [co2, ch4]
+        allowed:
+          - co2
+          - ch4
     args:
       urlpath: ftp://aftp.cmdl.noaa.gov/data/ccgg/ODIAC/{{version}}/distrib/{{date.strftime("%Y")}}/{{date.strftime("%m")}}/fossil_fuel_1x1_{{date.strftime("%Y%m%d")}}.nc
       storage_options:
@@ -349,7 +570,10 @@ sources:
         use_cftime: True
 
   NOAA_carbon_tracker:
-    description: CarbonTracker is a CO2 measurement and modeling system developed by NOAA to keep track of sources (emissions to the atmosphere) and sinks (removal from the atmosphere) of carbon dioxide around the world.
+    description: >-
+      CarbonTracker is a CO2 measurement and modeling system developed by NOAA to keep
+      track of sources (emissions to the atmosphere) and sinks (removal from the
+      atmosphere) of carbon dioxide around the world.
     metadata:
       url: https://www.esrl.noaa.gov/gmd/ccgg/carbontracker
     driver: netcdf
@@ -363,12 +587,24 @@ sources:
         description: release, version of the ODIAC emissions
         type: str
         default: CT2019B
-        allowed: [CT-NRT.v2015-1, CT-NRT.v2017-1, CT-NRT.v2018-1, CT-NRT.v2019-1, CT-NRT.v2020-1, CT2019B,CT2019,CT2017,CT2016, CT2015]
+        allowed:
+          - CT-NRT.v2015-1
+          - CT-NRT.v2017-1
+          - CT-NRT.v2018-1
+          - CT-NRT.v2019-1
+          - CT-NRT.v2020-1
+          - CT2019B
+          - CT2019
+          - CT2017
+          - CT2016
+          - CT2015
       variable:
         description: variable
         type: str
         default: co2
-        allowed: [co2, ch4]
+        allowed:
+          - co2
+          - ch4
     args:
       urlpath: simplecache::ftp://aftp.cmdl.noaa.gov/products/carbontracker/co2/{{version}}/molefractions/co2_total_monthly/{{version}}.molefrac_glb3x2_{{date.strftime("%Y-%m")}}.nc
       storage_options:
