@@ -321,7 +321,7 @@ sources:
       year:
         description: year
         type: str
-        default: '*'  # merges all years from 1948 to 2020
+        default: "*"  # merges all years from 1948 to 2020
       var:
         description: variable
         type: str
@@ -360,7 +360,7 @@ sources:
       year:
         description: year
         type: str
-        default: '*'
+        default: "*"
       var:
         description: variable
         type: str

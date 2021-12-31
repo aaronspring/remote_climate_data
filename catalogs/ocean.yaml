@@ -106,27 +106,41 @@ sources:
       TT:
         description: time period
         type: int
-        default: '00'
-        # annual: 0 , J: 1, F: 2 ... winter:13, spring:14, summer:15, autumn:16
-        min: 0
-        max: 16
+        default: 0
+        allowed:
+          - 0 # annual
+          - 1 # Jan
+          - 2 # Feb
+          - 3 # Mar
+          - 4 # Apr
+          - 5 # May
+          - 6 # Jun
+          - 7 # Jul
+          - 8 # Aug
+          - 9 # Sep
+          - 10 # Oct
+          - 11 # Nov
+          - 12 # Dec
+          - 13 # winter
+          - 14 # spring
+          - 15 # summer
+          - 16 # autumn
       GG:
         description: grid
         type: str
-        default: '1.00'
-        #     [GG] - grid (5deg- 5°, 01- 1°, 04 - 1/4°)
+        default: 1.00
         allowed:
-          - '5.00'
-          - '1.00'
-          - 0.25
+          - 5.00 # 5°
+          - 1.00 # 1°
+          - 0.25 # 1/4°
       GG2:
         description: matching grid GG # inconsistency in WOA2018 file naming
         type: str
-        default: '01'
+        default: 01
         allowed:
           - 5d
-          - '01'
-          - '04'
+          - 01
+          - 04
     args:
       urlpath: https://www.ncei.noaa.gov/thredds-ocean/fileServer/ncei/woa/{{variable}}/{{DDDD}}/{{GG}}/woa18_{{DDDD}}_{{variable[0]}}{{ "%02d" | format(TT) }}_{{GG2}}.nc
       xarray_kwargs:
@@ -201,7 +215,7 @@ sources:
       year:
         description: year
         type: str
-        default: '*'  # merges all years
+        default: "*"  # merges all years
       var:
         description: variable
         type: str
