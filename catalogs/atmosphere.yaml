@@ -16,9 +16,15 @@ sources:
           x: longitude
           y: latitude
           z: temperature_anomaly
-          ylim: [-90, 90]
-          xlim: [-180, 180]
-          zlim: [-5, 5]
+          ylim:
+            - -90
+            - 90
+          xlim:
+            - -180
+            - 180
+          zlim:
+            - -5
+            - 5
           groupby: time
           label: Temperature Anomaly [K]
           cmap: RdBu_r
@@ -44,9 +50,15 @@ sources:
           x: longitude
           y: latitude
           z: tas_mean
-          ylim: [-90, 90]
-          xlim: [-180, 180]
-          zlim: [-5, 5]
+          ylim:
+            - -90
+            - 90
+          xlim:
+            - -180
+            - 180
+          zlim:
+            - -5
+            - 5
           groupby: time
           label: Temperature Anomaly [K]
           cmap: RdBu_r

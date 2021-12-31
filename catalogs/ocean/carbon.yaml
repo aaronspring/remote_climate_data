@@ -18,7 +18,9 @@ sources:
           same_names: True
 
   MPI-SOM_FFN:
-    description: An observation-based global monthly gridded sea surface pCO2 product from 1982 onward and its monthly climatology
+    description: >-
+      An observation-based global monthly gridded sea surface pCO2 product from 1982
+      onward and its monthly climatology
     driver: netcdf
     metadata:
       url: https://www.nodc.noaa.gov/ocads/oceans/SPCO2_1982_present_ETH_SOM_FFN.html
@@ -35,13 +37,17 @@ sources:
           groupby: time
           cmap: RdBu_r
           levels: 20
-          zlim: (-10, 10)
+          zlim:
+            - -10
+            - 10
         fgco2_timeseries_location:
           title: fgco2 timeseries at (lon,lat) location
           kind: line
           x: time
           y: fgco2_smoothed
-          groupby: ['lon','lat']
+          groupby:
+            - lon
+            - lat
         fgco2_timeseries_latitude:
           title: fgco2 timeseries at latitude
           kind: contourf
@@ -55,11 +61,15 @@ sources:
         description: version release in year
         type: int
         default: 2020
-        allowed: [2017,2018,2020]
+        allowed:
+          - 2017
+          - 2018
+          - 2020
     args:
       # urlpath only works for 2020 version, slight changes in URL
       urlpath: simplecache::https://data.nodc.noaa.gov/ncei/ocads/data/0160558/MPI_SOM-FFN_v{{version}}/spco2_MPI-SOM_FFN_v{{version}}.nc
-      chunks: {'time':'120'}
+      chunks:
+        time: 120
       storage_options:
         simplecache:
           same_names: True
@@ -67,7 +77,8 @@ sources:
         drop_variables: date
 
   MPI-ULB-SOM_FFN:
-    description: A combined global ocean pCO2climatology combining open ocean and coastal areas
+    description: >-
+      A combined global ocean pCO2climatology combining open ocean and coastal areas
     driver: netcdf
     metadata:
       url: https://www.nodc.noaa.gov/ocads/oceans/MPI-ULB-SOM_FFN_clim.html
@@ -84,24 +95,34 @@ sources:
           groupby: time
           cmap: viridis
           levels: 20
-          zlim: (-10, 10)
+          zlim:
+            - -10
+            - 10
         pco2_timeseries_location:
           title: pco2 timeseries at (lon,lat) location
           kind: line
           x: time
           y: pco2
-          groupby: ['lon','lat']
+          groupby:
+            - lon
+            - lat
     args:
       urlpath: simplecache::https://www.ncei.noaa.gov/data/oceans/ncei/ocads/data/0209633/MPI-ULB-SOM_FFN_clim.nc
-      chunks: {'time':'120'}
+      chunks:
+        time: 120
       storage_options:
         simplecache:
           same_names: True
       xarray_kwargs:
-        drop_variables: ['lat_bnds','lon_bnds']
+        drop_variables:
+          - lat_bnds
+          - lon_bnds
 
   MOBO-DIC_MPIM:
-    description: Mapped Observation-Based Oceanic Dissolved Inorganic Carbon (DIC), monthly climatology from January to December (based on observations between 2004 and 2017), from the Max-Planck-Institute for Meteorology (MOBO-DIC_MPIM)
+    description: >-
+      Mapped Observation-Based Oceanic Dissolved Inorganic Carbon (DIC), monthly
+      climatology from January to December (based on observations between 2004 and
+      2017), from the Max-Planck-Institute for Meteorology (MOBO-DIC_MPIM)
     driver: netcdf
     metadata:
       doi:
@@ -117,7 +138,7 @@ sources:
       chunks: {}
 
   OceanSODA-ETHZ:
-    description: |
+    description: >-
       A global gridded data set of the surface ocean carbonate system for seasonal to
       decadal studies of ocean acidification.
 
@@ -171,18 +192,24 @@ sources:
         description: temporal average
         type: str
         default: yearly
-        allowed: [decadal, yearly, monthly]
+        allowed:
+          - decadal
+          - yearly
+          - monthly
       version:
         description: version, tag
         type: str
         default: v2020
-        allowed: [v6, v2019, v2020]
+        allowed:
+          - v6
+          - v2019
+          - v2020
     args:
       urlpath: simplecache::zip://*.nc::https://www.socat.info/socat_files/{{version}}/SOCAT{{version}}_tracks_gridded_{{time_average}}.nc.zip
       chunks: {}
 
   ESACCI:
-    description: |
+    description: >-
         download ocean color from https://www.oceancolour.org
         aggregate output of one year via intake-thredds
         Surface ocean chlorophyll-a @ Global level 3 binned multi-sensor merged data
@@ -200,23 +227,35 @@ sources:
         description: variable name
         type: str
         default: chlor_a
-        allowed: ['iop', 'chlor_a', 'rrs'] #'kd' expands to K_490 # all_products to products
+        allowed:
+          - iop
+          - chlor_a
+          - rrs
+          # - kd expands to K_490 # all_products to products
       t_res:
         description: temporal resolution
         type: str
-        default: 'daily'
-        allowed: ['daily','monthly'] # 5day and 8day dont expand nicely
+        default: daily
+        allowed:
+          - daily
+          - monthly # 5day and 8day dont expand nicely
       version:
         description: version name
         type: str
         default: 3.0
-        allowed: [3.0, 3.1, 4.2, 5.0]
+        allowed:
+          - 3.0
+          - 3.1
+          - 4.2
+          - 5.0
       proj:
         description: projection
         type: str
         default: geographic
-        allowed: [geographic, sinusoidal]
+        allowed:
+          - geographic
+          - sinusoidal
     args:
       path:
-        - 'ESACCI-OC-L3S-{{var.upper()}}-MERGED-1{{t_res[0].upper()}}_{{t_res.upper()}}_4km_{{proj[:3].upper()}}_PML_*-{{time}}*-fv{{version}}.nc'
+        - "ESACCI-OC-L3S-{{var.upper()}}-MERGED-1{{t_res[0].upper()}}_{{t_res.upper()}}_4km_{{proj[:3].upper()}}_PML_*-{{time}}*-fv{{version}}.nc"
       url: https://www.oceancolour.org/thredds/catalog/cci/v{{version}}-release/{{proj.lower()}}/{{t_res.lower()}}/{{var.lower()}}/{{time[:4]}}/catalog.xml

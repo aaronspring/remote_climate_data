@@ -80,12 +80,12 @@ sources:
 
   TEOW:
     description: >-
-      This is the master spatial data layer for TNCs Terrestrial Ecoregions Of the World,
-      exported from the geodatabase listed above. Note that it includes Mangroves, Inland
-      Water, and Rock and Ice MHTs, although they are not being handled by terrestrial
-      assessments. This layer is based on WWFs ecoregions outside the United States, and
-      loosely based on Baileys ecoregions (from the USDA Forest Service) within the
-      United States.
+      This is the master spatial data layer for TNCs Terrestrial Ecoregions Of the
+      World, exported from the geodatabase listed above. Note that it includes
+      Mangroves, Inland Water, and Rock and Ice MHTs, although they are not being
+      handled by terrestrial assessments. This layer is based on WWFs ecoregions
+      outside the United States, and loosely based on Baileys ecoregions (from the USDA
+      Forest Service) within the United States.
     metadata:
       xml: http://maps.tnc.org/files/metadata/TerrEcos.xml
     driver: intake_geopandas.regionmask.RegionmaskSource
