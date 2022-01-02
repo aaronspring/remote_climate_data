@@ -50,7 +50,11 @@ def test_item(cat, item_str):
     else:
         item = getattr(cat, item_str)
         # don't cache
-        urlpath = item.urlpath.replace("simplecache::", "") if hasattr(item, urlpath) else None
+        urlpath = (
+            item.urlpath.replace("simplecache::", "")
+            if hasattr(item, urlpath)
+            else None
+        )
         if "ftp" in item.urlpath:
             print("{item} found source from ftp, skip testing")
             return 0
