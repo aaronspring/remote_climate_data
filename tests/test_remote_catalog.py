@@ -49,16 +49,12 @@ def test_item(cat, item_str):
         print("skip WOA")
     else:
         item = getattr(cat, item_str)
-        # don't cache
-        urlpath = (
-            item.urlpath.replace("simplecache::", "")
-            if hasattr(item, "urlpath")
-            else None
-        )
-        if "ftp" in item.urlpath:
-            print("{item} found source from ftp, skip testing")
-            return 0
         if isinstance(item, intake.source.derived.GenericTransform):
+            return 0
+        # don't cache
+        urlpath = item.urlpath.replace("simplecache::", "")
+        if "ftp" in item.urlpath:
+            print(f"{item} found source from ftp, skip testing")
             return 0
         if isinstance(item, (intake_xarray.NetCDFSource, intake_xarray.OpenDapSource)):
             try:
