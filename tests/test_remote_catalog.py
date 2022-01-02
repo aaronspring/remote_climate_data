@@ -18,6 +18,7 @@ fsspec.config.conf["simplecache"] = {
     "same_names": True,
 }
 
+
 @pytest.fixture
 def cat():
     """don't test the online master catalog but current branch"""
@@ -37,6 +38,7 @@ derived_item_strs = [
     for i in cat2.walk(depth=3)
     if isinstance(cat2[i], intake.source.derived.GenericTransform)
 ]
+
 
 @pytest.mark.parametrize("item_str", item_strs)
 def test_item(cat, item_str):
@@ -93,12 +95,14 @@ def test_item(cat, item_str):
         else:
             print(f"couldnt test {item_str} type = {type(item)} {item}\n")
 
+
 @pytest.mark.parametrize("item_str", derived_item_strs)
 def test_derived(cat, item_str):
     """Test all derived entries"""
     item = getattr(cat, item_str)
     assert isinstance(item, intake.source.derived.GenericTransform)
     item.read()
+
 
 @pytest.mark.parametrize("item_str", item_strs)
 def test_plots(cat, item_str):
