@@ -58,6 +58,8 @@ def test_item(cat, item_str):
         if "ftp" in item.urlpath:
             print("{item} found source from ftp, skip testing")
             return 0
+        if isinstance(item, intake.source.derived.GenericTransform):
+            return 0
         if isinstance(item, (intake_xarray.NetCDFSource, intake_xarray.OpenDapSource)):
             try:
                 ds = item(urlpath=urlpath).to_dask()
