@@ -25,3 +25,35 @@ def monthly_csv_to_DataArray(df, freq="MS"):
             "time": xr.cftime_range(str(initial), freq=freq, periods=df.values.size)
         },
     )
+
+
+def molC_per_yr_to_kg_per_s(ds, **kwargs):
+    """Convert xr objects from year to seconds."""
+    assert isinstance(ds, (xr.DataArray, xr.Dataset))
+    variables = list(ds.data_vars if isinstance(ds, xr.Dataset) else ds.name)
+    for v in variables:
+        if "units" in ds[v].attrs:
+            if "yr" in ds[v].attrs["units"]:
+                with xr.set_options(keep_attrs=True):
+                    ds[v] = yr_to_s(ds[v])
+                    ds[v] = molC_to_g(ds[v])
+                    ds[v] = g_to_kg(ds[v])
+    return ds
+
+
+def yr_to_s(da):
+    da = da * 3600 * 365.25
+    da.attrs["units"] = da.attrs["units"].replace("yr", "s")
+    return da
+
+
+def molC_to_g(da):
+    da = da * 12
+    da.attrs["units"] = da.attrs["units"].replace("mol", "g")
+    return da
+
+
+def g_to_kg(da):
+    da = da / 1000
+    da.attrs["units"] = da.attrs["units"].replace("g", "kg")
+    return da
