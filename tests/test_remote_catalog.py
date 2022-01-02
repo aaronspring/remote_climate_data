@@ -50,7 +50,7 @@ def test_item(cat, item_str):
     else:
         item = getattr(cat, item_str)
         # don't cache
-        urlpath = item.urlpath.replace("simplecache::", "")
+        urlpath = item.urlpath.replace("simplecache::", "") if hasattr(item, urlpath) else None
         if "ftp" in item.urlpath:
             print("{item} found source from ftp, skip testing")
             return 0
@@ -92,8 +92,6 @@ def test_item(cat, item_str):
         elif isinstance(item, (intake.source.csv.CSVSource, intake_excel.ExcelSource)):
             df = item.read()
             print(f"successfully tested {item_str} type = {type(df)}\n {df.head()}")
-        elif isinstance(item, intake.source.derived.GenericTransform):
-            pass  # see test_derived
         else:
             print(f"couldnt test {item_str} type = {type(item)} {item}\n")
 
