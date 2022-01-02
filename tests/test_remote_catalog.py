@@ -92,6 +92,8 @@ def test_item(cat, item_str):
         elif isinstance(item, (intake.source.csv.CSVSource, intake_excel.ExcelSource)):
             df = item.read()
             print(f"successfully tested {item_str} type = {type(df)}\n {df.head()}")
+        elif isinstance(item, intake.source.derived.GenericTransform):
+            pass  # see test_derived
         else:
             print(f"couldnt test {item_str} type = {type(item)} {item}\n")
 
