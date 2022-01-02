@@ -12,6 +12,11 @@ from dask.utils import format_bytes
 timeout = ClientTimeout(total=600)
 fsspec.config.conf["https"] = dict(client_kwargs={"timeout": timeout})
 
+folder = "test_cache"
+fsspec.config.conf["simplecache"] = {
+    "cache_storage": folder,
+    "same_names": True,
+}
 
 @pytest.fixture
 def cat():
@@ -27,6 +32,11 @@ item_strs = [
     if not isinstance(cat2[i], intake.catalog.local.YAMLFileCatalog)
 ]
 
+derived_item_strs = [
+    i
+    for i in cat2.walk(depth=3)
+    if isinstance(cat2[i], intake.source.derived.GenericTransform)
+]
 
 @pytest.mark.parametrize("item_str", item_strs)
 def test_item(cat, item_str):
@@ -42,9 +52,6 @@ def test_item(cat, item_str):
         if "ftp" in item.urlpath:
             print("{item} found source from ftp, skip testing")
             return 0
-        # if "MPI-SOM_FFN" in item.urlpath:
-        #     print("detected MPI-SOM_FFN to skip")
-        #     return 0
         if isinstance(item, (intake_xarray.NetCDFSource, intake_xarray.OpenDapSource)):
             try:
                 ds = item(urlpath=urlpath).to_dask()
@@ -86,12 +93,19 @@ def test_item(cat, item_str):
         else:
             print(f"couldnt test {item_str} type = {type(item)} {item}\n")
 
+@pytest.mark.parametrize("item_str", derived_item_strs)
+def test_derived(cat, item_str):
+    """Test all derived entries"""
+    item = getattr(cat, item_str)
+    assert isinstance(item, intake.source.derived.GenericTransform)
+    item.read()
 
 @pytest.mark.parametrize("item_str", item_strs)
 def test_plots(cat, item_str):
     """Test all items.plot.my_plot()"""
     item = getattr(cat, item_str)
     plots = item.plots
+    # MPI-SOM_FFN uses too much memory
     if len(plots) > 0 and "MPI-SOM_FFN" not in item.urlpath:
         for plot in plots:
             print("test", item_str, plot)

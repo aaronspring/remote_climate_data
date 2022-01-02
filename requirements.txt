@@ -1,0 +1,4 @@
+intake
+intake-xarray
+intake-thredds
+aiohttp

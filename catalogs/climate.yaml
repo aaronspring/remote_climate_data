@@ -75,13 +75,13 @@ sources:
           - '-99.90'
           - -99.90
         engine: python
-
+  
   NOAA_correlation_xr:
     driver: intake.source.derived.GenericTransform
     args:
       targets:
         - NOAA_correlation
-      transform: "utils.convert.monthly_csv_to_DataArray"
+      transform: "remote_climate_data.utils.convert.monthly_csv_to_DataArray"
       transform_kwargs: {}
 
   NOAA_SST_anomaly_timeseries:
