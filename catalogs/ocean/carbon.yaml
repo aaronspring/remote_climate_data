@@ -84,7 +84,9 @@ sources:
         drop_variables: date
 
   MPI-SOM_FFN_cmorized:
-    description: 'Convert MPI-SOM_FFN from mol/m2/yr to kg m−2 s−1, see Orr et al 2017 https://doi.org/10.5194/gmd-10-2169-2017'
+    description: >-
+      Convert MPI-SOM_FFN from mol/m2/yr to kg m−2 s−1
+      see Orr et al 2017 https://doi.org/10.5194/gmd-10-2169-2017
     driver: intake.source.derived.GenericTransform
     args:
       targets:
