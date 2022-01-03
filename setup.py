@@ -11,6 +11,28 @@ else:
 with open("requirements.txt") as f:
     install_requires = f.read().strip().split("\n")
 
+extras_require = {}
+extras_require["test"] = [
+    "pytest",
+    "pre-commit",
+]
+extras_require["viz"] = [
+    "hvplot",
+    "xrviz",
+    "cartopy",
+    "geoviews",
+    "matplotlib",
+]
+extras_require["io"] = [
+    "netcdf4",
+    "h5netcdf",
+    "pydap",
+]
+extras_require["regionmask"] = ["regionmask", "intake_geopandas"]
+extras_require["geopandas"] = ["geopandas", "intake_geopandas"]
+extras_require["excel"] = ["openpyxl", "xlrd==1.2.0", "intake-excel"]
+extras_require["complete"] = sorted({v for req in extras_require.values() for v in req})
+
 CLASSIFIERS = [
     "Development Status :: 5 - Production/Stable",
     "License :: OSI Approved :: MIT License",
@@ -42,5 +64,5 @@ setup(
     url="https://github.com/aaronspring/remote_climate_data/",
     use_scm_version={"version_scheme": "post-release", "local_scheme": "dirty-tag"},
     zip_safe=False,
-    # extras_require=extras_require,
+    extras_require=extras_require,
 )

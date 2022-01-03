@@ -1,4 +1,6 @@
 intake
 intake-xarray
 intake-thredds
+fsspec
 aiohttp
+requests
