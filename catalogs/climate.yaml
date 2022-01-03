@@ -54,6 +54,8 @@ sources:
         sep: '  '
         skiprows: 3
         skipfooter: 4
+        dtype:
+          year: object
         names:
           - year
           - Jan
@@ -74,7 +76,18 @@ sources:
           - '-999.90'
           - '-99.90'
           - -99.90
+          - -99.0
+          - '-99.0'
         engine: python
+
+  NOAA_correlation_xr:
+    description: NOAA_correlation as xr.DataArray
+    driver: intake.source.derived.GenericTransform
+    args:
+      targets:
+        - NOAA_correlation
+      transform: "remote_climate_data.utils.convert.monthly_csv_to_DataArray"
+      transform_kwargs: {}
 
   NOAA_SST_anomaly_timeseries:
     description: Sea Surface Temperature Anomaly Indices derived from ERSST

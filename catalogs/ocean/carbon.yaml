@@ -19,8 +19,15 @@ sources:
 
   MPI-SOM_FFN:
     description: >-
-      An observation-based global monthly gridded sea surface pCO2 product from 1982
-      onward and its monthly climatology
+      An observation-based global monthly gridded sea surface pCO2 product from
+      1982 onward and its monthly climatology
+
+      Note: in case you face TimeoutError, increase timeout by:
+      ```python
+      from aiohttp import ClientTimeout
+      timeout = ClientTimeout(total=600)
+      fsspec.config.conf["https"] = dict(client_kwargs={"timeout": timeout})
+      ```
     driver: netcdf
     metadata:
       url: https://www.nodc.noaa.gov/ocads/oceans/SPCO2_1982_present_ETH_SOM_FFN.html
@@ -75,6 +82,17 @@ sources:
           same_names: True
       xarray_kwargs:
         drop_variables: date
+
+  MPI-SOM_FFN_cmorized:
+    description: >-
+      Convert MPI-SOM_FFN from mol/m2/yr to kg m−2 s−1
+      see Orr et al 2017 https://doi.org/10.5194/gmd-10-2169-2017
+    driver: intake.source.derived.GenericTransform
+    args:
+      targets:
+        - MPI-SOM_FFN
+      transform: "remote_climate_data.utils.convert.molC_per_yr_to_kg_per_s"
+      transform_kwargs: {}
 
   MPI-ULB-SOM_FFN:
     description: >-
