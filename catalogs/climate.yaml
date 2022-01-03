@@ -86,9 +86,6 @@ sources:
     args:
       targets:
         - NOAA_correlation
-      target_kwargs:
-          NOAA_correlation:
-              index: soi
       transform: "remote_climate_data.utils.convert.monthly_csv_to_DataArray"
       transform_kwargs: {}
 
