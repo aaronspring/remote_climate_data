@@ -626,7 +626,7 @@ sources:
       column-average dry-air mole fraction of atmospheric carbon dioxide
       xco2 ghgcci l3 v100 from 200301 to 201412 for obs4mip
     metadata:
-      tags:
+      tag:
         - cmor
         - obs4mip
       id: obs4MIPs.IUP.XCO2_CRDP3.xco2.mon.v100|esgf-data1.ceda.ac.uk
@@ -640,7 +640,7 @@ sources:
       column-average dry-air mole fraction of atmospheric methane
       xco4 ghgcci l3 v100 from 200301 to 201412 for obs4mip
     metadata:
-      tags:
+      tag:
         - cmor
         - obs4mip
       id: obs4MIPs.IUP.XCH4_CRDP3.xch4.mon.v100|esgf-data1.ceda.ac.uk
@@ -653,21 +653,21 @@ sources:
     description: >-
       Precipitation NASA-GSFC GPCP V2.3 for obs4mip
     metadata:
-      tags:
+      tag:
         - cmor
         - obs4mip
       readme: https://esgf.nccs.nasa.gov/esgdoc/GPCP_precip_SG-V2.3_TechNote_180510.pdf
       id: obs4MIPs.NASA-GSFC.GPCP-V2.3.atmos.mon.v20180519|dpesgf03.nccs.nasa.gov
     driver: netcdf
     args:
-      urlpath: simplecache::http://esgf-data1.ceda.ac.uk/thredds/fileServer/esg_esacci/ghg/data/obs4mips/crdp_3/CH4/v100/xch4_ghgcci_l3_v100_200301_201412.nc
+      urlpath: simplecache::https://dpesgf03.nccs.nasa.gov/thredds/fileServer/obs4MIPs/observations/NASA-GSFC/Obs-GPCP/GPCP/V2.3/atmos/pr/pr_GPCP-SG_L3_v2.3_197901-201710.nc
       chunks: {}
 
   pr_TRMM:
     description: >-
       Precipitation NASA-GSFC TRMM for obs4mip
     metadata:
-      tags:
+      tag:
         - cmor
         - obs4mip
       readme: https://esgf.nccs.nasa.gov/esgdoc/TMPA_precip_mon_Tech_Note.pdf

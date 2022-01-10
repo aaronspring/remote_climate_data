@@ -76,7 +76,7 @@ sources:
   Leaf_Area_Index:
     description: Leaf Area Index (LAI) for MODIS for obs4mip
     metadata:
-      tags:
+      tag:
         - cmor
     args:
       chunks:
