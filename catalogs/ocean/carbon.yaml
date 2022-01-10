@@ -12,7 +12,8 @@ sources:
     driver: netcdf
     args:
       urlpath: simplecache::https://ndownloader.figshare.com/files/23875943
-      chunks: {'time':'auto'}
+      chunks:
+        time: auto
       storage_options:
         simplecache:
           same_names: True
@@ -44,9 +45,7 @@ sources:
           groupby: time
           cmap: RdBu_r
           levels: 20
-          zlim:
-            - -10
-            - 10
+          clim: (-10, 10)
         fgco2_timeseries_location:
           title: fgco2 timeseries at (lon,lat) location
           kind: line
@@ -88,6 +87,9 @@ sources:
       Convert MPI-SOM_FFN from mol/m2/yr to kg m−2 s−1
       see Orr et al 2017 https://doi.org/10.5194/gmd-10-2169-2017
     driver: intake.source.derived.GenericTransform
+    metadata:
+      tags:
+        - cmor
     args:
       targets:
         - MPI-SOM_FFN
@@ -113,9 +115,7 @@ sources:
           groupby: time
           cmap: viridis
           levels: 20
-          zlim:
-            - -10
-            - 10
+          clim: (-10, 10)
         pco2_timeseries_location:
           title: pco2 timeseries at (lon,lat) location
           kind: line
