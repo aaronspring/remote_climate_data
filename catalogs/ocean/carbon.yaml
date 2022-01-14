@@ -247,13 +247,30 @@ sources:
 
   UEA-SI:
     description: >-
-      A statistical gap-filling method to interpolate global monthly surface ocean carbon dioxide data
+      A statistical gap-filling method to interpolate global monthly surface ocean
+      carbon dioxide data
     driver: netcdf
     metadata:
       doi:
         paper: 10.1002/ 2014MS000416
     args:
       urlpath: simplecache::zip://*.nc::http://store.pangaea.de/Publications/Jones_etal_2015/statistical_gap-filled_fco2_v1-0_20150910.nc.zip
+      chunks: {}
+
+  Jena-MLS:
+    description: >-
+      Sea-air CO2 flux based on the SOCAT data set of pCO2 observations, as presented
+      in [Rödenbeck et al., 2013].
+      The product comprises seasonal, interannual, and day-to-day variations.
+    driver: netcdf
+    metadata:
+      doi:
+        paper:
+          - 10.5194/bg-11-4599-2014
+          - 10.5194/os-9-193-2013
+        data: 10.17871/CarboScope-oc_v2021
+    args:
+      urlpath: simplecache::http://www.bgc-jena.mpg.de/CarboScope/oc/INVERSION/OUTPUT/oc_v2021_daily.nc
       chunks: {}
 
   SOCATv2020_tracks:

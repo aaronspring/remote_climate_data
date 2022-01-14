@@ -47,6 +47,8 @@ def test_item(cat, item_str):
         print("avoid testing CRU_TS requiring credentials at ceda\n")
     elif "WOA2018" in item_str:
         print("skip WOA")
+    elif "Jena-MLS" in item_str:
+        print("skip Jena-MLS")
     else:
         item = getattr(cat, item_str)
         if isinstance(item, intake.source.derived.GenericTransform):
