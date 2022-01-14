@@ -196,6 +196,28 @@ sources:
           same_names: True
       chunks: {}
 
+  NIES-NN:
+    description: >-
+      Global surface ocean CO2 concentration and uptake estimated using a neural
+      network (NN) of the National Institute for Global Environmental Studies (NIES)
+
+      alternatively try: "import xarray as xr; xr.open_mfdataset('nies.nn.co2w.flux.ver.2020.1/*.nc', concat_dim='month', combine='nested', engine='netcdf4').rename(dict(month='time')).assign_coords(time=xr.cftime_range(start='1985', freq='MS', end='2019'))"
+    driver: netcdf
+    metadata:
+      doi:
+        paper: 10.1175/JTECH-D-13-00137.1.
+        data: 10.17595/20201020.001
+      url: https://www.nies.go.jp/doi/10.17595/20201020.001-e.html
+    args:
+      urlpath: simplecache::zip://*/*.nc::https://db.cger.nies.go.jp/nies_data/10.17595/20201020.001/nies.nn.co2w.flux.ver.2020.1.zip
+      storage_options:
+        simplecache:
+          same_names: True
+      chunks: {}
+      xarray_kwargs:
+        concat_dim: month
+        combine: nested
+
   SOCATv2020_tracks:
     description: Gridded tracks SOCAT version 2020 data from BCDC Mirror (Zipped)
     driver: netcdf
