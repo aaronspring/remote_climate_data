@@ -201,7 +201,7 @@ sources:
       Global surface ocean CO2 concentration and uptake estimated using a neural
       network (NN) of the National Institute for Global Environmental Studies (NIES)
 
-      alternatively try: "import xarray as xr; xr.open_mfdataset('nies.nn.co2w.flux.ver.2020.1/*.nc', concat_dim='month', combine='nested', engine='netcdf4').rename(dict(month='time')).assign_coords(time=xr.cftime_range(start='1985', freq='MS', end='2019-12'))"
+      alternatively after to_dask() with "simplecache:same_names:True" try: "import xarray as xr; xr.open_mfdataset('nies.nn.co2w.flux.ver.2020.1/*.nc', concat_dim='month', combine='nested', engine='netcdf4').rename(dict(month='time')).assign_coords(time=xr.cftime_range(start='1985', freq='MS', end='2019-12'))"
     driver: netcdf
     metadata:
       doi:
@@ -210,9 +210,6 @@ sources:
       url: https://www.nies.go.jp/doi/10.17595/20201020.001-e.html
     args:
       urlpath: simplecache::zip://*/*.nc::https://db.cger.nies.go.jp/nies_data/10.17595/20201020.001/nies.nn.co2w.flux.ver.2020.1.zip
-      storage_options:
-        simplecache:
-          same_names: True
       chunks: {}
       xarray_kwargs:
         concat_dim: month
@@ -230,7 +227,7 @@ sources:
       calculated based on the difference between oceanic and atmospheric pCO2 and data
       on 10 m wind speeds. Details of the method are provided in Iida et al. (2021).
 
-      Loop over "year=range(1990,2021)" and "xr.open_mfdataset('JMA_co2map_*.nc',decode_times=False, concat_dim='time', combine='nested').assign_coords(time=xr.cftime_range(start='1990', freq='MS', end='2020-12'))"
+      Loop over "year=range(1990,2021)" with "simplecache:same_names:True" and "xr.open_mfdataset('JMA_co2map_*.nc',decode_times=False, concat_dim='time', combine='nested').assign_coords(time=xr.cftime_range(start='1990', freq='MS', end='2020-12'))"
     driver: netcdf
     metadata:
       doi:
@@ -244,12 +241,20 @@ sources:
         default: 2020
     args:
       urlpath: simplecache::zip://*.nc::http://www.data.jma.go.jp/gmd/kaiyou/data/english/co2_flux/grid/JMA_co2map_{{year}}.ZIP
-      storage_options:
-        simplecache:
-          same_names: True
       chunks: {}
       xarray_kwargs:
         decode_times: False
+
+  UEA-SI:
+    description: >-
+      A statistical gap-filling method to interpolate global monthly surface ocean carbon dioxide data
+    driver: netcdf
+    metadata:
+      doi:
+        paper: 10.1002/ 2014MS000416
+    args:
+      urlpath: simplecache::zip://*.nc::http://store.pangaea.de/Publications/Jones_etal_2015/statistical_gap-filled_fco2_v1-0_20150910.nc.zip
+      chunks: {}
 
   SOCATv2020_tracks:
     description: Gridded tracks SOCAT version 2020 data from BCDC Mirror (Zipped)
