@@ -64,6 +64,9 @@ sources:
     args:
       urlpath: simplecache::https://crudata.uea.ac.uk/cru/data/temperature/HadCRUT.5.0.0.0.analysis.anomalies.ensemble_mean.nc
       chunks: {}
+      xarray_kwargs:
+        use_cftime: True
+      
 
   HadCRUT5_Non-Infilled:
     description: >-
