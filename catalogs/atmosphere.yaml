@@ -64,6 +64,9 @@ sources:
     args:
       urlpath: simplecache::https://crudata.uea.ac.uk/cru/data/temperature/HadCRUT.5.0.0.0.analysis.anomalies.ensemble_mean.nc
       chunks: {}
+      xarray_kwargs:
+        use_cftime: True
+
 
   HadCRUT5_Non-Infilled:
     description: >-
@@ -149,7 +152,10 @@ sources:
         description: name of variable
         type: str
         default: TAVG
-        allowed: [TAVG, TMAX, TMIN]
+        allowed:
+          - TAVG
+          - TMAX
+          - TMIN
       s_res:
         description: >-
           spatial resolution; either in 15984 equal-area grid cells or a latitude-
@@ -157,7 +163,7 @@ sources:
           of our analyses and provides generally smaller files; however, that format
           may be less convenient for many users.
         type: str
-        default: EqualArea
+        default: LatLong1
         allowed:
           - LatLong1
           - EqualArea
@@ -178,7 +184,7 @@ sources:
           of our analyses and provides generally smaller files; however, that format
           may be less convenient for many users.
         type: str
-        default: EqualArea
+        default: LatLong1
         allowed:
           - LatLong1
           - EqualArea
