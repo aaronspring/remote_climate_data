@@ -201,7 +201,7 @@ sources:
       Global surface ocean CO2 concentration and uptake estimated using a neural
       network (NN) of the National Institute for Global Environmental Studies (NIES)
 
-      alternatively try: "import xarray as xr; xr.open_mfdataset('nies.nn.co2w.flux.ver.2020.1/*.nc', concat_dim='month', combine='nested', engine='netcdf4').rename(dict(month='time')).assign_coords(time=xr.cftime_range(start='1985', freq='MS', end='2019'))"
+      alternatively try: "import xarray as xr; xr.open_mfdataset('nies.nn.co2w.flux.ver.2020.1/*.nc', concat_dim='month', combine='nested', engine='netcdf4').rename(dict(month='time')).assign_coords(time=xr.cftime_range(start='1985', freq='MS', end='2019-12'))"
     driver: netcdf
     metadata:
       doi:
@@ -217,6 +217,39 @@ sources:
       xarray_kwargs:
         concat_dim: month
         combine: nested
+
+  JMA-MLR:
+    description: >-
+      Gridded data for global carbon dioxide partial pressure (pCO2), sea-air CO2 flux,
+      pH, dissolved inorganic carbon(DIC) and total alkalinity(TA).
+
+      The JMA Ocean CO2 Map dataset consists of information on monthly oceanic pCO2 and
+      CO2 uptake over a grid of 1° latitude × 1° longitude squares. The pCO2 field is
+      calculated using analytical sea surface temperatures, salinity and chlorophyll-a
+      concentration data from satellite observation, and that of CO2 uptake is
+      calculated based on the difference between oceanic and atmospheric pCO2 and data
+      on 10 m wind speeds. Details of the method are provided in Iida et al. (2021).
+
+      Loop over "year=range(1990,2021)" and "xr.open_mfdataset('JMA_co2map_*.nc',decode_times=False, concat_dim='time', combine='nested').assign_coords(time=xr.cftime_range(start='1990', freq='MS', end='2020-12'))"
+    driver: netcdf
+    metadata:
+      doi:
+        paper: 10.1007/s10872-020-00571-5
+      url: http://www.data.jma.go.jp/gmd/kaiyou/english/co2_flux/co2_flux_data_en.html
+    parameters:
+      year:
+        description: year
+        type: int
+        min: 1990
+        default: 2020
+    args:
+      urlpath: simplecache::zip://*.nc::http://www.data.jma.go.jp/gmd/kaiyou/data/english/co2_flux/grid/JMA_co2map_{{year}}.ZIP
+      storage_options:
+        simplecache:
+          same_names: True
+      chunks: {}
+      xarray_kwargs:
+        decode_times: False
 
   SOCATv2020_tracks:
     description: Gridded tracks SOCAT version 2020 data from BCDC Mirror (Zipped)
