@@ -196,6 +196,83 @@ sources:
           same_names: True
       chunks: {}
 
+  NIES-NN:
+    description: >-
+      Global surface ocean CO2 concentration and uptake estimated using a neural
+      network (NN) of the National Institute for Global Environmental Studies (NIES)
+
+      alternatively after to_dask() with "simplecache:same_names:True" try: "import xarray as xr; xr.open_mfdataset('nies.nn.co2w.flux.ver.2020.1/*.nc', concat_dim='month', combine='nested', engine='netcdf4').rename(dict(month='time')).assign_coords(time=xr.cftime_range(start='1985', freq='MS', end='2019-12'))"
+    driver: netcdf
+    metadata:
+      doi:
+        paper: 10.1175/JTECH-D-13-00137.1.
+        data: 10.17595/20201020.001
+      url: https://www.nies.go.jp/doi/10.17595/20201020.001-e.html
+    args:
+      urlpath: simplecache::zip://*/*.nc::https://db.cger.nies.go.jp/nies_data/10.17595/20201020.001/nies.nn.co2w.flux.ver.2020.1.zip
+      chunks: {}
+      xarray_kwargs:
+        concat_dim: month
+        combine: nested
+
+  JMA-MLR:
+    description: >-
+      Gridded data for global carbon dioxide partial pressure (pCO2), sea-air CO2 flux,
+      pH, dissolved inorganic carbon(DIC) and total alkalinity(TA).
+
+      The JMA Ocean CO2 Map dataset consists of information on monthly oceanic pCO2 and
+      CO2 uptake over a grid of 1° latitude × 1° longitude squares. The pCO2 field is
+      calculated using analytical sea surface temperatures, salinity and chlorophyll-a
+      concentration data from satellite observation, and that of CO2 uptake is
+      calculated based on the difference between oceanic and atmospheric pCO2 and data
+      on 10 m wind speeds. Details of the method are provided in Iida et al. (2021).
+
+      Loop over "year=range(1990,2021)" with "simplecache:same_names:True" and "xr.open_mfdataset('JMA_co2map_*.nc',decode_times=False, concat_dim='time', combine='nested').assign_coords(time=xr.cftime_range(start='1990', freq='MS', end='2020-12'))"
+    driver: netcdf
+    metadata:
+      doi:
+        paper: 10.1007/s10872-020-00571-5
+      url: http://www.data.jma.go.jp/gmd/kaiyou/english/co2_flux/co2_flux_data_en.html
+    parameters:
+      year:
+        description: year
+        type: int
+        min: 1990
+        default: 2020
+    args:
+      urlpath: simplecache::zip://*.nc::http://www.data.jma.go.jp/gmd/kaiyou/data/english/co2_flux/grid/JMA_co2map_{{year}}.ZIP
+      chunks: {}
+      xarray_kwargs:
+        decode_times: False
+
+  UEA-SI:
+    description: >-
+      A statistical gap-filling method to interpolate global monthly surface ocean
+      carbon dioxide data
+    driver: netcdf
+    metadata:
+      doi:
+        paper: 10.1002/ 2014MS000416
+    args:
+      urlpath: simplecache::zip://*.nc::http://store.pangaea.de/Publications/Jones_etal_2015/statistical_gap-filled_fco2_v1-0_20150910.nc.zip
+      chunks: {}
+
+  Jena-MLS:
+    description: >-
+      Sea-air CO2 flux based on the SOCAT data set of pCO2 observations, as presented
+      in [Rödenbeck et al., 2013].
+      The product comprises seasonal, interannual, and day-to-day variations.
+    driver: netcdf
+    metadata:
+      doi:
+        paper:
+          - 10.5194/bg-11-4599-2014
+          - 10.5194/os-9-193-2013
+        data: 10.17871/CarboScope-oc_v2021
+    args:
+      urlpath: simplecache::http://www.bgc-jena.mpg.de/CarboScope/oc/INVERSION/OUTPUT/oc_v2021_daily.nc
+      chunks: {}
+
   SOCATv2020_tracks:
     description: Gridded tracks SOCAT version 2020 data from BCDC Mirror (Zipped)
     driver: netcdf

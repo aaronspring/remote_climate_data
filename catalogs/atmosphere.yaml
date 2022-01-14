@@ -7,6 +7,7 @@ sources:
     description: >-
       Combined land [CRUTEM4] and marine [SST anomalies from HadSST3] temperature
       anomalies on a 5° by 5° grid (Morice et al., 2012)
+      Recommended to use HadCRUT5.
     metadata:
       url: https://crudata.uea.ac.uk/cru/data/temperature/
       doi: http://doi.org/10.1029/2011JD017187
@@ -648,6 +649,8 @@ sources:
     args:
       urlpath: simplecache::http://esgf-data1.ceda.ac.uk/thredds/fileServer/esg_esacci/ghg/data/obs4mips/crdp_3/CH4/v100/xch4_ghgcci_l3_v100_200301_201412.nc
       chunks: {}
+
+
 
   pr_GPCP:
     description: >-

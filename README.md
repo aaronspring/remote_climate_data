@@ -7,7 +7,7 @@ a collection of remote climate data accessed via `intake` cached to disk
 ```python
 import intake
 cat = intake.open_catalog('https://raw.githubusercontent.com/aaronspring/remote_climate_data/master/master.yaml')
-cat.atmosphere.HadCRUT4.to_dask()
+cat.atmosphere.HadCRUT5.to_dask()
 ```
 
 To explore the whole catalog, you can try:
@@ -25,14 +25,17 @@ Make data access for climate data easy:
 
 
 ## Contribute and extend
-- PRs for new remote climate datasets or useful shapefiles are very welcome
-- Extendable with THREDDS catalogs via https://github.com/NCAR/intake-thredds
+- PRs for new remote climate datasets or useful geoshapes are very welcome
+
 
 ## Relies on
-- `intake`: https://intake.readthedocs.io/en/latest/
-- `intake_xarray`: https://intake-xarray.readthedocs.io/en/latest/
-- (optional) `intake_geopandas`: https://github.com/intake_geopandas/intake_geopandas.git for shapefiles
-- (optional) `hvplot`: https://hvplot.holoviz.org/index.html for plotting
+- `intake`: https://intake.readthedocs.io/en/latest/ for catalogs and `csv`
+- `intake_xarray`: https://intake-xarray.readthedocs.io/en/latest/ for NetCDF `nc`
+- `intake_thredds`: https://github.com/intake/intake-thredds for NetCDF `nc` via THREDDS
+- `intake_excel`: https://github.com/edjdavid/intake-excel/issues for Excel `xls` and `xlsx`
+- `intake_geopandas`: https://github.com/intake_geopandas/intake_geopandas.git for shapefiles `shp`, GeoJSON `geo.json`, GeoParquet `parquet`, `PostGIS` databases, `Spatialite` databases
+- `regionmask`: https://regionmask.readthedocs.io/ for aggregating over geoshapes
+- `hvplot`: https://hvplot.holoviz.org/index.html for plotting
 
 
 ## Similar projects

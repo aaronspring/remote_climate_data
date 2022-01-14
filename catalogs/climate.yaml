@@ -2,10 +2,10 @@ plugins:
   source:
     - module: intake_xarray, intake_excel
 sources:
-  Global_Carbon_Budget:
+  Global_Carbon_Budget_2020:
     description: GCP 2020
     metadata:
-      url: https://www.globalcarbonproject.org/carbonbudget/20/publications.htm
+      url: https://www.globalcarbonproject.org/carbonbudget/
       doi:
         - http://doi.org/10.18160/gcp-2020
         - http://doi.org/10.5194/essd-12-3269-2020
@@ -20,6 +20,25 @@ sources:
         sheet_name: 'Global Carbon Budget'
         index_col: Year
         skipfooter: 4
+
+  Global_Carbon_Budget_2021:
+    description: GCP 2021
+    metadata:
+      url: https://www.globalcarbonproject.org/carbonbudget/
+      doi:
+        - https://doi.org/10.5194/essd-2021-386
+        - https://doi.org/10.18160/gcp-2021
+      plots:
+        over_time:
+          kind: line
+    driver: excel
+    args:
+      urlpath: simplecache::https://data.icos-cp.eu/licence_accept?ids=%5B%220ST81nXCND5VfAQdOCSJDveT%22%5D
+      excel_kwargs:
+        header: 20
+        sheet_name: 'Global Carbon Budget'
+        index_col: Year
+        skipfooter: 0
 
   NOAA_correlation:
     description: climate indices from psl.noaa.gov/data/correlation
