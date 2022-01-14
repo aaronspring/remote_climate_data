@@ -27,6 +27,6 @@ repos:
     - id: isort
 
   - repo: https://github.com/adrienverge/yamllint.git
-  rev: v1.17.0
-  hooks:
+    rev: v1.17.0
+    hooks:
     - id: yamllint
