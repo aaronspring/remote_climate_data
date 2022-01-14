@@ -152,7 +152,10 @@ sources:
         description: name of variable
         type: str
         default: TAVG
-        allowed: [TAVG, TMAX, TMIN]
+        allowed:
+          - TAVG
+          - TMAX
+          - TMIN
       s_res:
         description: >-
           spatial resolution; either in 15984 equal-area grid cells or a latitude-
@@ -160,7 +163,7 @@ sources:
           of our analyses and provides generally smaller files; however, that format
           may be less convenient for many users.
         type: str
-        default: EqualArea
+        default: LatLong1
         allowed:
           - LatLong1
           - EqualArea
@@ -181,7 +184,7 @@ sources:
           of our analyses and provides generally smaller files; however, that format
           may be less convenient for many users.
         type: str
-        default: EqualArea
+        default: LatLong1
         allowed:
           - LatLong1
           - EqualArea
