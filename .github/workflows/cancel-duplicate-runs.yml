@@ -3,10 +3,7 @@ name: Cancel
 
 on:
   workflow_run:
-    workflows:
-      - comment binder PR link
-      - Lint
-      - testing
+    workflows: ["comment binder PR link", "Lint", "testing"]
     types:
       - requested
 jobs:
