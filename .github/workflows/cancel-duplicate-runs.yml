@@ -1,4 +1,6 @@
+---
 name: Cancel
+
 on:
   workflow_run:
     workflows: ["comment binder PR link", "Lint", "testing"]
@@ -9,6 +11,6 @@ jobs:
     name: Cancel previous runs
     runs-on: ubuntu-latest
     steps:
-    - uses: styfle/cancel-workflow-action@0.9.1
-      with:
-        workflow_id: ${{ github.event.workflow.id }}
+      - uses: styfle/cancel-workflow-action@0.9.1
+        with:
+          workflow_id: ${{github.event.workflow.id}}

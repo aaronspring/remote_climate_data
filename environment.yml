@@ -1,3 +1,4 @@
+---
 name: remote_climate_data-dev
 channels:
   - conda-forge

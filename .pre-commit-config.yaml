@@ -1,3 +1,4 @@
+---
 repos:
   - repo: https://github.com/pre-commit/pre-commit-hooks
     rev: v4.1.0
@@ -12,16 +13,21 @@ repos:
   - repo: https://github.com/psf/black
     rev: 21.12b0
     hooks:
-    - id: black
+      - id: black
 
   - repo: https://github.com/PyCQA/flake8
     rev: 4.0.1
     hooks:
-    - id: flake8
-      args:
-        - --extend-ignore=E722
+      - id: flake8
+        args:
+          - --extend-ignore=E722
 
   - repo: https://github.com/PyCQA/isort
     rev: 5.10.1
     hooks:
-    - id: isort
+      - id: isort
+
+  - repo: https://github.com/adrienverge/yamllint.git
+    rev: v1.17.0
+    hooks:
+      - id: yamllint

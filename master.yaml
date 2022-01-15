@@ -1,3 +1,4 @@
+---
 description: remote_climate_data master
 sources:
 
@@ -25,7 +26,8 @@ sources:
   climate:
     args:
       path: "{{CATALOG_DIR}}/catalogs/climate.yaml"
-    description: remote climate data. everything that does not fit into ocean, land or atmosphere
+    description: >
+      remote climate data. everything that does not fit into ocean, land or atmosphere
     driver: intake.catalog.local.YAMLFileCatalog
     metadata: {}
 

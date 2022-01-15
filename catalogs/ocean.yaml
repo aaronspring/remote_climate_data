@@ -1,3 +1,4 @@
+---
 plugins:
   source:
     - module: intake_xarray
@@ -13,8 +14,8 @@ sources:
     metadata:
       url: https://www.metoffice.gov.uk/hadobs/hadsst3/
       doi:
-      - http://doi.org/10.1029/2010JD015218
-      - http://doi.org/10.1029/2010JD015220
+        - http://doi.org/10.1029/2010JD015218
+        - http://doi.org/10.1029/2010JD015220
     driver: netcdf
     parameters:
       file:
@@ -95,46 +96,46 @@ sources:
         type: str
         default: decav
         allowed:
-          - decav # average
-          - 5564 # 1955-1964
+          - decav  # average
+          - 5564  # 1955-1964
           - 6574
           - 7584
           - 8594
-          - 95A4 # 1995-2004
-          - A5B7 # 2005-2017
-          - 81B0 # 1981-2010
+          - 95A4  # 1995-2004
+          - A5B7  # 2005-2017
+          - 81B0  # 1981-2010
       TT:
         description: time period
         type: int
         default: 0
         allowed:
-          - 0 # annual
-          - 1 # Jan
-          - 2 # Feb
-          - 3 # Mar
-          - 4 # Apr
-          - 5 # May
-          - 6 # Jun
-          - 7 # Jul
-          - 8 # Aug
-          - 9 # Sep
-          - 10 # Oct
-          - 11 # Nov
-          - 12 # Dec
-          - 13 # winter
-          - 14 # spring
-          - 15 # summer
-          - 16 # autumn
+          - 0  # annual
+          - 1  # Jan
+          - 2  # Feb
+          - 3  # Mar
+          - 4  # Apr
+          - 5  # May
+          - 6  # Jun
+          - 7  # Jul
+          - 8  # Aug
+          - 9  # Sep
+          - 10  # Oct
+          - 11  # Nov
+          - 12  # Dec
+          - 13  # winter
+          - 14  # spring
+          - 15  # summer
+          - 16  # autumn
       GG:
         description: grid
         type: str
         default: 1.00
         allowed:
-          - 5.00 # 5°
-          - 1.00 # 1°
-          - 0.25 # 1/4°
+          - 5.00  # 5°
+          - 1.00  # 1°
+          - 0.25  # 1/4°
       GG2:
-        description: matching grid GG # inconsistency in WOA2018 file naming
+        description: matching grid GG  # inconsistency in WOA2018 file naming
         type: str
         default: 01
         allowed:
@@ -142,7 +143,7 @@ sources:
           - 01
           - 04
     args:
-      urlpath: https://www.ncei.noaa.gov/thredds-ocean/fileServer/ncei/woa/{{variable}}/{{DDDD}}/{{GG}}/woa18_{{DDDD}}_{{variable[0]}}{{ "%02d" | format(TT) }}_{{GG2}}.nc
+      urlpath: https://www.ncei.noaa.gov/thredds-ocean/fileServer/ncei/woa/{{variable}}/{{DDDD}}/{{GG}}/woa18_{{DDDD}}_{{variable[0]}}{{"%02d"|format(TT)}}_{{GG2}}.nc
       xarray_kwargs:
         decode_times: false
 
@@ -180,8 +181,8 @@ sources:
         description: time
         type: datetime
         default: 2005.01.01
-        min: 1981.09.01 # 2002.06.01 amsr-avhrr
-        max: 2020.04.01 # avhrr-only # 2011.10.04 amsr-avhrr
+        min: 1981.09.01  # 2002.06.01 amsr-avhrr
+        max: 2020.04.01  # avhrr-only # 2011.10.04 amsr-avhrr
       kind:
         description: >-
           There are two kinds of daily OISST, named after the relevant satellite SST
@@ -225,5 +226,5 @@ sources:
           - icec
     args:
       path:
-      - "{{var}}.day.mean.{{year}}.v2.nc"
+        - "{{var}}.day.mean.{{year}}.v2.nc"
       url: https://psl.noaa.gov/thredds/catalog/Datasets/noaa.oisst.v2.highres/catalog.xml

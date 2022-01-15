@@ -1,3 +1,4 @@
+---
 plugins:
   source:
     - module: intake_xarray
@@ -16,7 +17,7 @@ sources:
         time: auto
       storage_options:
         simplecache:
-          same_names: True
+          same_names: true
 
   MPI-SOM_FFN:
     description: >-
@@ -78,7 +79,7 @@ sources:
         time: 120
       storage_options:
         simplecache:
-          same_names: True
+          same_names: true
       xarray_kwargs:
         drop_variables: date
 
@@ -130,7 +131,7 @@ sources:
         time: 120
       storage_options:
         simplecache:
-          same_names: True
+          same_names: true
       xarray_kwargs:
         drop_variables:
           - lat_bnds
@@ -152,7 +153,7 @@ sources:
       urlpath: simplecache::https://www.ncei.noaa.gov/data/oceans/ncei/ocads/data/0221526/MOBO-DIC_MPIM_monthly_clim.nc
       storage_options:
         simplecache:
-          same_names: True
+          same_names: true
       chunks: {}
 
   OceanSODA-ETHZ:
@@ -193,7 +194,7 @@ sources:
       urlpath: simplecache::https://www.ncei.noaa.gov/data/oceans/ncei/ocads/data/0220059/OceanSODA-ETHZ_GRaCER_v2021a_1982-2020.nc
       storage_options:
         simplecache:
-          same_names: True
+          same_names: true
       chunks: {}
 
   NIES-NN:
@@ -201,7 +202,10 @@ sources:
       Global surface ocean CO2 concentration and uptake estimated using a neural
       network (NN) of the National Institute for Global Environmental Studies (NIES)
 
-      alternatively after to_dask() with "simplecache:same_names:True" try: "import xarray as xr; xr.open_mfdataset('nies.nn.co2w.flux.ver.2020.1/*.nc', concat_dim='month', combine='nested', engine='netcdf4').rename(dict(month='time')).assign_coords(time=xr.cftime_range(start='1985', freq='MS', end='2019-12'))"
+      alternatively after to_dask() with "simplecache:same_names:true" try
+      "import xarray as xr; xr.open_mfdataset('nies.nn.co2w.flux.ver.2020.1/*.nc',
+      concat_dim='month', combine='nested', engine='netcdf4').rename(dict(month='time')
+      ).assign_coords(time=xr.cftime_range(start='1985', freq='MS', end='2019-12'))"
     driver: netcdf
     metadata:
       doi:
@@ -227,7 +231,10 @@ sources:
       calculated based on the difference between oceanic and atmospheric pCO2 and data
       on 10 m wind speeds. Details of the method are provided in Iida et al. (2021).
 
-      Loop over "year=range(1990,2021)" with "simplecache:same_names:True" and "xr.open_mfdataset('JMA_co2map_*.nc',decode_times=False, concat_dim='time', combine='nested').assign_coords(time=xr.cftime_range(start='1990', freq='MS', end='2020-12'))"
+      Loop over "year=range(1990,2021)" with "simplecache:same_names:true" and
+      "xr.open_mfdataset('JMA_co2map_*.nc', decode_times=False, concat_dim='time',
+      combine='nested').assign_coords(time=xr.cftime_range(start='1990', freq='MS',
+      end='2020-12'))"
     driver: netcdf
     metadata:
       doi:
@@ -243,7 +250,7 @@ sources:
       urlpath: simplecache::zip://*.nc::http://www.data.jma.go.jp/gmd/kaiyou/data/english/co2_flux/grid/JMA_co2map_{{year}}.ZIP
       chunks: {}
       xarray_kwargs:
-        decode_times: False
+        decode_times: false
 
   UEA-SI:
     description: >-
@@ -317,7 +324,7 @@ sources:
       time:
         description: time as string to subset, must at least be four char for year
         type: str
-        default: '1998' # starting 1998
+        default: 1998  # starting 1998
       var:
         description: variable name
         type: str
@@ -326,14 +333,14 @@ sources:
           - iop
           - chlor_a
           - rrs
-          # - kd expands to K_490 # all_products to products
+          #  - kd expands to K_490 # all_products to products
       t_res:
         description: temporal resolution
         type: str
         default: daily
         allowed:
           - daily
-          - monthly # 5day and 8day dont expand nicely
+          - monthly  # 5day and 8day dont expand nicely
       version:
         description: version name
         type: str

@@ -1,3 +1,4 @@
+---
 plugins:
   source:
     - module: intake_xarray, intake_excel
@@ -89,7 +90,7 @@ sources:
           - Oct
           - Nov
           - Dec
-        #index_col: 'year' not allowed by dd.read_csv but pd.read_csv
+        # index_col: 'year' not allowed by dd.read_csv but pd.read_csv
         na_values:
           - -999.90
           - '-999.90'
@@ -146,5 +147,5 @@ sources:
           - Oct
           - Nov
           - Dec
-        #index_col: 'year' not allowed by dd.read_csv but pd.read_csv
+        # index_col: 'year' not allowed by dd.read_csv but pd.read_csv
         engine: python
