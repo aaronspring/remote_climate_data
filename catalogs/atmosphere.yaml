@@ -1,3 +1,4 @@
+---
 plugins:
   source:
     - module: intake_xarray
@@ -27,13 +28,13 @@ sources:
           groupby: time
           label: Temperature Anomaly [K]
           cmap: RdBu_r
-          coastline: True
+          coastline: true
     driver: netcdf
     args:
       urlpath: simplecache::https://crudata.uea.ac.uk/cru/data/temperature/HadCRUT.4.6.0.0.median.nc
       chunks: {}
       xarray_kwargs:
-        use_cftime: True
+        use_cftime: true
 
   HadCRUT5:
     description: >-
@@ -59,7 +60,7 @@ sources:
           groupby: time
           label: Temperature Anomaly [K]
           cmap: RdBu_r
-          coastline: True
+          coastline: true
     driver: netcdf
     args:
       urlpath: simplecache::https://crudata.uea.ac.uk/cru/data/temperature/HadCRUT.5.0.0.0.analysis.anomalies.ensemble_mean.nc
@@ -119,10 +120,9 @@ sources:
         default: anom
         allowed:
           - anom
-          - ltm # long-term mean
+          - ltm  # long-term mean
     args:
       urlpath: simplecache::https://psl.noaa.gov/thredds/fileServer/Datasets/gistemp/{{realm}}/{{s_res}}/air.2x2.{{s_res[:-2]}}.mon.{{t_res}}.{{realm[:4]}}.nc
-        #alternatively simplecache::https://data.giss.nasa.gov/pub/gistemp/gistemp1200_GHCNv4_ERSSTv5.nc.gz
       chunks: {}
 
   NOAA_GlobalTemp:
@@ -218,7 +218,7 @@ sources:
       chunks: {}
       storage_options:
         simplecache:
-          same_names: True
+          same_names: true
       xarray_kwargs:
         engine: scipy
 
@@ -259,8 +259,8 @@ sources:
       urlpath: simplecache::https://www-users.york.ac.uk/~kdc3/papers/coverage2013/{{datasets}}_v2_0_0.nc.gz
       chunks: {}
       storage_options:
-         simplecache:
-           same_names: True
+        simplecache:
+          same_names: true
       xarray_kwargs:
         engine: scipy
 
@@ -289,10 +289,10 @@ sources:
         type: str
         default: mlo
         allowed:
-          - mlo # Mauna LOa
-          - brw # BarRow
-          - smo # American SaMOa
-          - spo # South POle
+          - mlo  # Mauna LOa
+          - brw  # BarRow
+          - smo  # American SaMOa
+          - spo  # South POle
       variable:
         description: variable
         type: str
@@ -304,9 +304,9 @@ sources:
       urlpath: ftp://aftp.cmdl.noaa.gov/data/trace_gases/{{variable}}/in-situ/surface/{{station}}/{{variable}}_{{station}}_surface-insitu_1_ccgg_{{freq}}Data.nc
       storage_options:
         simplecache:
-          same_names: True
+          same_names: true
       xarray_kwargs:
-        use_cftime: True
+        use_cftime: true
 
   NCEP_6h:
     description: NCEP reanalysis 6h
@@ -344,7 +344,7 @@ sources:
           - ncep.reanalysis.dailyavgs
     args:
       path:
-      - "{{var}}.{{year}}.nc"
+        - "{{var}}.{{year}}.nc"
       url: https://psl.noaa.gov/thredds/catalog/Datasets/{{freq}}/surface/catalog.xml
 
   NCEP_6h_gauss:
@@ -408,7 +408,7 @@ sources:
           - wspd
     args:
       path:
-      - "{{var}}.gauss.{{year}}.nc"
+        - "{{var}}.gauss.{{year}}.nc"
       url: https://psl.noaa.gov/thredds/catalog/Datasets/ncep.reanalysis/surface_gauss/catalog.xml
 
 
@@ -544,9 +544,10 @@ sources:
     metadata:
       url: https://www.odiac.org/index.html
       doi:
-        - 10.17595/20170411.001 # data
-        - 10.5194/acp-11-543-2011﻿ # journal
-        - 10.5194/essd-10-87-2018 # journal
+        data: 10.17595/20170411.001
+        paper:
+          - 10.5194/acp-11-543-2011﻿
+          - 10.5194/essd-10-87-2018
     driver: netcdf
     parameters:
       date:
@@ -574,9 +575,9 @@ sources:
       urlpath: ftp://aftp.cmdl.noaa.gov/data/ccgg/ODIAC/{{version}}/distrib/{{date.strftime("%Y")}}/{{date.strftime("%m")}}/fossil_fuel_1x1_{{date.strftime("%Y%m%d")}}.nc
       storage_options:
         simplecache:
-          same_names: True
+          same_names: true
       xarray_kwargs:
-        use_cftime: True
+        use_cftime: true
 
   NOAA_carbon_tracker:
     description: >-
@@ -618,9 +619,9 @@ sources:
       urlpath: simplecache::ftp://aftp.cmdl.noaa.gov/products/carbontracker/co2/{{version}}/molefractions/co2_total_monthly/{{version}}.molefrac_glb3x2_{{date.strftime("%Y-%m")}}.nc
       storage_options:
         simplecache:
-          same_names: True
+          same_names: true
       xarray_kwargs:
-        use_cftime: True
+        use_cftime: true
 
   xco2_ghgcci:
     description: >-
@@ -649,8 +650,6 @@ sources:
     args:
       urlpath: simplecache::http://esgf-data1.ceda.ac.uk/thredds/fileServer/esg_esacci/ghg/data/obs4mips/crdp_3/CH4/v100/xch4_ghgcci_l3_v100_200301_201412.nc
       chunks: {}
-
-
 
   pr_GPCP:
     description: >-
