@@ -68,7 +68,7 @@ sources:
 
   HadCRUT5_Non-Infilled:
     description: >-
-      Combined land [CRUTEM5] and marine [HadSST4] temperature anomalies on a 5° by 5°
+      Combined land CRUTEM5 and marine HadSST4 temperature anomalies on a 5° by 5°
       grid with geographical coverage limited to grid cells close to where we have
       measurements (Morice et al., 2020)
     metadata:
