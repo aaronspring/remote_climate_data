@@ -1,0 +1,34 @@
+---
+plugins:
+  source:
+    - module: intake_xarray
+
+sources:
+  GHS:
+    description: Global Human Settlement
+    metadata:
+      url: https://ghsl.jrc.ec.europa.eu/ghs_pop2019.php
+    driver: netcdf
+    parameter:
+      res:
+        description: spatial resolution
+        type: str
+        default: 1K
+        allowed:
+          - 1K
+          - 250
+          - 9ss
+          - 30ss
+      epoch:
+        description: epoch, year of data
+        type: int
+        default: 2015
+        allowed:
+          - 2015
+          - 2000
+          - 1990
+          - 1975 
+    args:
+      urlpath: simplecache::zip://*.tif::https://cidportal.jrc.ec.europa.eu/ftp/jrc-opendata/GHSL/GHS_POP_MT_GLOBE_R2019A/GHS_POP_E{{epoch}}_GLOBE_R2019A_54009_{{res}}/V1-0/GHS_POP_E{{epoch}}_GLOBE_R2019A_54009_{{res}}_V1_0.zip
+      xarray_kwargs:
+        engine: rasterio
