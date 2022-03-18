@@ -27,7 +27,7 @@ sources:
           - 2015
           - 2000
           - 1990
-          - 1975 
+          - 1975
     args:
       urlpath: simplecache::zip://*.tif::https://cidportal.jrc.ec.europa.eu/ftp/jrc-opendata/GHSL/GHS_POP_MT_GLOBE_R2019A/GHS_POP_E{{epoch}}_GLOBE_R2019A_54009_{{res}}/V1-0/GHS_POP_E{{epoch}}_GLOBE_R2019A_54009_{{res}}_V1_0.zip
       xarray_kwargs:
