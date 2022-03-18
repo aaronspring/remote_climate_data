@@ -13,7 +13,7 @@ sources:
       s_res:
         description: spatial resolution
         type: str
-        default: 1K
+        default: 30ss
         allowed:
           - 1K
           - 250
@@ -31,11 +31,12 @@ sources:
       epsg:
         description: coordinate system
         type: int
-        default: 54001
+        default: 4326
         allowed:
-          - 54001  # Mollweide
+          - 54009  # Mollweide
           - 4326  # WGS84
     args:
-      urlpath: simplecache::zip://*.tif::https://cidportal.jrc.ec.europa.eu/ftp/jrc-opendata/GHSL/GHS_POP_MT_GLOBE_R2019A/GHS_POP_E{{epoch}}_GLOBE_R2019A_{{epsg}}_{{res}}/V1-0/GHS_POP_E{{epoch}}_GLOBE_R2019A_{{epsg}}_{{s_res}}_V1_0.zip
+      urlpath: simplecache::zip://*.tif::https://cidportal.jrc.ec.europa.eu/ftp/jrc-opendata/GHSL/GHS_POP_MT_GLOBE_R2019A/GHS_POP_E{{epoch}}_GLOBE_R2019A_{{epsg}}_{{s_res}}/V1-0/GHS_POP_E{{epoch}}_GLOBE_R2019A_{{epsg}}_{{s_res}}_V1_0.zip
+      chunks: auto
       xarray_kwargs:
         engine: rasterio
