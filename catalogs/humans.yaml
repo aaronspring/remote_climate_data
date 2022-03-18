@@ -34,7 +34,7 @@ sources:
         default: 54001
         allowed:
           - 54001  # Mollweide
-          - 4326  # WGS84 
+          - 4326  # WGS84
     args:
       urlpath: simplecache::zip://*.tif::https://cidportal.jrc.ec.europa.eu/ftp/jrc-opendata/GHSL/GHS_POP_MT_GLOBE_R2019A/GHS_POP_E{{epoch}}_GLOBE_R2019A_{{epsg}}_{{res}}/V1-0/GHS_POP_E{{epoch}}_GLOBE_R2019A_{{epsg}}_{{s_res}}_V1_0.zip
       xarray_kwargs:
