@@ -44,3 +44,10 @@ sources:
     description: remote regionmask regions
     driver: intake.catalog.local.YAMLFileCatalog
     metadata: {}
+
+  humans:
+    args:
+      path: "{{CATALOG_DIR}}/catalogs/humans.yaml"
+    description: remote geoinformation about humans
+    driver: intake.catalog.local.YAMLFileCatalog
+    metadata: {}
