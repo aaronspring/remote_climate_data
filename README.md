@@ -15,7 +15,6 @@ To explore the whole catalog, you can try:
 cat.walk()
 ```
 
-
 ## Goal
 Make data access for climate data easy:
 - cacheable data
@@ -23,23 +22,21 @@ Make data access for climate data easy:
 - shareable catalogs
 - quick vizualisations
 
-
 ## Contribute and extend
 - PRs for new remote climate datasets or useful geoshapes are very welcome
 
-
 ## Relies on
-- `intake`: https://intake.readthedocs.io/en/latest/ for catalogs and `csv`
-- `intake_xarray`: https://intake-xarray.readthedocs.io/en/latest/ for NetCDF `nc`
-- `intake_thredds`: https://github.com/intake/intake-thredds for NetCDF `nc` via THREDDS
-- tif opt
-- cfgrib opt via intake xarray
-- `intake_excel`: https://github.com/edjdavid/intake-excel/issues for Excel `xls` and `xlsx`
-- `intake_geopandas`: https://github.com/intake_geopandas/intake_geopandas.git for shapefiles `shp`, GeoJSON `geo.json`, GeoParquet `parquet`, `PostGIS` databases, `Spatialite` databases
-- `regionmask`: https://regionmask.readthedocs.io/ for aggregating over geoshapes
-- `hvplot`: https://hvplot.holoviz.org/index.html for plotting
-
+- [`intake`](https://intake.readthedocs.io/en/latest/) for catalogs and `csv` and [`zarr`](https://github.com/zarr-developers/zarr-python)
+- [`fsspec`](https://filesystem-spec.readthedocs.io/en/latest/features.html#url-chaining) for caching
+- [`intake_xarray`](https://intake-xarray.readthedocs.io/en/latest/) for:
+  - `nc` using [`netcdf4`](https://github.com/Unidata/netcdf4-python)
+  - `tif` using [`rioxarray`](https://github.com/corteva/rioxarray)
+  - `grib` using [`cfgrib`](https://github.com/ecmwf/cfgrib/)
+- `intake_thredds`: https://github.com/intake/intake-thredds for using [`intake_xarray`](https://intake-xarray.readthedocs.io/en/latest/) via [THREDDS](https://www.unidata.ucar.edu/software/tds/current/)
+- [`intake_excel`](https://github.com/edjdavid/intake-excel) for Excel `xls` and `xlsx`
+- [`intake_geopandas`](https://github.com/intake/intake_geopandas) for shapefiles `shp`, GeoJSON `geo.json`, GeoParquet `parquet`, `PostGIS` databases, `Spatialite` databases
+- [`regionmask`](https://regionmask.readthedocs.io/) for aggregating over geoshapes
+- [`hvplot`](https://hvplot.holoviz.org/index.html) for plotting
 
 ## Similar projects
-- Pangeo's cloud data catalogs: https://github.com/pangeo-data/pangeo-datastore
-- what https://github.com/intake/intake-datasets intends to be
+- Pangeo's cloud data catalogs for multi GB and TB datasets: https://github.com/pangeo-data/pangeo-datastore
