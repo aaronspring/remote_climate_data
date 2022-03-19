@@ -33,7 +33,7 @@ Make data access for climate data easy:
 - `intake_xarray`: https://intake-xarray.readthedocs.io/en/latest/ for NetCDF `nc`
 - `intake_thredds`: https://github.com/intake/intake-thredds for NetCDF `nc` via THREDDS
 - tif opt
-- cfgrib opt via intake xarray 
+- cfgrib opt via intake xarray
 - `intake_excel`: https://github.com/edjdavid/intake-excel/issues for Excel `xls` and `xlsx`
 - `intake_geopandas`: https://github.com/intake_geopandas/intake_geopandas.git for shapefiles `shp`, GeoJSON `geo.json`, GeoParquet `parquet`, `PostGIS` databases, `Spatialite` databases
 - `regionmask`: https://regionmask.readthedocs.io/ for aggregating over geoshapes
