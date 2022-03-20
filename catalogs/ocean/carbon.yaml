@@ -202,10 +202,10 @@ sources:
       Global surface ocean CO2 concentration and uptake estimated using a neural
       network (NN) of the National Institute for Global Environmental Studies (NIES)
 
-      alternatively after to_dask() with "simplecache:same_names:true" try
-      "import xarray as xr; xr.open_mfdataset('nies.nn.co2w.flux.ver.2020.1/*.nc',
-      concat_dim='month', combine='nested', engine='netcdf4').rename(dict(month='time')
-      ).assign_coords(time=xr.cftime_range(start='1985', freq='MS', end='2019-12'))"
+      alternatively after `to_dask()` with "simplecache:same_names:true" try
+      `import xarray as xr; xr.open_mfdataset("nies.nn.co2w.flux.ver.2020.1/*.nc",
+      concat_dim="month", combine="nested", engine="netcdf4").rename(dict(month="time")
+      ).assign_coords(time=xr.cftime_range(start="1985", freq="MS", end="2019-12"))`
     driver: netcdf
     metadata:
       doi:
