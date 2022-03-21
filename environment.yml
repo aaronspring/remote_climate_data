@@ -32,6 +32,6 @@ dependencies:
   - pip
   - pip:  # get latest master from source
       - git+https://github.com/edjdavid/intake-excel.git
-      # - openpyxl
-      - xlrd==1.2.0  # newer versions dont support xlsx
+      - openpyxl
+      #- xlrd==1.2.0  # newer versions dont support xlsx
       - -e .
