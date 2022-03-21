@@ -6,6 +6,7 @@ dependencies:
   - python=3.8
   - intake
   - xarray
+  - pandas==1.3.0
   - intake-xarray
   - intake-thredds
   - geopandas
@@ -31,6 +32,6 @@ dependencies:
   - pip
   - pip:  # get latest master from source
       - git+https://github.com/edjdavid/intake-excel.git
-      - openpyxl
+      # - openpyxl
       - xlrd==1.2.0  # newer versions dont support xlsx
       - -e .
