@@ -279,7 +279,7 @@ sources:
     args:
       urlpath: simplecache::http://www.bgc-jena.mpg.de/CarboScope/oc/INVERSION/OUTPUT/oc_v2021_daily.nc
       chunks: {}
-      
+
   SeaFlux:
     description: >-
       harmonised sea-air CO2 fluxes from surface pCO2 data products using a standardised approach
