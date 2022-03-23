@@ -286,8 +286,17 @@ sources:
     metadata:
       website: https://zenodo.org/record/5148460
     driver: netcdf
+    parameters:
+      version:
+        description: version name
+        type: str
+        default: "2021.02"
+      name:
+        description: dataset name
+        type: str
+        default: spco2_SOCOM_ensemble
     args:
-      urlpath: https://zenodo.org/api/files/da9bc706-d312-4876-a38f-24e9d667c38a/SeaFlux_v2021.02_spco2_SOCOM_ensemble.nc
+      urlpath: simplecache::https://zenodo.org/api/files/da9bc706-d312-4876-a38f-24e9d667c38a/SeaFlux_v{{version}}_{{name}}.nc
       chunks: auto
 
   SOCATv2020_tracks:
