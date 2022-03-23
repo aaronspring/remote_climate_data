@@ -280,6 +280,25 @@ sources:
       urlpath: simplecache::http://www.bgc-jena.mpg.de/CarboScope/oc/INVERSION/OUTPUT/oc_v2021_daily.nc
       chunks: {}
 
+  SeaFlux:
+    description: >-
+      harmonised sea-air CO2 fluxes from surface pCO2 data products using a standardised approach
+    metadata:
+      website: https://zenodo.org/record/5148460
+    driver: netcdf
+    parameters:
+      version:
+        description: version name
+        type: str
+        default: "2021.02"
+      name:
+        description: dataset name
+        type: str
+        default: spco2_SOCOM_ensemble
+    args:
+      urlpath: simplecache::https://zenodo.org/api/files/da9bc706-d312-4876-a38f-24e9d667c38a/SeaFlux_v{{version}}_{{name}}.nc
+      chunks: auto
+
   SOCATv2020_tracks:
     description: Gridded tracks SOCAT version 2020 data from BCDC Mirror (Zipped)
     driver: netcdf
