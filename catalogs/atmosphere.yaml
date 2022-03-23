@@ -643,6 +643,20 @@ sources:
       urlpath: simplecache::http://esgf-data1.ceda.ac.uk/thredds/fileServer/esg_esacci/ghg/data/obs4mips/crdp_3/CO2/v100/xco2_ghgcci_l3_v100_200301_201412.nc
       chunks: {}
 
+  xco2_v4:
+    description: >-
+      XCO2_OBS4MIPS_2x2 v4 2003-2019 monthly on a 2x2 degree grid for obs4mip
+      column-average dry-air mole fraction of atmospheric carbon dioxide
+    metadata:
+      tag:
+        - cmor
+        - obs4mip
+      readme: https://www.iup.uni-bremen.de/carbon_ghg/data/Satellite_XCO2_OBS4MIPS_v4p2_2x2_4C_TN_v1.pdf
+    driver: netcdf
+    args:
+      urlpath: simplecache::https://www.iup.uni-bremen.de/carbon_ghg/data/xco2_c3s_l3_v42_200301_201912_2x2.nc
+      chunks: auto
+
   xco4_ghgcci:
     description: >-
       column-average dry-air mole fraction of atmospheric methane
