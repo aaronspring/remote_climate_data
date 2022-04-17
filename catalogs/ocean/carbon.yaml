@@ -282,7 +282,8 @@ sources:
 
   SeaFlux:
     description: >-
-      harmonised sea-air CO2 fluxes from surface pCO2 data products using a standardised approach
+      harmonised sea-air CO2 fluxes from surface pCO2 data products
+      using a standardised approach
     metadata:
       website: https://zenodo.org/record/5148460
     driver: netcdf
