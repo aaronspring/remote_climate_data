@@ -1,42 +1,7 @@
 import xarray as xr
-from matplotlib.colors import ListedColormap
 
-cmap = ListedColormap(
-    [
-        "#960000",
-        "#FF0000",
-        "#FF6E6E",
-        "#FFCCCC",
-        "#CC8D14",
-        "#CCAA54",
-        "#FFCC00",
-        "#FFFF64",
-        "#007800",
-        "#005000",
-        "#003200",
-        "#96FF00",
-        "#00D700",
-        "#00AA00",
-        "#BEBE00",
-        "#8C8C00",
-        "#5A5A00",
-        "#550055",
-        "#820082",
-        "#C800C8",
-        "#FF6EFF",
-        "#646464",
-        "#8C8C8C",
-        "#BEBEBE",
-        "#E6E6E6",
-        "#6E28B4",
-        "#B464FA",
-        "#C89BFA",
-        "#C8C8FF",
-        "#6496FF",
-        "#64FFFF",
-        "#F5FFFF",
-    ]
-)
+from matplotlib.colors import ListedColormap
+cmap = ListedColormap(["#960000", "#FF0000", "#FF6E6E", "#FFCCCC", "#CC8D14", "#CCAA54", "#FFCC00", "#FFFF64", "#007800", "#005000", "#003200", "#96FF00", "#00D700", "#00AA00", "#BEBE00", "#8C8C00", "#5A5A00", "#550055", "#820082", "#C800C8", "#FF6EFF", "#646464", "#8C8C8C", "#BEBEBE", "#E6E6E6", "#6E28B4", "#B464FA", "#C89BFA", "#C8C8FF", "#6496FF", "#64FFFF", "#F5FFFF"])
 
 
 def attach_abbrevs(f):
@@ -104,12 +69,13 @@ def get_all_future(res=1):
     """Load all future scenario Geiger Koeppen Classifications as xr.DataArray."""
     scenarios = ["A1FI","A2","B1","B2"]
     periods = ["2001-2025","2026-2050","2051-2075","2076-2100"]
-
+    
+    cat = intake.open_catalog("master.yaml").shapefiles
     fut = []
     for scenario in scenarios:
         scenario_ds = []
         for period in periods:
-            scenario_ds.append(cat.shapefiles.GeigerKoeppen_xr(transform_kwargs=dict(res=1),target_kwargs=dict(GeigerKoeppen_shp=dict(period=f"{period}_{scenario}"))).read())
+            scenario_ds.append(cat.GeigerKoeppen_xr(transform_kwargs=dict(res=1),target_kwargs=dict(GeigerKoeppen_shp=dict(period=f"{period}_{scenario}"))).read())
         fut.append(xr.concat(scenario_ds,"period"))
     fut = xr.concat(fut,"scenario").assign_coords(scenario=scenarios,period=periods)
     return fut
