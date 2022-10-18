@@ -1,7 +1,6 @@
+import intake
 import xarray as xr
 from matplotlib.colors import ListedColormap
-
-import intake
 
 cat = intake.open_catalog("master.yaml").shapefiles
 
