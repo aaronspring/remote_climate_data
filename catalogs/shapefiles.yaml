@@ -107,7 +107,7 @@ sources:
   GeigerKoeppen_xr:
     description: >-
       Köppen-Geiger climate classification xarray.DataArray
-      
+
       Note: Use `transform_kwargs` to be passed to the transform function. Use `target_kwargs: target` to be passed to the target.
       https://github.com/intake/intake/issues/638
       ```python
