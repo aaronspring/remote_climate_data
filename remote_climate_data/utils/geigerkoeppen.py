@@ -85,17 +85,27 @@ def dissolve_to_xrDataArray(gdf, res=1):
     ds = regionmask.mask_geopandas(gdf, grid, wrap_lon=False)
     ds.name = "ID"
     ds.attrs["long_name"] = "Geiger Koeppen Classification ID"
-    ds.lon.attrs.update({"standard_name" : "longitude",
-                         "long_name" : "Longitude",
-                         "units" : "degrees_east",
-                         "axis" : "X"})
-    ds.lat.attrs.update({"standard_name" : "latitude",
-                         "long_name" : "Latitude",
-                         "units" : "degrees_north",
-                         "axis" : "Y"})
-    ds.attrs["processed"] = {"1.": "gdf.dissolve('GRIDCODE')",
-                             "2.": "create grid",
-                             "3.": "regionmask.mask_geopandas(gdf, grid, wrap_lon=False)"}
+    ds.lon.attrs.update(
+        {
+            "standard_name": "longitude",
+            "long_name": "Longitude",
+            "units": "degrees_east",
+            "axis": "X",
+        }
+    )
+    ds.lat.attrs.update(
+        {
+            "standard_name": "latitude",
+            "long_name": "Latitude",
+            "units": "degrees_north",
+            "axis": "Y",
+        }
+    )
+    ds.attrs["processed"] = {
+        "1.": "gdf.dissolve('GRIDCODE')",
+        "2.": "create grid",
+        "3.": "regionmask.mask_geopandas(gdf, grid, wrap_lon=False)",
+    }
     return ds
 
 
