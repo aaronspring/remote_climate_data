@@ -65,7 +65,7 @@ sources:
   GeigerKoeppen_shp:
     description: >-
       Köppen-Geiger climate classification shapefile
-      
+
       Note: combine all areas of a certain region by `dissolve("GRID")`
     metadata:
       url: http://koeppen-geiger.vu-wien.ac.at/
