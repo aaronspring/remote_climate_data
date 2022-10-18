@@ -108,11 +108,16 @@ sources:
     description: >-
       Köppen-Geiger climate classification xarray.DataArray
       
-      Note: Use `transform_kwargs` to be passed to the transform function. Use `target_kwargs: target` to be passed to the target.
-      https://github.com/intake/intake/issues/638
-      ```python
-      cat.GeigerKoeppen_xr(transform_kwargs=dict(res=5),target_kwargs=dict(GeigerKoeppen_shp=dict(period="1976-2000"))).read().plot(cmap=cmap)
-      ```
+      Note:
+          Use `transform_kwargs` to be passed to the transform function.
+          Use `target_kwargs: target` to be passed to the target.
+          See https://github.com/intake/intake/issues/638
+          ```python
+          cat.GeigerKoeppen_xr(
+            transform_kwargs=dict(res=5),
+            target_kwargs=dict(GeigerKoeppen_shp=dict(period="1976-2000"))
+          ).read().plot()
+          ```
     metadata:
       url: http://koeppen-geiger.vu-wien.ac.at/
       doi: http://dx.doi.org/10.1127/0941-2948/2006/0130
