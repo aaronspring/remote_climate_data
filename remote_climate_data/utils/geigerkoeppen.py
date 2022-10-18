@@ -3,6 +3,7 @@ import xarray as xr
 
 def attach_abbrevs(f):
     import geopandas as gpd
+    import pandas as pd
 
     table = pd.read_fwf(
         "http://koeppen-geiger.vu-wien.ac.at/data/legend.txt",
