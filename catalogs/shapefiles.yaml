@@ -61,3 +61,45 @@ sources:
       storage_options:
         simplecache:
           same_names: true
+
+  GeigerKoeppen_shp:
+    description: >-
+      Köppen-Geiger climate classification shapefile
+      
+      Note: combine all areas of a certain region by `dissolve("GRID")`
+    metadata:
+      url: http://koeppen-geiger.vu-wien.ac.at/
+      doi: http://dx.doi.org/10.1127/0941-2948/2006/0130
+    driver: intake_geopandas.geopandas.ShapefileSource
+    parameters:
+      period:
+        description: period start-end
+        type: str
+        default: "1976-2000"
+        allowed:
+         - "1901-1925"
+         - "1926-1950"
+         - "1951-1975"
+         - "1976-2000" # observed
+         - "2001-2025_A1FI" # future scenario A1FI
+         - "2001-2025_A2"
+         - "2001-2025_B1"
+         - "2001-2025_B2"
+         - "2026-2050_A1FI"
+         - "2026-2050_A2"
+         - "2026-2050_B1"
+         - "2026-2050_B2"
+         - "2051-2075_A1FI"
+         - "2051-2075_A2"
+         - "2051-2075_B1"
+         - "2051-2075_B2"
+         - "2076-2100_A1FI"
+         - "2076-2100_A2"
+         - "2076-2100_B1"
+         - "2076-2100_B2"
+    args:
+      urlpath: simplecache::http://koeppen-geiger.vu-wien.ac.at/data/{{period}}_GIS.zip
+      use_fsspec: true
+      storage_options:
+        simplecache:
+          same_names: true

@@ -84,3 +84,16 @@ sources:
         time: auto
       urlpath: simplecache::https://dpesgf03.nccs.nasa.gov/thredds/fileServer/obs4MIPs/NASA-GSFC/MODIS/obs4MIPs/observations/land/lai/mon/grid/NASA-GSFC/MODIS/V5/lai_MODIS-level_3_v5_200002-200912.nc
     driver: netcdf
+
+  GeigerKoeppen_xr:
+    description: >-
+      Köppen-Geiger climate classification xarray.DataArray
+    metadata:
+      url: http://koeppen-geiger.vu-wien.ac.at/
+      doi: http://dx.doi.org/10.1127/0941-2948/2006/0130
+    driver: intake.source.derived.GenericTransform
+    args:
+      targets:
+        - GeigerKoeppen_shp
+      transform: "remote_climate_data.utils.geigerkoeppen.dissolve_to_xrDataArray"
+      transform_kwargs: {res: 1}
