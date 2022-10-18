@@ -1,7 +1,42 @@
 import xarray as xr
-
 from matplotlib.colors import ListedColormap
-cmap = ListedColormap(["#960000", "#FF0000", "#FF6E6E", "#FFCCCC", "#CC8D14", "#CCAA54", "#FFCC00", "#FFFF64", "#007800", "#005000", "#003200", "#96FF00", "#00D700", "#00AA00", "#BEBE00", "#8C8C00", "#5A5A00", "#550055", "#820082", "#C800C8", "#FF6EFF", "#646464", "#8C8C8C", "#BEBEBE", "#E6E6E6", "#6E28B4", "#B464FA", "#C89BFA", "#C8C8FF", "#6496FF", "#64FFFF", "#F5FFFF"])
+
+cmap = ListedColormap(
+    [
+        "#960000",
+        "#FF0000",
+        "#FF6E6E",
+        "#FFCCCC",
+        "#CC8D14",
+        "#CCAA54",
+        "#FFCC00",
+        "#FFFF64",
+        "#007800",
+        "#005000",
+        "#003200",
+        "#96FF00",
+        "#00D700",
+        "#00AA00",
+        "#BEBE00",
+        "#8C8C00",
+        "#5A5A00",
+        "#550055",
+        "#820082",
+        "#C800C8",
+        "#FF6EFF",
+        "#646464",
+        "#8C8C8C",
+        "#BEBEBE",
+        "#E6E6E6",
+        "#6E28B4",
+        "#B464FA",
+        "#C89BFA",
+        "#C8C8FF",
+        "#6496FF",
+        "#64FFFF",
+        "#F5FFFF",
+    ]
+)
 
 
 def attach_abbrevs(f):
