@@ -1,6 +1,10 @@
 import xarray as xr
 from matplotlib.colors import ListedColormap
 
+import intake
+
+cat = intake.open_catalog("master.yaml").shapefiles
+
 cmap = ListedColormap(
     [
         "#960000",
@@ -87,9 +91,6 @@ def get_all_observed(res=1):
     """Load all observed/historical Geiger Koeppen Classifications as xr.DataArray."""
     obs_periods = ["1901-1925", "1926-1950", "1951-1975", "1976-2000"]
 
-    import intake
-
-    cat = intake.open_catalog("master.yaml").shapefiles
     obs = []
     for p in obs_periods:
         gdf = cat.GeigerKoeppen_shp(period=p).read()
@@ -105,7 +106,7 @@ def get_all_future(res=1):
     """Load all future scenario Geiger Koeppen Classifications as xr.DataArray."""
     scenarios = ["A1FI", "A2", "B1", "B2"]
     periods = ["2001-2025", "2026-2050", "2051-2075", "2076-2100"]
-    cat = intake.open_catalog("master.yaml").shapefiles
+
     fut = []
     for scenario in scenarios:
         scenario_ds = []
