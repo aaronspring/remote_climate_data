@@ -1,7 +1,11 @@
 import xarray as xr
 
+from matplotlib.colors import ListedColormap
+cmap = ListedColormap(["#960000", "#FF0000", "#FF6E6E", "#FFCCCC", "#CC8D14", "#CCAA54", "#FFCC00", "#FFFF64", "#007800", "#005000", "#003200", "#96FF00", "#00D700", "#00AA00", "#BEBE00", "#8C8C00", "#5A5A00", "#550055", "#820082", "#C800C8", "#FF6EFF", "#646464", "#8C8C8C", "#BEBEBE", "#E6E6E6", "#6E28B4", "#B464FA", "#C89BFA", "#C8C8FF", "#6496FF", "#64FFFF", "#F5FFFF"])
+
 
 def attach_abbrevs(f):
+    """Add abbrevs to GeoDataFrame or xr.DataArray/set."""
     import geopandas as gpd
     import pandas as pd
 
@@ -16,34 +20,36 @@ def attach_abbrevs(f):
 
     if isinstance(f, gpd.geodataframe.GeoDataFrame):
         f = f.merge(table, left_index=True, right_index=True)
-    if isinstance(f, [xr.DataArray, xr.Dataset]):
-        f.attrs["abbrevs"] = table.abbrev
+    if isinstance(f, (xr.DataArray, xr.Dataset)):
+        f.attrs["abbrevs"] = table.abbrev.to_dict()
     else:
         raise NotImplementedError
     return f
 
 
 def dissolve_to_xrDataArray(gdf, res=1):
+    """Dissolve by GRIDCODE and convert with regionmask to res degree grid."""
     gdf = gdf.dissolve("GRIDCODE").drop("ID", axis=1)
 
     import numpy as np
 
-    assert 180 / res == 180 // res, "res must divide 180 without remainder"
+    assert 180 / res == int(180 / res), "res must divide 180 without remainder"
     grid = xr.DataArray(
         dims=["lat", "lon"],
         coords={
-            "lat": np.linspace(-90 + res / 2, 90 - res / 2, 180 // res),
-            "lon": np.linspace(-180 + res / 2, 180 - res / 2, 360 // res),
+            "lat": np.linspace(-90 + res / 2, 90 - res / 2, int(180 / res)),
+            "lon": np.linspace(-180 + res / 2, 180 - res / 2, int(360 / res)),
         },
     )
 
     import regionmask
 
-    ds = regionmask.mask_geopandas(gdf, grid)
+    ds = regionmask.mask_geopandas(gdf, grid, wrap_lon=False)
     return ds
 
 
 def get_all_observed(res=1):
+    """Load all observed/historical Geiger Koeppen Classifications as xr.DataArray."""
     obs_periods = ["1901-1925", "1926-1950", "1951-1975", "1976-2000"]
 
     import intake
