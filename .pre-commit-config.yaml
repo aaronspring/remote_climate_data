@@ -1,6 +1,6 @@
 ---
 ci:
-    autoupdate_schedule: quarterly
+    - autoupdate_schedule: quarterly
 
 repos:
     - repo: https://github.com/pre-commit/pre-commit-hooks
@@ -18,19 +18,19 @@ repos:
       hooks:
         - id: black
 
-  - repo: https://github.com/PyCQA/flake8
-    rev: 5.0.4
-    hooks:
+    - repo: https://github.com/PyCQA/flake8
+      rev: 5.0.4
+      hooks:
         - id: flake8
           args:
             - --extend-ignore=E722
 
-  - repo: https://github.com/PyCQA/isort
-    rev: 5.10.1
-    hooks:
-        - id: isort
+    - repo: https://github.com/PyCQA/isort
+      rev: 5.10.1
+      hooks:
+          - id: isort
 
-  - repo: https://github.com/adrienverge/yamllint.git
-    rev: v1.28.0
-    hooks:
-        - id: yamllint
+    - repo: https://github.com/adrienverge/yamllint.git
+      rev: v1.28.0
+      hooks:
+          - id: yamllint
