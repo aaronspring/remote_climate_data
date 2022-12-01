@@ -6,7 +6,7 @@ dependencies:
   - python=3.8
   - intake
   - xarray
-  - pandas==1.3.0 # otherwise climate.Global_Carbon_Budget fails
+  - pandas==1.3.0  # otherwise climate.Global_Carbon_Budget fails
   - intake-xarray
   - intake-thredds
   - geopandas
