@@ -14,7 +14,7 @@ repos:
           - id: check-yaml
 
     - repo: https://github.com/psf/black
-      rev: 22.10.0
+      rev: 23.3.0
       hooks:
           - id: black
 
@@ -26,11 +26,11 @@ repos:
                 - --extend-ignore=E722
 
     - repo: https://github.com/PyCQA/isort
-      rev: 5.10.1
+      rev: 5.12.0
       hooks:
           - id: isort
 
     - repo: https://github.com/adrienverge/yamllint.git
-      rev: v1.28.0
+      rev: v1.32.0
       hooks:
           - id: yamllint
