@@ -25,6 +25,9 @@ concurrency:
 jobs:
   build:
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pull-requests: write
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -33,7 +36,7 @@ jobs:
         uses: jupyterhub/repo2docker-action@master
         with:
           NO_PUSH: "true"
-          MYBINDERORG_TAG: ${{ github.head_ref || github.ref_name }}
+          MYBINDERORG_TAG: ${{ github.event.pull_request.head.ref || github.ref_name }}
 
       - name: Comment on PR with Binder link
         if: github.event_name == 'pull_request'
