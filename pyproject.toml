@@ -87,3 +87,8 @@ ignore = ["E402"]
 known-first-party = ["remote_climate_data"]
 
 [tool.ty]
+[tool.ty.src]
+include = ["remote_climate_data", "tests"]
+[tool.ty.rules]
+possibly-missing-attribute = "ignore"
+unresolved-import = "ignore"
