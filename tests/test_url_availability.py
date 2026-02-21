@@ -15,10 +15,6 @@ import urllib.request
 import intake
 import pytest
 
-pytestmark = pytest.mark.skip(
-    reason="External URLs frequently return 404; run manually to check availability"
-)
-
 
 @pytest.fixture(scope="module")
 def cat():
