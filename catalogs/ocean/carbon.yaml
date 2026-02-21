@@ -12,7 +12,7 @@ sources:
         data: https://doi.org/10.6084/m9.figshare.12652100.v4
     driver: netcdf
     args:
-      urlpath: simplecache::https://ndownloader.figshare.com/files/23875943
+      urlpath: simplecache::https://figshare.com/ndownloader/files/23875943
       chunks:
         time: auto
       storage_options:
@@ -188,10 +188,10 @@ sources:
         paper: https://doi.org/10.5194/essd-2020-300
         data: https://doi.org/10.25921/m5wx-ja34
       url: https://www.ncei.noaa.gov/access/metadata/landing-page/bin/iso?id=gov.noaa.nodc:0220059
-      readme: https://www.ncei.noaa.gov/data/oceans/ncei/ocads/data/0220059/OceanSODA-ETHZ_v2020a_README.pdf
-      preview: https://www.ncei.noaa.gov/data/oceans/ncei/ocads/data/0220059/OceanSODA-ETHZ_v2020a_mean-state-carbsys.png
+      readme: https://www.ncei.noaa.gov/data/oceans/ncei/ocads/data/0220059/README_v2023.pdf
+      preview: https://www.ncei.noaa.gov/data/oceans/ncei/ocads/data/0220059/OceanSODA-ETHZ-GRaCER-v2023_main_figure.png
     args:
-      urlpath: simplecache::https://www.ncei.noaa.gov/data/oceans/ncei/ocads/data/0220059/OceanSODA-ETHZ_GRaCER_v2021a_1982-2020.nc
+      urlpath: simplecache::https://www.ncei.noaa.gov/data/oceans/ncei/ocads/data/0220059/OceanSODA_ETHZ-v2023.OCADS.01_1982-2022.nc
       storage_options:
         simplecache:
           same_names: true
@@ -221,33 +221,27 @@ sources:
 
   JMA-MLR:
     description: >-
-      Gridded data for global carbon dioxide partial pressure (pCO2), sea-air CO2 flux,
-      pH, dissolved inorganic carbon(DIC) and total alkalinity(TA).
+      Gridded data for global carbon dioxide partial pressure
+      (pCO2), sea-air CO2 flux, pH, dissolved inorganic
+      carbon (DIC) and total alkalinity (TA).
 
-      The JMA Ocean CO2 Map dataset consists of information on monthly oceanic pCO2 and
-      CO2 uptake over a grid of 1° latitude × 1° longitude squares. The pCO2 field is
-      calculated using analytical sea surface temperatures, salinity and chlorophyll-a
-      concentration data from satellite observation, and that of CO2 uptake is
-      calculated based on the difference between oceanic and atmospheric pCO2 and data
-      on 10 m wind speeds. Details of the method are provided in Iida et al. (2021).
-
-      Loop over "year=range(1990,2021)" with "simplecache:same_names:true" and
-      "xr.open_mfdataset('JMA_co2map_*.nc', decode_times=False, concat_dim='time',
-      combine='nested').assign_coords(time=xr.cftime_range(start='1990', freq='MS',
-      end='2020-12'))"
+      The JMA Ocean CO2 Map dataset consists of information
+      on monthly oceanic pCO2 and CO2 uptake over a grid of
+      1 degree latitude x 1 degree longitude squares.
     driver: netcdf
     metadata:
       doi:
         paper: 10.1007/s10872-020-00571-5
       url: http://www.data.jma.go.jp/gmd/kaiyou/english/co2_flux/co2_flux_data_en.html
     parameters:
-      year:
-        description: year
-        type: int
-        min: 1990
-        default: 2020
+      version:
+        description: version tag
+        type: str
+        default: "2024"
+        allowed:
+          - "2024"
     args:
-      urlpath: simplecache::zip://*.nc::http://www.data.jma.go.jp/gmd/kaiyou/data/english/co2_flux/grid/JMA_co2map_{{year}}.ZIP
+      urlpath: simplecache::zip://*.nc::https://www.data.jma.go.jp/gmd/kaiyou/data/english/co2_flux/grid/JMA_co2map_v{{version}}.ZIP
       chunks: {}
       xarray_kwargs:
         decode_times: false
@@ -280,26 +274,6 @@ sources:
       urlpath: simplecache::http://www.bgc-jena.mpg.de/CarboScope/oc/INVERSION/OUTPUT/oc_v2021_daily.nc
       chunks: {}
 
-  SeaFlux:
-    description: >-
-      harmonised sea-air CO2 fluxes from surface pCO2 data products
-      using a standardised approach
-    metadata:
-      website: https://zenodo.org/record/5148460
-    driver: netcdf
-    parameters:
-      version:
-        description: version name
-        type: str
-        default: "2021.02"
-      name:
-        description: dataset name
-        type: str
-        default: spco2_SOCOM_ensemble
-    args:
-      urlpath: simplecache::https://zenodo.org/api/files/da9bc706-d312-4876-a38f-24e9d667c38a/SeaFlux_v{{version}}_{{name}}.nc
-      chunks: auto
-
   SOCATv2020_tracks:
     description: Gridded tracks SOCAT version 2020 data from BCDC Mirror (Zipped)
     driver: netcdf
@@ -329,6 +303,37 @@ sources:
     args:
       urlpath: simplecache::zip://*.nc::https://www.socat.info/socat_files/{{version}}/SOCAT{{version}}_tracks_gridded_{{time_average}}.nc.zip
       chunks: {}
+
+  SeaFlux:
+    description: >-
+      SeaFlux v2023.02 - harmonised sea-air CO2 fluxes from surface pCO2 data products
+      using a standardised approach.
+    driver: netcdf
+    metadata:
+      url: https://doi.org/10.5281/zenodo.8280457
+      doi:
+        data: https://doi.org/10.5281/zenodo.8280457
+        paper: https://doi.org/10.5194/essd-13-4693-2021
+    parameters:
+      variable:
+        description: variable to download
+        type: str
+        default: kw
+        allowed:
+          - kw
+          - sol
+          - fco2atm
+          - ice
+          - seafrac
+          - area
+          - nopco2
+    args:
+      urlpath: simplecache::https://zenodo.org/record/8280457/files/SeaFlux.v2023.02_{{variable}}_1982-2022.nc
+      chunks:
+        time: auto
+      storage_options:
+        simplecache:
+          same_names: true
 
   ESACCI:
     description: >-

@@ -1,6 +1,11 @@
-intake
+intake<2
 intake-xarray
 intake-thredds
 fsspec
 aiohttp
 requests
+hvplot
+panel
+bokeh
+regionmask
+geopandas
