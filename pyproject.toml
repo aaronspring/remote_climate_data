@@ -26,23 +26,15 @@ classifiers = [
 dynamic = ["version"]
 dependencies = [
     "aiohttp>=3.13.3",
-    "bokeh",
     "geopandas",
     "h5netcdf",
     "h5py",
-    "hvplot",
     "intake>=2",
     "intake-geopandas>=0.4.0",
     "intake-xarray>=2.0.0",
-    "jupyter-bokeh>=4.0.5",
-    "jupyterlab>=4.5.4",
-    "matplotlib>=3.10.8",
-    # "netcdf4",
-    "panel",
-    "pyarrow",
+    "matplotlib",
     "regionmask",
     "requests>=2.32.5",
-    "scipy",
 ]
 
 [project.urls]
@@ -69,8 +61,6 @@ io = [
 regionmask = ["regionmask", "intake_geopandas"]
 geopandas = ["geopandas", "intake_geopandas"]
 
-[tool.setuptools.dynamic]
-dependencies = {file = ["requirements.txt"]}
 
 [tool.setuptools.packages.find]
 include = ["remote_climate_data*"]
