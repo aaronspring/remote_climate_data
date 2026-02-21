@@ -7,7 +7,7 @@ name = "remote_climate_data"
 description = "intake catalogs for climate data sources on the internet for python"
 readme = "README.md"
 license = {text = "MIT"}
-requires-python = ">=3.11"
+requires-python = ">=3.11,<3.14"
 maintainers = [
     {name = "Aaron Spring", email = "aaron.spring@posteo.de"},
 ]
