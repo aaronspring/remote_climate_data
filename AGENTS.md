@@ -43,7 +43,14 @@ CI runs on GitHub Actions (`testing.yml`) using conda with `environment.yml` on 
 
 ## Dependencies
 
-Managed via `environment.yml` (conda) and `requirements.txt` (pip). Build config in `pyproject.toml` (PEP 621, setuptools backend). Key libraries: `intake<2`, `intake-xarray`, `fsspec`, `xarray`, `netcdf4`, `regionmask`, `hvplot`.
+Managed via `uv` (or `environment.yml` for conda). Build config in `pyproject.toml` (PEP 621, setuptools backend). Key libraries: `intake<2`, `intake-xarray`, `fsspec`, `xarray`, `netcdf4`, `regionmask`, `hvplot`.
+
+To install dependencies with uv:
+```bash
+uv sync
+# or for optional dependencies:
+uv sync --all-extras
+```
 
 ## Binder
 

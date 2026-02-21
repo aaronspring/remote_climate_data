@@ -4,3 +4,8 @@ intake-thredds
 fsspec
 aiohttp
 requests
+hvplot
+panel
+bokeh
+regionmask
+geopandas

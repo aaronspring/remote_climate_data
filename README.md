@@ -3,6 +3,13 @@
 # remote_climate_data
 a collection of remote climate data accessed via `intake` cached to disk
 
+## Install
+```bash
+uv sync
+# or with optional dependencies:
+uv sync --all-extras
+```
+
 ## Usage
 ```python
 import intake
