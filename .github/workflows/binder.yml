@@ -5,6 +5,7 @@ on:
     branches:
       - master
       - main
+      - upgrade_2026
     paths:
       - 'binder/**'
       - 'pyproject.toml'
@@ -44,7 +45,7 @@ jobs:
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           script: |
-            const BRANCH_NAME = '${{ github.head_ref || github.ref_name }}';
+            const BRANCH_NAME = '${{ github.event.pull_request.head.ref || github.ref_name }}';
             const REPO = '${{ github.repository }}';
             const OWNER = REPO.split('/')[0];
             const REPO_NAME = REPO.split('/')[1];
