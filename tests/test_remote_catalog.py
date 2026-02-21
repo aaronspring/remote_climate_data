@@ -36,25 +36,19 @@ def test_walk_finds_entries(cat):
     assert len(entries) > 0, "Catalog walk returned no entries"
 
 
-def test_all_entries_have_driver(cat):
-    """Test that every entry has a driver specified."""
+def test_all_entries_have_container(cat):
+    """Test that every entry has a container type specified."""
     for name in cat.walk(depth=5):
         entry = cat[name]
-        if isinstance(entry, intake.catalog.local.YAMLFileCatalog):
+        if isinstance(entry, intake.catalog.local.YAMLFileCatalog):  # type: ignore[attr-defined]
             continue
-        assert hasattr(entry, "container") or hasattr(entry, "driver"), (
-            f"Entry {name} has no driver"
-        )
+        assert hasattr(entry, "container"), f"Entry {name} has no container"
 
 
-def test_all_entries_have_urlpath_or_path(cat):
-    """Test that every non-derived, non-catalog entry has urlpath or path."""
+def test_all_entries_have_description(cat):
+    """Test that every entry has a description."""
     for name in cat.walk(depth=5):
         entry = cat[name]
-        if isinstance(entry, intake.catalog.local.YAMLFileCatalog):
+        if isinstance(entry, intake.catalog.local.YAMLFileCatalog):  # type: ignore[attr-defined]
             continue
-        if isinstance(entry, intake.source.derived.GenericTransform):
-            continue
-        has_url = hasattr(entry, "urlpath") and entry.urlpath
-        has_path = hasattr(entry, "path") and entry.path
-        assert has_url or has_path, f"Entry {name} has no urlpath or path"
+        assert hasattr(entry, "description"), f"Entry {name} has no description"

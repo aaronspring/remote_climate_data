@@ -25,22 +25,22 @@ classifiers = [
 ]
 dynamic = ["version"]
 dependencies = [
-    "setuptools<70",
     "aiohttp>=3.13.3",
     "bokeh",
     "geopandas",
     "hvplot",
-    "intake<2",
-    "intake-thredds==2024.3.1",
+    "intake>=2",
     "intake-geopandas>=0.4.0",
-    "intake-xarray>=0.7.0",
+    "intake-xarray>=2.0.0",
     "jupyter-bokeh>=4.0.5",
     "jupyterlab>=4.5.4",
     "matplotlib>=3.10.8",
+    "netcdf4",
     "panel",
     "pyarrow",
     "regionmask",
     "requests>=2.32.5",
+    "scipy",
 ]
 
 [project.urls]

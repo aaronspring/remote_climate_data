@@ -129,15 +129,6 @@ wheels = [
 ]
 
 [[package]]
-name = "appdirs"
-version = "1.4.4"
-source = { registry = "https://pypi.org/simple" }
-sdist = { url = "https://files.pythonhosted.org/packages/d7/d8/05696357e0311f5b5c316d7b95f46c669dd9c15aaeecbb48c7d0aeb88c40/appdirs-1.4.4.tar.gz", hash = "sha256:7d5d0167b2b1ba821647616af46a749d1c653740dd0d2415100fe26e27afdf41", size = 13470, upload-time = "2020-05-11T07:59:51.037Z" }
-wheels = [
-    { url = "https://files.pythonhosted.org/packages/3b/00/2344469e2084fb287c2e0b57b72910309874c3245463acd6cf5e3db69324/appdirs-1.4.4-py2.py3-none-any.whl", hash = "sha256:a841dacd6b99318a741b166adb07e19ee71a274450e68237b4650ca1055ab128", size = 9566, upload-time = "2020-05-11T07:59:49.499Z" },
-]
-
-[[package]]
 name = "appnope"
 version = "0.1.4"
 source = { registry = "https://pypi.org/simple" }
@@ -678,15 +669,6 @@ wheels = [
 ]
 
 [[package]]
-name = "entrypoints"
-version = "0.4"
-source = { registry = "https://pypi.org/simple" }
-sdist = { url = "https://files.pythonhosted.org/packages/ea/8d/a7121ffe5f402dc015277d2d31eb82d2187334503a011c18f2e78ecbb9b2/entrypoints-0.4.tar.gz", hash = "sha256:b706eddaa9218a19ebcd67b56818f05bb27589b1ca9e8d797b74affad4ccacd4", size = 13974, upload-time = "2022-02-02T21:30:28.172Z" }
-wheels = [
-    { url = "https://files.pythonhosted.org/packages/35/a8/365059bbcd4572cbc41de17fd5b682be5868b218c3c5479071865cab9078/entrypoints-0.4-py3-none-any.whl", hash = "sha256:f174b5ff827504fd3cd97cc3f8649f3693f51538c7e4bdf3ef002c8429d42f9f", size = 5294, upload-time = "2022-02-02T21:30:26.024Z" },
-]
-
-[[package]]
 name = "execnet"
 version = "2.1.2"
 source = { registry = "https://pypi.org/simple" }
@@ -1022,21 +1004,17 @@ wheels = [
 
 [[package]]
 name = "intake"
-version = "0.7.0"
+version = "2.0.8"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
-    { name = "appdirs" },
-    { name = "dask" },
-    { name = "entrypoints" },
     { name = "fsspec" },
-    { name = "jinja2" },
-    { name = "msgpack" },
+    { name = "networkx" },
+    { name = "platformdirs" },
     { name = "pyyaml" },
-    { name = "requests" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/17/8b/28b0612968ca7728540e02a4ce92c310e0cf43c097290671492c7ec4de99/intake-0.7.0.tar.gz", hash = "sha256:ce3b8bce87f9831823f87936c546f898dbb718985770124c7cc569061726f3b6", size = 130921, upload-time = "2023-05-29T19:22:42.577Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/30/d5/fae637383a97cb85cacfead6a41c777275c7eed1e3dd4b3cc5c5fef363ea/intake-2.0.8.tar.gz", hash = "sha256:731d484a002de2f659bb988f406b35037234a35c17b08776d9a5e4838ecf2769", size = 122021, upload-time = "2025-01-14T17:06:29.905Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/9a/1e/2a53d93716bae3b006ae27eee519c9fb4ada278d1ea6b12ed856c51aed65/intake-0.7.0-py3-none-any.whl", hash = "sha256:b2969babf037d8412293a53beee7d2af1c635c94578fa6117dd81b5f0dc6e0cd", size = 232151, upload-time = "2023-05-29T19:22:40.972Z" },
+    { url = "https://files.pythonhosted.org/packages/f6/dd/c251b0ceb7d6019afe0ab90fe54e0d918adc9822de96f2e7c5fc1bec2c0e/intake-2.0.8-py3-none-any.whl", hash = "sha256:6095ed5b65568cd9cd1da1fc9d3977c9b981d74264ea9eafb6964f1d508632c5", size = 134723, upload-time = "2025-01-14T17:06:26.508Z" },
 ]
 
 [[package]]
@@ -1053,27 +1031,8 @@ wheels = [
 ]
 
 [[package]]
-name = "intake-thredds"
-version = "2024.3.1"
-source = { registry = "https://pypi.org/simple" }
-dependencies = [
-    { name = "aiohttp" },
-    { name = "fsspec" },
-    { name = "h5netcdf" },
-    { name = "intake" },
-    { name = "intake-xarray" },
-    { name = "pydap" },
-    { name = "siphon" },
-    { name = "tqdm" },
-]
-sdist = { url = "https://files.pythonhosted.org/packages/7f/e8/72be0dab7defbb784801e00f590e19dd577c8c39289c0b13bd30d12aca28/intake-thredds-2024.3.1.tar.gz", hash = "sha256:282fe789cbee0f9060180ef1507729e09b60686cc7a9dd71f75a9206b74445c8", size = 26132, upload-time = "2024-03-01T05:48:16.775Z" }
-wheels = [
-    { url = "https://files.pythonhosted.org/packages/5d/5d/8752a3b675c78f5758ea81e38506d0db02f8931333aad44b09352d4ab10b/intake_thredds-2024.3.1-py3-none-any.whl", hash = "sha256:de0a1adaadfca80a0fceac2fb5902311881edd2238605f9b71c1be0d5ac4138a", size = 12669, upload-time = "2024-03-01T05:48:15.191Z" },
-]
-
-[[package]]
 name = "intake-xarray"
-version = "0.7.0"
+version = "2.0.0"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "dask" },
@@ -1085,9 +1044,9 @@ dependencies = [
     { name = "xarray" },
     { name = "zarr" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/be/59/26e751bec1f89a59e329adae6a50f9706b2ce06c98af7d448309110cd229/intake-xarray-0.7.0.tar.gz", hash = "sha256:919b21be9d836bd915cb50f0ac8027b97c69ac2f906b5a3ad7ba045541be7589", size = 40172, upload-time = "2023-05-29T20:06:49.144Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/b8/54/c101e088138a63ca8fdfa84084fd4c603ada2fbeceaa0667acad7df8c32a/intake_xarray-2.0.0.tar.gz", hash = "sha256:163ca7aa2206ab43468f962c8c3260a2ef1e4bea388ca3d42c427d9b6b3ce133", size = 32133, upload-time = "2024-12-12T16:25:09.838Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/73/64/ca8e8ba5435c3229a72e04618a469602af2fa51038b487399463e2164c6d/intake_xarray-0.7.0-py3-none-any.whl", hash = "sha256:3f756c8a70e2b98220f5e0d7b613fbe5b1aae3253effab9372915a5b709fe900", size = 28532, upload-time = "2023-05-29T20:06:48.002Z" },
+    { url = "https://files.pythonhosted.org/packages/9d/d9/a33d0c2ad75bd0f67929411883fb251f9c72f12880744a4ee5b8331cb35b/intake_xarray-2.0.0-py3-none-any.whl", hash = "sha256:9693cf8524a7cd63bb7c734e65aafd97e0f1abbbaf4f9bf9a57e86d8882ea339", size = 17825, upload-time = "2024-12-12T16:25:07.58Z" },
 ]
 
 [[package]]
@@ -1979,6 +1938,15 @@ wheels = [
 ]
 
 [[package]]
+name = "networkx"
+version = "3.6.1"
+source = { registry = "https://pypi.org/simple" }
+sdist = { url = "https://files.pythonhosted.org/packages/6a/51/63fe664f3908c97be9d2e4f1158eb633317598cfa6e1fc14af5383f17512/networkx-3.6.1.tar.gz", hash = "sha256:26b7c357accc0c8cde558ad486283728b65b6a95d85ee1cd66bafab4c8168509", size = 2517025, upload-time = "2025-12-08T17:02:39.908Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/9e/c9/b2622292ea83fbb4ec318f5b9ab867d0a28ab43c5717bb85b0a5f6b3b0a4/networkx-3.6.1-py3-none-any.whl", hash = "sha256:d47fbf302e7d9cbbb9e2555a0d267983d2aa476bac30e90dfbe5669bd57f3762", size = 2068504, upload-time = "2025-12-08T17:02:38.159Z" },
+]
+
+[[package]]
 name = "notebook-shim"
 version = "0.2.4"
 source = { registry = "https://pypi.org/simple" }
@@ -2420,21 +2388,6 @@ wheels = [
     { url = "https://files.pythonhosted.org/packages/48/f0/615c30622316496d2cbbc29f5985f7777d3ada70f23370608c1d3e081c1f/propcache-0.4.1-cp313-cp313t-win_amd64.whl", hash = "sha256:f7ee0e597f495cf415bcbd3da3caa3bd7e816b74d0d52b8145954c5e6fd3ff37", size = 44897, upload-time = "2025-10-08T19:47:48.336Z" },
     { url = "https://files.pythonhosted.org/packages/fd/ca/6002e46eccbe0e33dcd4069ef32f7f1c9e243736e07adca37ae8c4830ec3/propcache-0.4.1-cp313-cp313t-win_arm64.whl", hash = "sha256:929d7cbe1f01bb7baffb33dc14eb5691c95831450a26354cd210a8155170c93a", size = 39789, upload-time = "2025-10-08T19:47:49.876Z" },
     { url = "https://files.pythonhosted.org/packages/5b/5a/bc7b4a4ef808fa59a816c17b20c4bef6884daebbdf627ff2a161da67da19/propcache-0.4.1-py3-none-any.whl", hash = "sha256:af2a6052aeb6cf17d3e46ee169099044fd8224cbaf75c76a2ef596e8163e2237", size = 13305, upload-time = "2025-10-08T19:49:00.792Z" },
-]
-
-[[package]]
-name = "protobuf"
-version = "6.33.5"
-source = { registry = "https://pypi.org/simple" }
-sdist = { url = "https://files.pythonhosted.org/packages/ba/25/7c72c307aafc96fa87062aa6291d9f7c94836e43214d43722e86037aac02/protobuf-6.33.5.tar.gz", hash = "sha256:6ddcac2a081f8b7b9642c09406bc6a4290128fce5f471cddd165960bb9119e5c", size = 444465, upload-time = "2026-01-29T21:51:33.494Z" }
-wheels = [
-    { url = "https://files.pythonhosted.org/packages/b1/79/af92d0a8369732b027e6d6084251dd8e782c685c72da161bd4a2e00fbabb/protobuf-6.33.5-cp310-abi3-win32.whl", hash = "sha256:d71b040839446bac0f4d162e758bea99c8251161dae9d0983a3b88dee345153b", size = 425769, upload-time = "2026-01-29T21:51:21.751Z" },
-    { url = "https://files.pythonhosted.org/packages/55/75/bb9bc917d10e9ee13dee8607eb9ab963b7cf8be607c46e7862c748aa2af7/protobuf-6.33.5-cp310-abi3-win_amd64.whl", hash = "sha256:3093804752167bcab3998bec9f1048baae6e29505adaf1afd14a37bddede533c", size = 437118, upload-time = "2026-01-29T21:51:24.022Z" },
-    { url = "https://files.pythonhosted.org/packages/a2/6b/e48dfc1191bc5b52950246275bf4089773e91cb5ba3592621723cdddca62/protobuf-6.33.5-cp39-abi3-macosx_10_9_universal2.whl", hash = "sha256:a5cb85982d95d906df1e2210e58f8e4f1e3cdc088e52c921a041f9c9a0386de5", size = 427766, upload-time = "2026-01-29T21:51:25.413Z" },
-    { url = "https://files.pythonhosted.org/packages/4e/b1/c79468184310de09d75095ed1314b839eb2f72df71097db9d1404a1b2717/protobuf-6.33.5-cp39-abi3-manylinux2014_aarch64.whl", hash = "sha256:9b71e0281f36f179d00cbcb119cb19dec4d14a81393e5ea220f64b286173e190", size = 324638, upload-time = "2026-01-29T21:51:26.423Z" },
-    { url = "https://files.pythonhosted.org/packages/c5/f5/65d838092fd01c44d16037953fd4c2cc851e783de9b8f02b27ec4ffd906f/protobuf-6.33.5-cp39-abi3-manylinux2014_s390x.whl", hash = "sha256:8afa18e1d6d20af15b417e728e9f60f3aa108ee76f23c3b2c07a2c3b546d3afd", size = 339411, upload-time = "2026-01-29T21:51:27.446Z" },
-    { url = "https://files.pythonhosted.org/packages/9b/53/a9443aa3ca9ba8724fdfa02dd1887c1bcd8e89556b715cfbacca6b63dbec/protobuf-6.33.5-cp39-abi3-manylinux2014_x86_64.whl", hash = "sha256:cbf16ba3350fb7b889fca858fb215967792dc125b35c7976ca4818bee3521cf0", size = 323465, upload-time = "2026-01-29T21:51:28.925Z" },
-    { url = "https://files.pythonhosted.org/packages/57/bf/2086963c69bdac3d7cff1cc7ff79b8ce5ea0bec6797a017e1be338a46248/protobuf-6.33.5-py3-none-any.whl", hash = "sha256:69915a973dd0f60f31a08b8318b73eab2bd6a392c79184b3612226b0a3f8ec02", size = 170687, upload-time = "2026-01-29T21:51:32.557Z" },
 ]
 
 [[package]]
@@ -2963,16 +2916,16 @@ dependencies = [
     { name = "hvplot" },
     { name = "intake" },
     { name = "intake-geopandas" },
-    { name = "intake-thredds" },
     { name = "intake-xarray" },
     { name = "jupyter-bokeh" },
     { name = "jupyterlab" },
     { name = "matplotlib" },
+    { name = "netcdf4" },
     { name = "panel" },
     { name = "pyarrow" },
     { name = "regionmask" },
     { name = "requests" },
-    { name = "setuptools" },
+    { name = "scipy" },
 ]
 
 [package.optional-dependencies]
@@ -3013,16 +2966,16 @@ requires-dist = [
     { name = "h5netcdf", marker = "extra == 'io'" },
     { name = "hvplot" },
     { name = "hvplot", marker = "extra == 'viz'" },
-    { name = "intake", specifier = "<2" },
+    { name = "intake", specifier = ">=2" },
     { name = "intake-geopandas", specifier = ">=0.4.0" },
     { name = "intake-geopandas", marker = "extra == 'geopandas'" },
     { name = "intake-geopandas", marker = "extra == 'regionmask'" },
-    { name = "intake-thredds", specifier = "==2024.3.1" },
-    { name = "intake-xarray", specifier = ">=0.7.0" },
+    { name = "intake-xarray", specifier = ">=2.0.0" },
     { name = "jupyter-bokeh", specifier = ">=4.0.5" },
     { name = "jupyterlab", specifier = ">=4.5.4" },
     { name = "matplotlib", specifier = ">=3.10.8" },
     { name = "matplotlib", marker = "extra == 'viz'" },
+    { name = "netcdf4" },
     { name = "netcdf4", marker = "extra == 'io'" },
     { name = "panel" },
     { name = "prek", marker = "extra == 'test'" },
@@ -3034,7 +2987,7 @@ requires-dist = [
     { name = "regionmask" },
     { name = "regionmask", marker = "extra == 'regionmask'" },
     { name = "requests", specifier = ">=2.32.5" },
-    { name = "setuptools", specifier = "<70" },
+    { name = "scipy" },
 ]
 provides-extras = ["test", "viz", "io", "regionmask", "geopandas"]
 
@@ -3292,22 +3245,6 @@ wheels = [
     { url = "https://files.pythonhosted.org/packages/96/b3/c6655ee7232b417562bae192ae0d3ceaadb1cc0ffc2088a2ddf415456cc2/shapely-2.1.2-cp313-cp313t-musllinux_1_2_x86_64.whl", hash = "sha256:6305993a35989391bd3476ee538a5c9a845861462327efe00dd11a5c8c709a99", size = 4170078, upload-time = "2025-09-24T13:51:08.584Z" },
     { url = "https://files.pythonhosted.org/packages/a0/8e/605c76808d73503c9333af8f6cbe7e1354d2d238bda5f88eea36bfe0f42a/shapely-2.1.2-cp313-cp313t-win32.whl", hash = "sha256:c8876673449f3401f278c86eb33224c5764582f72b653a415d0e6672fde887bf", size = 1559178, upload-time = "2025-09-24T13:51:10.73Z" },
     { url = "https://files.pythonhosted.org/packages/36/f7/d317eb232352a1f1444d11002d477e54514a4a6045536d49d0c59783c0da/shapely-2.1.2-cp313-cp313t-win_amd64.whl", hash = "sha256:4a44bc62a10d84c11a7a3d7c1c4fe857f7477c3506e24c9062da0db0ae0c449c", size = 1739756, upload-time = "2025-09-24T13:51:12.105Z" },
-]
-
-[[package]]
-name = "siphon"
-version = "0.10.0"
-source = { registry = "https://pypi.org/simple" }
-dependencies = [
-    { name = "beautifulsoup4" },
-    { name = "numpy" },
-    { name = "pandas" },
-    { name = "protobuf" },
-    { name = "requests" },
-]
-sdist = { url = "https://files.pythonhosted.org/packages/17/c6/8fe154df2eb674cec2bfc653f2a605029bb79ef13acafc3cd8dbc3843dba/siphon-0.10.0.tar.gz", hash = "sha256:f99ff44568805d5c00c0599019302a4ea4874d861f00996c8b7de6de4d543f7b", size = 3359425, upload-time = "2024-12-13T23:20:45.851Z" }
-wheels = [
-    { url = "https://files.pythonhosted.org/packages/03/e7/9c2de983a02511c2b18b6188e11c850b7aa8a2f49aac44ca5bda232755c5/siphon-0.10.0-py3-none-any.whl", hash = "sha256:b1977fce010e24a5c6fa9b391ad8fbe2a21b85e2ab08fb22f267aabea68cdf5a", size = 65117, upload-time = "2024-12-13T23:20:44.353Z" },
 ]
 
 [[package]]

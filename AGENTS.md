@@ -22,8 +22,7 @@
 
 ## Working with Catalogs
 
-- Catalog files are YAML following the [intake](https://intake.readthedocs.io/) v1 catalog spec
-- Pinned to `intake<2` (intake v2 "Take2" breaks YAML catalog format and plugins)
+- Catalog files are YAML following the [intake](https://intake.readthedocs.io/) catalog spec (V2 with backward compat for V1 format)
 - Use `"simplecache::"` prefix in `urlpath` to enable caching
 - Include `metadata` with documentation URLs and DOIs
 - Use `parameters` for templating versions/variables in `urlpath`
@@ -33,8 +32,6 @@
 ## Testing
 
 ```bash
-uv run pytest --durations=20
-# or run tests in parallel:
 uv run pytest -n auto
 ```
 
@@ -47,7 +44,7 @@ CI runs on GitHub Actions (`testing.yml`) using conda with `environment.yml` on 
 
 ## Dependencies
 
-Managed via `uv` (or `environment.yml` for conda). Build config in `pyproject.toml` (PEP 621, setuptools backend). Key libraries: `intake<2`, `intake-xarray`, `fsspec`, `xarray`, `netcdf4`, `regionmask`, `hvplot`.
+Managed via `uv` (or `environment.yml` for conda). Build config in `pyproject.toml` (PEP 621, setuptools backend). Key libraries: `intake>=2`, `intake-xarray>=2.0.0`, `fsspec`, `xarray`, `netcdf4`, `regionmask`, `hvplot`.
 
 To install dependencies with uv:
 ```bash
