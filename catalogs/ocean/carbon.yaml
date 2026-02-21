@@ -304,6 +304,37 @@ sources:
       urlpath: simplecache::zip://*.nc::https://www.socat.info/socat_files/{{version}}/SOCAT{{version}}_tracks_gridded_{{time_average}}.nc.zip
       chunks: {}
 
+  SeaFlux:
+    description: >-
+      SeaFlux v2023.02 - harmonised sea-air CO2 fluxes from surface pCO2 data products
+      using a standardised approach.
+    driver: netcdf
+    metadata:
+      url: https://doi.org/10.5281/zenodo.8280457
+      doi:
+        data: https://doi.org/10.5281/zenodo.8280457
+        paper: https://doi.org/10.5194/essd-13-4693-2021
+    parameters:
+      variable:
+        description: variable to download
+        type: str
+        default: kw
+        allowed:
+          - kw
+          - sol
+          - fco2atm
+          - ice
+          - seafrac
+          - area
+          - nopco2
+    args:
+      urlpath: simplecache::https://zenodo.org/record/8280457/files/SeaFlux.v2023.02_{{variable}}_1982-2022.nc
+      chunks:
+        time: auto
+      storage_options:
+        simplecache:
+          same_names: true
+
   ESACCI:
     description: >-
         download ocean color from https://www.oceancolour.org
