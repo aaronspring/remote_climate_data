@@ -28,6 +28,8 @@ dependencies = [
     "aiohttp>=3.13.3",
     "bokeh",
     "geopandas",
+    "h5netcdf",
+    "h5py",
     "hvplot",
     "intake>=2",
     "intake-geopandas>=0.4.0",

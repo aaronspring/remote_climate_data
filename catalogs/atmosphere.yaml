@@ -34,6 +34,7 @@ sources:
       urlpath: simplecache::https://crudata.uea.ac.uk/cru/data/temperature/HadCRUT.4.6.0.0.median.nc
       chunks: {}
       xarray_kwargs:
+        engine: h5netcdf
         use_cftime: true
 
   HadCRUT5:
