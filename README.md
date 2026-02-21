@@ -10,6 +10,76 @@ uv sync
 uv sync --all-extras
 ```
 
+## Catalog
+
+<details>
+<summary>Show catalog entries</summary>
+
+```
+ocean:
+  - carbon (subcatalog)
+  - HadSST3
+  - HadSST4
+  - HadISST1
+  - WOA2018
+  - OISSTv21
+  - OISSTv2
+  - OISSTv2_thredds
+
+land:
+  - CRUTEM4
+  - CRUTEM4v
+  - CRUTEM5
+  - CRUTEM5alt
+  - Leaf_Area_Index
+
+atmosphere:
+  - HadCRUT4
+  - HadCRUT5
+  - HadCRUT5_Non-Infilled
+  - CRU_TS (subcatalog)
+  - GISTEMP
+  - NOAA_GlobalTemp
+  - BerkeleyEarth_land
+  - BerkeleyEarth_land_and_ocean
+  - Cowtan_and_Way_Long
+  - trace_gases_at_stations
+  - NCEP_6h
+  - NCEP_6h_gauss
+  - NCEP_monthly
+  - NCEP_monthly_gauss
+  - fossil_fuel_emissions_gridded
+  - NOAA_carbon_tracker
+  - xco2_v4
+  - pr_GPCP
+  - pr_TRMM
+
+climate:
+  - NOAA_correlation
+  - NOAA_correlation_xr
+
+shapefiles:
+  - Countries
+  - IPCCAR6
+  - geometric_features
+  - GeigerKoeppen_shp
+  - GeigerKoeppen_xr
+
+regionmask:
+  - Countries
+  - IPCCAR6
+  - MEOW
+  - FEOW
+  - TEOW
+
+humans:
+  - GHS
+```
+
+</details>
+
+**YAML files:** [master.yaml](master.yaml) · [atmosphere.yaml](catalogs/atmosphere.yaml) · [climate.yaml](catalogs/climate.yaml) · [humans.yaml](catalogs/humans.yaml) · [land.yaml](catalogs/land.yaml) · [ocean.yaml](catalogs/ocean.yaml) · [regionmask.yaml](catalogs/regionmask.yaml) · [shapefiles.yaml](catalogs/shapefiles.yaml)
+
 ## Usage
 ```python
 import intake
