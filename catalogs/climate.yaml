@@ -70,5 +70,3 @@ sources:
         - NOAA_correlation
       transform: "remote_climate_data.utils.convert.monthly_csv_to_DataArray"
       transform_kwargs: {}
-
-

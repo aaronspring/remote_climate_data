@@ -7,10 +7,10 @@ download data - only checks availability.
 
 import re
 import ssl
+import urllib.request
 
 import intake
 import pytest
-import urllib.request
 
 
 @pytest.fixture(scope="module")
@@ -109,9 +109,7 @@ for name, item in _all_items:
         _url_items.append((name, url))
 
 
-@pytest.mark.parametrize(
-    "name,url", _url_items, ids=[t[0] for t in _url_items]
-)
+@pytest.mark.parametrize("name,url", _url_items, ids=[t[0] for t in _url_items])
 def test_url_returns_200(name, url):
     """Check that dataset URL is reachable (HTTP 200)."""
     status, ok = _check_url(url)

@@ -17,7 +17,15 @@ def test_catalog_loads(cat):
 
 def test_catalog_has_subcatalogs(cat):
     """Test that expected sub-catalogs exist."""
-    expected = {"ocean", "land", "atmosphere", "climate", "shapefiles", "regionmask", "humans"}
+    expected = {
+        "ocean",
+        "land",
+        "atmosphere",
+        "climate",
+        "shapefiles",
+        "regionmask",
+        "humans",
+    }
     actual = set(list(cat))
     assert expected.issubset(actual), f"Missing sub-catalogs: {expected - actual}"
 
