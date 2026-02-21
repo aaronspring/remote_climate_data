@@ -34,6 +34,8 @@
 
 ```bash
 uv run pytest --durations=20
+# or run tests in parallel:
+uv run pytest -n auto
 ```
 
 - `test_remote_catalog.py` — Structural tests (catalog loads, entries have drivers/URLs)

@@ -49,6 +49,7 @@ Homepage = "https://github.com/aaronspring/remote_climate_data/"
 test = [
     "pytest",
     "pytest-sugar",
+    "pytest-xdist",
     "prek",
 ]
 viz = [
