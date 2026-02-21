@@ -7,7 +7,7 @@ name = "remote_climate_data"
 description = "intake catalogs for climate data sources on the internet for python"
 readme = "README.md"
 license = {text = "MIT"}
-requires-python = ">=3.11"
+requires-python = ">=3.11,<3.14"
 maintainers = [
     {name = "Aaron Spring", email = "aaron.spring@posteo.de"},
 ]
@@ -25,17 +25,20 @@ classifiers = [
 ]
 dynamic = ["version"]
 dependencies = [
+    "setuptools<70",
     "aiohttp>=3.13.3",
     "bokeh",
     "geopandas",
     "hvplot",
     "intake<2",
+    "intake-thredds==2024.3.1",
     "intake-geopandas>=0.4.0",
     "intake-xarray>=0.7.0",
     "jupyter-bokeh>=4.0.5",
     "jupyterlab>=4.5.4",
     "matplotlib>=3.10.8",
     "panel",
+    "pyarrow",
     "regionmask",
     "requests>=2.32.5",
 ]
@@ -46,7 +49,9 @@ Homepage = "https://github.com/aaronspring/remote_climate_data/"
 [project.optional-dependencies]
 test = [
     "pytest",
-    "pre-commit",
+    "pytest-sugar",
+    "pytest-xdist",
+    "prek",
 ]
 viz = [
     "hvplot",
@@ -81,3 +86,10 @@ ignore = ["E402"]
 
 [tool.ruff.lint.isort]
 known-first-party = ["remote_climate_data"]
+
+[tool.ty]
+[tool.ty.src]
+include = ["remote_climate_data", "tests"]
+[tool.ty.rules]
+possibly-missing-attribute = "ignore"
+unresolved-import = "ignore"

@@ -1,5 +1,6 @@
 # simplecache
 notebooks/my_caching_folder
+test_cache/
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

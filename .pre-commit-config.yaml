@@ -20,6 +20,16 @@ repos:
             args: [--fix]
           - id: ruff-format
 
+    - repo: https://github.com/kynan/nbstripout
+      rev: 0.7.1
+      hooks:
+          - id: nbstripout
+
+    - repo: https://github.com/hoxbro/ty-pre-commit
+      rev: v0.0.12
+      hooks:
+          - id: ty-check
+
     - repo: https://github.com/adrienverge/yamllint.git
       rev: v1.35.1
       hooks:
