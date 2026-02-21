@@ -34,6 +34,7 @@ dependencies = [
     "intake-xarray>=0.7.0",
     "jupyter-bokeh>=4.0.5",
     "jupyterlab>=4.5.4",
+    "matplotlib>=3.10.8",
     "panel",
     "regionmask",
     "requests>=2.32.5",
