@@ -10,6 +10,13 @@ uv sync
 uv sync --all-extras
 ```
 
+## Run commands with uv
+```bash
+uv run pytest  # run tests
+uv run prek run --all-files  # run pre-commit hooks on all files
+uv run ty check  # run type checking
+```
+
 ## Catalog
 
 <details>

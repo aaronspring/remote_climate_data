@@ -25,6 +25,11 @@ repos:
       hooks:
           - id: nbstripout
 
+    - repo: https://github.com/astral-sh/ty-pre-commit
+      rev: v0.9.9
+      hooks:
+          - id: ty
+
     - repo: https://github.com/adrienverge/yamllint.git
       rev: v1.35.1
       hooks:
