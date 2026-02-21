@@ -44,6 +44,7 @@ uv run pytest -n auto
 
 CI runs on GitHub Actions (`testing.yml`) using conda with `environment.yml` on ubuntu-latest with Python 3.12.
 
+
 ## Dependencies
 
 Managed via `uv` (or `environment.yml` for conda). Build config in `pyproject.toml` (PEP 621, setuptools backend). Key libraries: `intake<2`, `intake-xarray`, `fsspec`, `xarray`, `netcdf4`, `regionmask`, `hvplot`.
@@ -58,3 +59,10 @@ uv sync --all-extras
 ## Binder
 
 Binder uses a separate minimal environment at `binder/environment.yml` to keep builds fast and reliable.
+
+
+## Datasets
+
+- if a dataset cant be accessed via the given url, do web_search to try to find a new path.
+- if there are multiple files in a dataset, try to pattern match with variables.
+- sometimes datasets cant be downloaded due to flaky internet connection, dont delete datasets too quickly. wait for a minute and try again.
