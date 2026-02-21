@@ -22,6 +22,7 @@ dependencies:
   - requests
   - pytest
   - pytest-sugar
+  - pytest-xdist
   - prek
   - ruff
   - jupyterlab
