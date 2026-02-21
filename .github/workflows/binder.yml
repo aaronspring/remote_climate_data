@@ -34,11 +34,10 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Build and trigger binder cache
+      - name: Build and cache binder image
         uses: jupyterhub/repo2docker-action@master
         with:
           NO_PUSH: "true"
-          MYBINDERORG_TAG: ${{ github.event.pull_request.head.ref || github.ref_name }}
 
       - name: Comment on PR with Binder link
         if: github.event_name == 'pull_request'
