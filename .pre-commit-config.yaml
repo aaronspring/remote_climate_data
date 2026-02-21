@@ -25,10 +25,10 @@ repos:
       hooks:
           - id: nbstripout
 
-    - repo: https://github.com/astral-sh/ty-pre-commit
-      rev: v0.9.9
+    - repo: https://github.com/hoxbro/ty-pre-commit
+      rev: v0.0.12
       hooks:
-          - id: ty
+          - id: ty-check
 
     - repo: https://github.com/adrienverge/yamllint.git
       rev: v1.35.1
