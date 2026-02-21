@@ -1,6 +1,6 @@
 intake<2
-intake-xarray
-intake-thredds
+intake-xarray<1
+intake-thredds==2024.3.1
 fsspec
 aiohttp
 requests
