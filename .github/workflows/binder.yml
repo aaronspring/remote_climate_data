@@ -1,17 +1,17 @@
-name: Build and Push Binder Image
+name: Build and Cache Binder Image
 
 on:
   push:
     branches:
       - master
       - main
-      - upgrade_2026
     paths:
       - 'binder/**'
       - 'pyproject.toml'
       - 'environment.yml'
       - 'requirements.txt'
   pull_request:
+    types: [opened, reopened, synchronize]
     paths:
       - 'binder/**'
       - 'pyproject.toml'
@@ -33,4 +33,45 @@ jobs:
         uses: jupyterhub/repo2docker-action@master
         with:
           NO_PUSH: "true"
-          MYBINDERORG_TAG: ${{ github.ref_name }}
+          MYBINDERORG_TAG: ${{ github.head_ref || github.ref_name }}
+
+      - name: Comment on PR with Binder link
+        if: github.event_name == 'pull_request'
+        uses: actions/github-script@v7
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            const BRANCH_NAME = '${{ github.head_ref || github.ref_name }}';
+            const REPO = '${{ github.repository }}';
+            const OWNER = REPO.split('/')[0];
+            const REPO_NAME = REPO.split('/')[1];
+            
+            const BODY = `🚀 **Binder is ready!** 
+            
+            [![Launch on Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/${OWNER}/${REPO_NAME}/${BRANCH_NAME}?urlpath=lab%2Ftree%2Fnotebooks%2Fdemo.ipynb)
+            
+            Click the badge above to launch the notebook.`;
+            
+            const { data: comments } = await github.rest.issues.listComments({
+              owner: OWNER,
+              repo: REPO_NAME,
+              issue_number: context.issue.number
+            });
+            
+            const binderComment = comments.find(c => c.body.includes('Binder is ready'));
+            
+            if (binderComment) {
+              await github.rest.issues.updateComment({
+                owner: OWNER,
+                repo: REPO_NAME,
+                comment_id: binderComment.id,
+                body: BODY
+              });
+            } else {
+              await github.rest.issues.createComment({
+                owner: OWNER,
+                repo: REPO_NAME,
+                issue_number: context.issue.number,
+                body: BODY
+              });
+            }
