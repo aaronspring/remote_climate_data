@@ -1,6 +1,0 @@
----
-plugins:
-  source:
-    - module: intake_xarray
-
-sources:
