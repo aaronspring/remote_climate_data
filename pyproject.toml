@@ -25,6 +25,7 @@ classifiers = [
 ]
 dynamic = ["version"]
 dependencies = [
+    "setuptools<70",
     "aiohttp>=3.13.3",
     "bokeh",
     "geopandas",
