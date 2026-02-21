@@ -3,7 +3,6 @@ name: testing
 
 on:
   push:
-  pull_request:
   schedule:
     - cron: "0 0 * * 4"  # Thursdays "At 00:00" UTC
   workflow_dispatch:  # allows you to trigger manually
