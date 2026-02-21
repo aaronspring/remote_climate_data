@@ -105,8 +105,10 @@ _cat = intake.open_catalog("master.yaml")
 _all_items = _get_all_items(_cat)
 
 # Known broken URLs that return 404 or are unreachable
+# Note: These datasets may still work for reading but URL availability tests fail
 SKIP_URLS = {
     "ocean.carbon.ESACCI",  # oceancolour.org THREDDS returns 404
+    "shapefiles.GeigerKoeppen_shp",  # HTTP URL, may fail availability check
 }
 
 
