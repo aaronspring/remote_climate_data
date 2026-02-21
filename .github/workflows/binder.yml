@@ -1,3 +1,4 @@
+---
 name: Build and Cache Binder Image
 
 on:
@@ -45,14 +46,19 @@ jobs:
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           script: |
-            const BRANCH_NAME = '${{ github.event.pull_request.head.ref || github.ref_name }}';
+            const ref = '${{ github.event.pull_request.head.ref || github.ref_name }}';
             const REPO = '${{ github.repository }}';
             const OWNER = REPO.split('/')[0];
             const REPO_NAME = REPO.split('/')[1];
 
+            const BADGE = '[![Binder](https://mybinder.org/badge_logo.svg)]';
+            const BASE_URL = 'https://mybinder.org/v2/gh';
+            const LINK = `${BADGE}(${BASE_URL}/${OWNER}/${REPO_NAME}/${ref}`;
+            const PARAMS = '?urlpath=lab%2Ftree%2Fnotebooks%2Fdemo.ipynb)';
+
             const BODY = `🚀 **Binder is ready!**
 
-            [![Launch on Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/${OWNER}/${REPO_NAME}/${BRANCH_NAME}?urlpath=lab%2Ftree%2Fnotebooks%2Fdemo.ipynb)
+            ${LINK}${PARAMS}
 
             Click the badge above to launch the notebook.`;
 
@@ -62,13 +68,13 @@ jobs:
               issue_number: context.issue.number
             });
 
-            const binderComment = comments.find(c => c.body.includes('Binder is ready'));
+            const hasComment = comments.some(c => c.body.includes('Binder is ready'));
 
-            if (binderComment) {
+            if (hasComment) {
               await github.rest.issues.updateComment({
                 owner: OWNER,
                 repo: REPO_NAME,
-                comment_id: binderComment.id,
+                comment_id: comments.find(c => c.body.includes('Binder is ready')).id,
                 body: BODY
               });
             } else {
