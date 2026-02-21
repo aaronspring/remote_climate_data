@@ -21,7 +21,7 @@ dependencies:
   - requests
   - pytest
   - pytest-sugar
-  - pre-commit
+  - prek
   - ruff
   - jupyterlab
   # Visualization

@@ -16,7 +16,8 @@
 
 - **Python**: Ruff (line-length 88, replaces black/flake8/isort)
 - **YAML**: yamllint with max line-length 88
-- Pre-commit hooks enforce all of the above — run `pre-commit run --all-files` to check
+- **Type checking**: ty (run `ty check` or `uvx ty check`)
+- Prek hooks enforce all of the above — run `prek run --all-files` to check
 - Tests use `pytest` (config in `setup.cfg`, test files in `tests/`)
 
 ## Working with Catalogs

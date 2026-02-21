@@ -46,7 +46,7 @@ Homepage = "https://github.com/aaronspring/remote_climate_data/"
 [project.optional-dependencies]
 test = [
     "pytest",
-    "pre-commit",
+    "prek",
 ]
 viz = [
     "hvplot",
@@ -81,3 +81,5 @@ ignore = ["E402"]
 
 [tool.ruff.lint.isort]
 known-first-party = ["remote_climate_data"]
+
+[tool.ty]
