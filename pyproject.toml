@@ -1,0 +1,70 @@
+[build-system]
+requires = ["setuptools>=64", "setuptools_scm[toml]>=6.2"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "remote_climate_data"
+description = "intake catalogs for climate data sources on the internet for python"
+readme = "README.md"
+license = "MIT"
+requires-python = ">=3.11"
+maintainers = [
+    {name = "Aaron Spring", email = "aaron.spring@mpimet.mpg.de"},
+]
+classifiers = [
+    "Development Status :: 5 - Production/Stable",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Intended Audience :: Science/Research",
+    "Intended Audience :: Education",
+    "Natural Language :: English",
+    "Programming Language :: Python :: 3 :: Only",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Topic :: Scientific/Engineering :: Atmospheric Science",
+]
+dynamic = ["version", "dependencies"]
+
+[project.urls]
+Homepage = "https://github.com/aaronspring/remote_climate_data/"
+
+[project.optional-dependencies]
+test = [
+    "pytest",
+    "pre-commit",
+]
+viz = [
+    "hvplot",
+    "cartopy",
+    "geoviews",
+    "matplotlib",
+]
+io = [
+    "netcdf4",
+    "h5netcdf",
+    "pydap",
+]
+regionmask = ["regionmask", "intake_geopandas"]
+geopandas = ["geopandas", "intake_geopandas"]
+excel = ["openpyxl", "intake-excel"]
+
+[tool.setuptools.dynamic]
+dependencies = {file = ["requirements.txt"]}
+
+[tool.setuptools.packages.find]
+include = ["remote_climate_data*"]
+
+[tool.setuptools_scm]
+version_scheme = "post-release"
+local_scheme = "dirty-tag"
+
+[tool.ruff]
+line-length = 88
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "W"]
+ignore = ["E402"]
+
+[tool.ruff.lint.isort]
+known-first-party = ["remote_climate_data"]

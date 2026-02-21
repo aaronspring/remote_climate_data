@@ -1,0 +1,20 @@
+---
+name: remote_climate_data-binder
+channels:
+  - conda-forge
+dependencies:
+  - python=3.12
+  - intake<2
+  - intake-xarray
+  - xarray
+  - pandas
+  - fsspec
+  - aiohttp
+  - netcdf4
+  - h5netcdf
+  - matplotlib-base
+  - hvplot
+  - jupyterlab
+  - pip
+  - pip:
+      - -e .

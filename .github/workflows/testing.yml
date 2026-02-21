@@ -5,51 +5,33 @@ on:
   push:
   pull_request:
   schedule:
-    - cron: "0 0 * * 4"  # Thursdays “At 00:00” UTC
+    - cron: "0 0 * * 4"  # Thursdays "At 00:00" UTC
   workflow_dispatch:  # allows you to trigger manually
 
 jobs:
-  detect-ci-trigger:
-    name: detect ci trigger
-    runs-on: ubuntu-latest
-    outputs:
-      triggered: ${{ steps.detect-trigger.outputs.trigger-found }}
-    steps:
-      - uses: actions/checkout@v2
-        with:
-          fetch-depth: 2
-      - uses: xarray-contrib/ci-trigger@v1.1
-        id: detect-trigger
-        with:
-          keyword: "[skip-ci]"
-
   test_pytest:
     name: Test remote_climate_data
-    needs: detect-ci-trigger
-    if: needs.detect-ci-trigger.outputs.triggered == 'false'
-    runs-on: macos-latest  # larger ram see
-    # https://docs.github.com/en/actions/using-github-hosted-runners/about-github-hosted-runners#supported-runners-and-hardware-resources
+    runs-on: ubuntu-latest
     defaults:
       run:
         shell: bash -l {0}
     strategy:
       matrix:
-        python: [3.8]
+        python: ["3.12"]
       fail-fast: false
 
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
       - name: Set up conda
-        uses: conda-incubator/setup-miniconda@v2
+        uses: conda-incubator/setup-miniconda@v3
         with:
           auto-update-conda: false
           channels: conda-forge
-          mamba-version: '*'
           activate-environment: remote_climate_data-dev
-          python-version: 3.8
+          python-version: ${{ matrix.python }}
       - name: Set up conda environment
         run: |
-          mamba env update -f environment.yml
+          conda env update -f environment.yml
       - name: Conda info
         run: conda info
       - name: Conda list
@@ -60,24 +42,21 @@ jobs:
 
   test_notebooks:  # Checks that notebooks complete without failure.
     runs-on: ubuntu-latest
-    needs: detect-ci-trigger
-    if: needs.detect-ci-trigger.outputs.triggered == 'false'
     defaults:
       run:
         shell: bash -l {0}
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
       - name: Set up conda
-        uses: conda-incubator/setup-miniconda@v2
+        uses: conda-incubator/setup-miniconda@v3
         with:
           auto-update-conda: false
           channels: conda-forge
-          mamba-version: '*'
           activate-environment: remote_climate_data-dev
-          python-version: 3.8
+          python-version: "3.12"
       - name: Set up conda environment
         run: |
-          mamba env update -f environment.yml
+          conda env update -f environment.yml
       - name: Conda info
         run: conda info
       - name: Conda list

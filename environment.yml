@@ -3,10 +3,10 @@ name: remote_climate_data-dev
 channels:
   - conda-forge
 dependencies:
-  - python=3.8
-  - intake
+  - python=3.12
+  - intake<2
   - xarray
-  - pandas==1.3.0  # otherwise climate.Global_Carbon_Budget fails
+  - pandas
   - intake-xarray
   - intake-thredds
   - geopandas
@@ -18,9 +18,11 @@ dependencies:
   - rioxarray
   - fsspec
   - aiohttp
+  - requests
   - pytest
   - pytest-sugar
   - pre-commit
+  - ruff
   - jupyterlab
   # Visualization
   - matplotlib-base
@@ -28,9 +30,6 @@ dependencies:
   - cartopy
   - geoviews
   - hvplot
-  - xrviz
   - pip
-  - pip:  # get latest master from source
-      - git+https://github.com/edjdavid/intake-excel.git
-      - openpyxl
+  - pip:
       - -e .

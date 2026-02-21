@@ -1,4 +1,4 @@
-intake
+intake<2
 intake-xarray
 intake-thredds
 fsspec

@@ -139,7 +139,7 @@ sources:
         - http://doi.org/10.1175/BAMS-D-11-00241.1.
     driver: netcdf
     args:
-      urlpath: simplecache::ftp://ftp.cdc.noaa.gov/Datasets/noaaglobaltemp/air.mon.anom.nc
+      urlpath: simplecache::https://psl.noaa.gov/thredds/fileServer/Datasets/noaaglobaltemp/air.mon.anom.nc
       chunks: {}
 
   BerkeleyEarth_land:
@@ -168,7 +168,7 @@ sources:
           - LatLong1
           - EqualArea
     args:
-      urlpath: simplecache::http://berkeleyearth.lbl.gov/auto/Global/Gridded/Complete_{{var}}_{{s_res}}.nc
+      urlpath: simplecache::https://berkeley-earth-temperature.s3.us-west-1.amazonaws.com/Global/Gridded/Complete_{{var}}_{{s_res}}.nc
       chunks: {}
 
   BerkeleyEarth_land_and_ocean:
@@ -189,7 +189,7 @@ sources:
           - LatLong1
           - EqualArea
     args:
-      urlpath: simplecache::http://berkeleyearth.lbl.gov/auto/Global/Gridded/Land_and_Ocean_{{s_res}}.nc
+      urlpath: simplecache::https://berkeley-earth-temperature.s3.us-west-1.amazonaws.com/Global/Gridded/Land_and_Ocean_{{s_res}}.nc
       chunks: {}
 
   Cowtan_and_Way_Long:
@@ -221,48 +221,6 @@ sources:
           - cobe2cru
     args:
       urlpath: simplecache::https://www-users.york.ac.uk/~kdc3/papers/coverage2013/{{datasets}}_krig_v2_0_0.nc.gz
-      chunks: {}
-      storage_options:
-        simplecache:
-          same_names: true
-      xarray_kwargs:
-        engine: scipy
-
-  Cowtan_and_Way_Short:
-    description: >-
-      Monthly gridded land and ocean temperature anomalies by Cowtan and Way.
-      1850-present, infilled by kriging. The version 2.0 series are based on a more
-      rigorous treatment in which the land and ocean data are reconstructed separately
-      and then blended. Version 2.0 data are also based on the full HadCRUT4 ensemble,
-      and include ensemble as well as coverage uncertainty estimates. The data are
-      described in this update. All except the long (1850-present) reconstruction are
-      rebaselined on 1981-2010. Rebaselining the data on the period 1981-2010 enables
-      the satellite data to be used for infilling, and in the v1.0 calculation
-      increases the reliability of recent trends, but also discards some data which may
-      impact the reliability of long term trends. The land temperature reconstruction
-      is used for air temperatures over land and sea ice, and the sea surface
-      temperature reconstruction for open sea. Sea ice coverage is fixed for each month
-      of the year, and is determined from HadISST using the period 1981-2010. For the
-      short reconstructions (i.e. 1979-present) the minimum ice is used. Hybrid data
-      use the hybrid approach for air temperatures over land or sea ice, and kriging
-      for sea surface temperatures.
-    metadata:
-      url: https://www-users.york.ac.uk/~kdc3/papers/coverage2013/series.html
-      doi: https://doi.org/10.1002/qj.2297
-    driver: netcdf
-    parameters:
-      datasets:
-        description: base datasets used
-        type: str
-        default: had4_short_uah
-        allowed:
-          - had4_short_uah
-          - had4_short_merra
-          - had4_short_krig
-          - ghcn_short_uah
-          - ghcn_short_merra
-    args:
-      urlpath: simplecache::https://www-users.york.ac.uk/~kdc3/papers/coverage2013/{{datasets}}_v2_0_0.nc.gz
       chunks: {}
       storage_options:
         simplecache:
@@ -629,20 +587,6 @@ sources:
       xarray_kwargs:
         use_cftime: true
 
-  xco2_ghgcci:
-    description: >-
-      column-average dry-air mole fraction of atmospheric carbon dioxide
-      xco2 ghgcci l3 v100 from 200301 to 201412 for obs4mip
-    metadata:
-      tag:
-        - cmor
-        - obs4mip
-      id: obs4MIPs.IUP.XCO2_CRDP3.xco2.mon.v100|esgf-data1.ceda.ac.uk
-    driver: netcdf
-    args:
-      urlpath: simplecache::http://esgf-data1.ceda.ac.uk/thredds/fileServer/esg_esacci/ghg/data/obs4mips/crdp_3/CO2/v100/xco2_ghgcci_l3_v100_200301_201412.nc
-      chunks: {}
-
   xco2_v4:
     description: >-
       XCO2_OBS4MIPS_2x2 v4 2003-2019 monthly on a 2x2 degree grid for obs4mip
@@ -656,20 +600,6 @@ sources:
     args:
       urlpath: simplecache::https://www.iup.uni-bremen.de/carbon_ghg/data/xco2_c3s_l3_v42_200301_201912_2x2.nc
       chunks: auto
-
-  xco4_ghgcci:
-    description: >-
-      column-average dry-air mole fraction of atmospheric methane
-      xco4 ghgcci l3 v100 from 200301 to 201412 for obs4mip
-    metadata:
-      tag:
-        - cmor
-        - obs4mip
-      id: obs4MIPs.IUP.XCH4_CRDP3.xch4.mon.v100|esgf-data1.ceda.ac.uk
-    driver: netcdf
-    args:
-      urlpath: simplecache::http://esgf-data1.ceda.ac.uk/thredds/fileServer/esg_esacci/ghg/data/obs4mips/crdp_3/CH4/v100/xch4_ghgcci_l3_v100_200301_201412.nc
-      chunks: {}
 
   pr_GPCP:
     description: >-
