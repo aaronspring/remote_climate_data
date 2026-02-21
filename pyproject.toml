@@ -37,7 +37,7 @@ dependencies = [
     "jupyter-bokeh>=4.0.5",
     "jupyterlab>=4.5.4",
     "matplotlib>=3.10.8",
-    "netcdf4",
+    # "netcdf4",
     "panel",
     "pyarrow",
     "regionmask",
