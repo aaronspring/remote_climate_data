@@ -13,7 +13,7 @@ dependencies:
   - intake-geopandas
   - pydap
   - h5netcdf
-  - netcdf4
+  - h5py
   - rioxarray
   - fsspec
   - scipy
