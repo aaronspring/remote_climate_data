@@ -29,4 +29,4 @@ jobs:
       - name: Install dependencies
         run: uv sync --all-extras
       - name: Test notebooks
-        run: jupyter nbconvert --inplace --execute notebooks/demo.ipynb
+        run: uv run jupyter nbconvert --inplace --execute notebooks/demo.ipynb
