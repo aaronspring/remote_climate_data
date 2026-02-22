@@ -11,55 +11,24 @@ jobs:
   test_pytest:
     name: Test remote_climate_data
     runs-on: ubuntu-latest
-    defaults:
-      run:
-        shell: bash -l {0}
-    strategy:
-      matrix:
-        python: ["3.12"]
-      fail-fast: false
-
     steps:
       - uses: actions/checkout@v4
-      - name: Set up conda
-        uses: conda-incubator/setup-miniconda@v3
+      - uses: astral-sh/setup-uv@v4
         with:
-          auto-update-conda: false
-          channels: conda-forge
-          activate-environment: remote_climate_data-dev
-          python-version: ${{ matrix.python }}
-      - name: Set up conda environment
-        run: |
-          conda env update -f environment.yml
-      - name: Conda info
-        run: conda info
-      - name: Conda list
-        run: conda list
-      - name: Run tests
-        run: |
-          pytest -n auto --durations=20
-
-  test_notebooks:  # Checks that notebooks complete without failure.
-    runs-on: ubuntu-latest
-    defaults:
-      run:
-        shell: bash -l {0}
-    steps:
-      - uses: actions/checkout@v4
-      - name: Set up conda
-        uses: conda-incubator/setup-miniconda@v3
-        with:
-          auto-update-conda: false
-          channels: conda-forge
-          activate-environment: remote_climate_data-dev
           python-version: "3.12"
-      - name: Set up conda environment
-        run: |
-          conda env update -f environment.yml
-      - name: Conda info
-        run: conda info
-      - name: Conda list
-        run: conda list
+      - name: Install dependencies
+        run: uv sync --all-extras
+      - name: Run tests
+        run: pytest -n auto --durations=20
+
+  test_notebooks:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v4
+        with:
+          python-version: "3.12"
+      - name: Install dependencies
+        run: uv sync --all-extras
       - name: Test notebooks
-        run: |
-          jupyter nbconvert --inplace --execute notebooks/demo.ipynb
+        run: jupyter nbconvert --inplace --execute notebooks/demo.ipynb

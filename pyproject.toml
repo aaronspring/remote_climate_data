@@ -25,43 +25,43 @@ classifiers = [
 ]
 dynamic = ["version"]
 dependencies = [
-    "aiohttp>=3.13.3",
+    "aiohttp",
+    "fsspec",
     "geopandas",
-    "h5netcdf",
-    "h5py",
     "intake>=2",
     "intake-geopandas>=0.4.0",
     "intake-xarray>=2.0.0",
-    "jinja2>=3.1.6",
     "matplotlib",
     "regionmask",
-    "requests>=2.32.5",
-    "ipykernel",
+    "requests",
+    "xarray",
 ]
 
 [project.urls]
 Homepage = "https://github.com/aaronspring/remote_climate_data/"
 
 [project.optional-dependencies]
-test = [
+dev = [
     "ipykernel",
+    "jupyterlab",
+    "prek",
     "pytest",
     "pytest-sugar",
     "pytest-xdist",
-    "prek",
+    "ruff",
 ]
 viz = [
-    "hvplot",
     "cartopy",
     "geoviews",
-    "matplotlib",
+    "hvplot",
 ]
 io = [
     "h5netcdf",
+    "h5py",
+    "netcdf4",
     "pydap",
+    "rioxarray",
 ]
-regionmask = ["regionmask", "intake_geopandas"]
-geopandas = ["geopandas", "intake_geopandas"]
 
 
 [tool.setuptools.packages.find]
