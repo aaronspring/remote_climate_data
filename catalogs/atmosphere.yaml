@@ -35,7 +35,6 @@ sources:
       chunks: {}
       xarray_kwargs:
         engine: h5netcdf
-        use_cftime: true
 
   HadCRUT5:
     description: >-
@@ -68,7 +67,6 @@ sources:
       chunks: {}
       xarray_kwargs:
         engine: h5netcdf
-        use_cftime: true
 
 
   HadCRUT5_Non-Infilled:
@@ -260,7 +258,7 @@ sources:
         simplecache:
           same_names: true
       xarray_kwargs:
-        use_cftime: true
+        engine: h5netcdf
 
 
   NCEP_monthly:
@@ -428,7 +426,7 @@ sources:
         simplecache:
           same_names: true
       xarray_kwargs:
-        use_cftime: true
+        engine: h5netcdf
 
   NOAA_carbon_tracker:
     description: >-
@@ -472,7 +470,7 @@ sources:
         simplecache:
           same_names: true
       xarray_kwargs:
-        use_cftime: true
+        engine: h5netcdf
 
   xco2_v4:
     description: >-
