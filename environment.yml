@@ -4,21 +4,19 @@ channels:
   - conda-forge
 dependencies:
   - python=3.12
-  - setuptools<70
-  - intake<2
-  - intake-thredds=2024.3.1
+  - intake>=2
   - xarray
   - pandas
-  - intake-xarray
-  - intake-thredds
+  - intake-xarray>=2.0.0
   - geopandas
   - regionmask
   - intake-geopandas
   - pydap
   - h5netcdf
-  - netcdf4
+  - h5py
   - rioxarray
   - fsspec
+  - scipy
   - aiohttp
   - requests
   - pytest

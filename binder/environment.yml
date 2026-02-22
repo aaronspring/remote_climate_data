@@ -10,8 +10,8 @@ dependencies:
   - pandas
   - fsspec
   - aiohttp
-  - netcdf4
   - h5netcdf
+  - h5py
   - matplotlib-base
   - hvplot
   - jupyterlab

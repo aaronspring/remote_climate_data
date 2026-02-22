@@ -32,35 +32,33 @@ sources:
           - swmonsoon
     args:
       urlpath: simplecache::https://psl.noaa.gov/data/correlation/{{index}}.data
-      csv_kwargs:
-        sep: '  '
-        skiprows: 3
-        skipfooter: 4
-        dtype:
-          year: object
-        names:
-          - year
-          - Jan
-          - Feb
-          - Mar
-          - Apr
-          - May
-          - Jun
-          - Jul
-          - Aug
-          - Sep
-          - Oct
-          - Nov
-          - Dec
-        # index_col: 'year' not allowed by dd.read_csv but pd.read_csv
-        na_values:
-          - -999.90
-          - '-999.90'
-          - '-99.90'
-          - -99.90
-          - -99.0
-          - '-99.0'
-        engine: python
+      sep: '  '
+      skiprows: 3
+      skipfooter: 4
+      dtype:
+        year: object
+      names:
+        - year
+        - Jan
+        - Feb
+        - Mar
+        - Apr
+        - May
+        - Jun
+        - Jul
+        - Aug
+        - Sep
+        - Oct
+        - Nov
+        - Dec
+      na_values:
+        - -999.90
+        - '-999.90'
+        - '-99.90'
+        - -99.90
+        - -99.0
+        - '-99.0'
+      engine: python
 
   NOAA_correlation_xr:
     description: NOAA_correlation as xr.DataArray
