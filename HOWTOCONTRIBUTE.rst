@@ -18,7 +18,6 @@ How to contribute a new dataset
 - assign a new remote shapefile to the ``shapefiles`` catalog
 - try to add ``"simplecache::"`` to the ``urlpath`` to allow caching
 - try to add documentation as URL and DOI in ``metadata``
-- try to add informative quick plots to ``metadata.plot``
 - try to account for many versions or variables with templating the ``urlpath`` with ``parameters``
 
 
