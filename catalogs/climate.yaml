@@ -2,7 +2,38 @@
 plugins:
   source:
     - module: intake_xarray
+    - module: remote_climate_data
 sources:
+  Global_Carbon_Budget_2025:
+    description: Global Carbon Budget 2025
+    metadata:
+      url: https://globalcarbonbudget.org/
+      doi:
+        - https://doi.org/10.5194/essd-2025-659
+        - https://doi.org/10.18160/gcp-2025
+    driver: excel_url
+    args:
+      urlpath: simplecache::https://data.icos-cp.eu/licence_accept?ids=%5B%22UtUDiUg-PuYWkAiHoUNn83e0%22%5D
+      sheet_name: Global Carbon Budget
+      header: 21
+      index_col: Year
+      skipfooter: 0
+
+  Global_Carbon_Budget_2021:
+    description: Global Carbon Budget 2021
+    metadata:
+      url: https://www.globalcarbonproject.org/carbonbudget/
+      doi:
+        - https://doi.org/10.5194/essd-2021-386
+        - https://doi.org/10.18160/gcp-2021
+    driver: excel_url
+    args:
+      urlpath: simplecache::https://data.icos-cp.eu/licence_accept?ids=%5B%220ST81nXCND5VfAQdOCSJDveT%22%5D
+      sheet_name: Global Carbon Budget
+      header: 20
+      index_col: Year
+      skipfooter: 0
+
   NOAA_correlation:
     description: climate indices from psl.noaa.gov/data/correlation
     metadata:
