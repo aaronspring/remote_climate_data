@@ -36,33 +36,6 @@ sources:
       doi:
         paper: https://doi.org/10.1002/2015GB005359
         data: https://doi.org/10.7289/V5Z899N6
-      plots:
-        fgco2_over_time:
-          title: SOM-FFN fgco2 over time
-          kind: contourf
-          x: lon
-          y: lat
-          z: fgco2_smoothed
-          groupby: time
-          cmap: RdBu_r
-          levels: 20
-          clim: (-10, 10)
-        fgco2_timeseries_location:
-          title: fgco2 timeseries at (lon,lat) location
-          kind: line
-          x: time
-          y: fgco2_smoothed
-          groupby:
-            - lon
-            - lat
-        fgco2_timeseries_latitude:
-          title: fgco2 timeseries at latitude
-          kind: contourf
-          y: time
-          x: lon
-          z: fgco2_smoothed
-          groupby: lat
-          levels: 20
     parameters:
       version:
         description: version release in year
@@ -107,24 +80,6 @@ sources:
         paper: https://doi.org/10.5194/essd-12-2537-2020
         data: https://doi.org/10.25921/qb25-f418
       readme: https://www.ncei.noaa.gov/data/oceans/ncei/ocads/data/0209633/README_merged.pdf
-      plots:
-        fgco2_over_time:
-          title: MPI-ULB-SOM_FFN pco2 over time
-          x: lon
-          y: lat
-          z: pco2
-          groupby: time
-          cmap: viridis
-          levels: 20
-          clim: (-10, 10)
-        pco2_timeseries_location:
-          title: pco2 timeseries at (lon,lat) location
-          kind: line
-          x: time
-          y: pco2
-          groupby:
-            - lon
-            - lat
     args:
       urlpath: simplecache::https://www.ncei.noaa.gov/data/oceans/ncei/ocads/data/0209633/MPI-ULB-SOM_FFN_clim.nc
       chunks:

@@ -120,7 +120,6 @@ Make data access for climate data easy:
 - [`intake_excel`](https://github.com/edjdavid/intake-excel) for Excel `xls` and `xlsx` [[example](https://github.com/aaronspring/remote_climate_data/blob/1209c5ebf5877b09b4403ea60da6d97b374b7b5c/catalogs/climate.yaml#L35)]
 - [`intake_geopandas`](https://github.com/intake/intake_geopandas) for shapefiles `shp` [[example](https://github.com/aaronspring/remote_climate_data/blob/1209c5ebf5877b09b4403ea60da6d97b374b7b5c/catalogs/shapefiles.yaml#L11)], GeoJSON `geo.json` [[example](https://github.com/aaronspring/remote_climate_data/blob/1209c5ebf5877b09b4403ea60da6d97b374b7b5c/catalogs/shapefiles.yaml#L57)], GeoParquet `parquet`, `PostGIS` databases, `Spatialite` databases
 - [`regionmask`](https://regionmask.readthedocs.io/) for aggregating over geoshapes
-- [`hvplot`](https://hvplot.holoviz.org/index.html) for plotting [[example](https://github.com/aaronspring/remote_climate_data/blob/1209c5ebf5877b09b4403ea60da6d97b374b7b5c/catalogs/atmosphere.yaml#L48)]
 
 ## Similar projects
 - Pangeo's cloud data catalogs for multi GB and TB datasets: https://github.com/pangeo-data/pangeo-datastore
