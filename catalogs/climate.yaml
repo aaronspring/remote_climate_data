@@ -11,9 +11,6 @@ sources:
       doi:
         - https://doi.org/10.5194/essd-2025-659
         - https://doi.org/10.18160/gcp-2025
-      plots:
-        over_time:
-          kind: line
     driver: excel_url
     args:
       urlpath: simplecache::https://data.icos-cp.eu/licence_accept?ids=%5B%22UtUDiUg-PuYWkAiHoUNn83e0%22%5D
@@ -29,9 +26,6 @@ sources:
       doi:
         - https://doi.org/10.5194/essd-2021-386
         - https://doi.org/10.18160/gcp-2021
-      plots:
-        over_time:
-          kind: line
     driver: excel_url
     args:
       urlpath: simplecache::https://data.icos-cp.eu/licence_accept?ids=%5B%220ST81nXCND5VfAQdOCSJDveT%22%5D

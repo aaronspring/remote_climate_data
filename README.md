@@ -64,6 +64,8 @@ atmosphere:
 climate:
   - NOAA_correlation
   - NOAA_correlation_xr
+  - Global_Carbon_Budget_2025
+  - Global_Carbon_Budget_2021
 
 shapefiles:
   - Countries
@@ -94,6 +96,17 @@ cat = intake.open_catalog('https://raw.githubusercontent.com/aaronspring/remote_
 cat.atmosphere.HadCRUT5.to_dask()
 ```
 
+### Plot Global Carbon Budget
+```python
+import hvplot.pandas
+import intake
+cat = intake.open_catalog('master.yaml')
+gcb = cat.climate().Global_Carbon_Budget_2025.read()
+gcb.hvplot(y=['fossil emissions excluding carbonation', 'land-use change emissions',
+               'atmospheric growth', 'ocean sink', 'land sink'],
+            title='Global Carbon Budget 2025')
+```
+
 To explore the whole catalog, you can try:
 ```python
 cat.walk()
@@ -115,7 +128,7 @@ Make data access for climate data easy:
 - [`intake_xarray`](https://intake-xarray.readthedocs.io/en/latest/) for:
   - `nc` using [`netcdf4`](https://github.com/Unidata/netcdf4-python) [[example](https://github.com/aaronspring/remote_climate_data/blob/1209c5ebf5877b09b4403ea60da6d97b374b7b5c/catalogs/atmosphere.yaml#L64)]
   - `tif` using [`rioxarray`](https://github.com/corteva/rioxarray) [[example](https://github.com/aaronspring/remote_climate_data/blob/1209c5ebf5877b09b4403ea60da6d97b374b7b5c/catalogs/humans.yaml#L42)]
-- [`intake_excel`](https://github.com/edjdavid/intake-excel) for Excel `xls` and `xlsx` [[example](https://github.com/aaronspring/remote_climate_data/blob/1209c5ebf5877b09b4403ea60da6d97b374b7b5c/catalogs/climate.yaml#L35)]
+- [`intake_excel`](https://github.com/edjdavid/intake-excel) for Excel `xls` and `xlsx` [[example](https://github.com/aaronspring/remote_climate_data/blob/1209c5ebf5877b09b4403ea60da6d97b374b7b5c/catalogs/climate.yaml#L35)] (see [`excel_source.py`](remote_climate_data/excel_source.py) for custom driver if package unavailable)
 - [`intake_geopandas`](https://github.com/intake/intake_geopandas) for shapefiles `shp` [[example](https://github.com/aaronspring/remote_climate_data/blob/1209c5ebf5877b09b4403ea60da6d97b374b7b5c/catalogs/shapefiles.yaml#L11)], GeoJSON `geo.json` [[example](https://github.com/aaronspring/remote_climate_data/blob/1209c5ebf5877b09b4403ea60da6d97b374b7b5c/catalogs/shapefiles.yaml#L57)], GeoParquet `parquet`, `PostGIS` databases, `Spatialite` databases
 - [`regionmask`](https://regionmask.readthedocs.io/) for aggregating over geoshapes
 
