@@ -107,14 +107,12 @@ gcb = cat.climate().Global_Carbon_Budget_2025.read()
 gcb.hvplot(y=['fossil emissions excluding carbonation', 'land-use change emissions',
                'atmospheric growth', 'ocean sink', 'land sink'],
            title='Global Carbon Budget 2025')
-```
-```
+gcb
       fossil emissions excluding carbonation  ...  budget imbalance
 Year
 1959                                2.416788  ...          1.168380
 ...
 2024                               10.534546  ...         -1.691863
-
 [66 rows x 7 columns]
 ```
 
