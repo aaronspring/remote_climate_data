@@ -8,7 +8,7 @@ sources:
     description: Global Human Settlement
     metadata:
       url: https://ghsl.jrc.ec.europa.eu/ghs_pop2019.php
-    driver: netcdf
+    driver: rasterio
     parameters:
       s_res:
         description: spatial resolution
@@ -36,7 +36,5 @@ sources:
           - 54009  # Mollweide
           - 4326  # WGS84
     args:
-      urlpath: simplecache::zip://*.tif::https://cidportal.jrc.ec.europa.eu/ftp/jrc-opendata/GHSL/GHS_POP_MT_GLOBE_R2019A/GHS_POP_E{{epoch}}_GLOBE_R2019A_{{epsg}}_{{s_res}}/V1-0/GHS_POP_E{{epoch}}_GLOBE_R2019A_{{epsg}}_{{s_res}}_V1_0.zip
+      urlpath: simplecache::zip://GHS_POP_E{{epoch}}_GLOBE_R2019A_{{epsg}}_{{s_res}}_V1_0.tif::https://cidportal.jrc.ec.europa.eu/ftp/jrc-opendata/GHSL/GHS_POP_MT_GLOBE_R2019A/GHS_POP_E{{epoch}}_GLOBE_R2019A_{{epsg}}_{{s_res}}/V1-0/GHS_POP_E{{epoch}}_GLOBE_R2019A_{{epsg}}_{{s_res}}_V1_0.zip
       chunks: auto
-      xarray_kwargs:
-        engine: rasterio
