@@ -110,7 +110,7 @@ gcb.hvplot(y=['fossil emissions excluding carbonation', 'land-use change emissio
 ```
 ```
       fossil emissions excluding carbonation  ...  budget imbalance
-Year                                          
+Year
 1959                                2.416788  ...          1.168380
 ...
 2024                               10.534546  ...         -1.691863
