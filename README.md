@@ -95,6 +95,11 @@ import intake
 cat = intake.open_catalog('https://raw.githubusercontent.com/aaronspring/remote_climate_data/master/master.yaml')
 cat.atmosphere.HadCRUT5.to_dask()
 ```
+```
+<xarray.Dataset> Size: 42MB
+Dimensions:           (time: 2028, latitude: 36, longitude: 72, bnds: 2)
+...
+```
 
 ```python
 import hvplot.pandas
@@ -102,6 +107,15 @@ gcb = cat.climate().Global_Carbon_Budget_2025.read()
 gcb.hvplot(y=['fossil emissions excluding carbonation', 'land-use change emissions',
                'atmospheric growth', 'ocean sink', 'land sink'],
            title='Global Carbon Budget 2025')
+```
+```
+      fossil emissions excluding carbonation  ...  budget imbalance
+Year                                          
+1959                                2.416788  ...          1.168380
+...
+2024                               10.534546  ...         -1.691863
+
+[66 rows x 7 columns]
 ```
 
 Explore the whole catalog:
