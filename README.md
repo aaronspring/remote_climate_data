@@ -96,18 +96,15 @@ cat = intake.open_catalog('https://raw.githubusercontent.com/aaronspring/remote_
 cat.atmosphere.HadCRUT5.to_dask()
 ```
 
-### Plot Global Carbon Budget
 ```python
 import hvplot.pandas
-import intake
-cat = intake.open_catalog('master.yaml')
 gcb = cat.climate().Global_Carbon_Budget_2025.read()
 gcb.hvplot(y=['fossil emissions excluding carbonation', 'land-use change emissions',
                'atmospheric growth', 'ocean sink', 'land sink'],
-            title='Global Carbon Budget 2025')
+           title='Global Carbon Budget 2025')
 ```
 
-To explore the whole catalog, you can try:
+Explore the whole catalog:
 ```python
 cat.walk()
 ```
