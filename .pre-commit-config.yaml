@@ -4,7 +4,7 @@ ci:
 
 repos:
     - repo: https://github.com/pre-commit/pre-commit-hooks
-      rev: v5.0.0
+      rev: v6.0.0
       hooks:
           - id: trailing-whitespace
           - id: no-commit-to-branch
@@ -14,23 +14,23 @@ repos:
           - id: check-yaml
 
     - repo: https://github.com/astral-sh/ruff-pre-commit
-      rev: v0.9.0
+      rev: v0.15.20
       hooks:
           - id: ruff
             args: [--fix]
           - id: ruff-format
 
     - repo: https://github.com/kynan/nbstripout
-      rev: 0.7.1
+      rev: 0.9.1
       hooks:
           - id: nbstripout
 
     - repo: https://github.com/hoxbro/ty-pre-commit
-      rev: v0.0.12
+      rev: v0.0.56
       hooks:
           - id: ty-check
 
     - repo: https://github.com/adrienverge/yamllint.git
-      rev: v1.35.1
+      rev: v1.38.0
       hooks:
           - id: yamllint
