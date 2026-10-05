@@ -92,7 +92,10 @@ humans:
 ## Usage
 ```python
 import intake
-cat = intake.open_catalog('https://raw.githubusercontent.com/aaronspring/remote_climate_data/master/master.yaml')
+
+cat = intake.open_catalog(
+    "https://raw.githubusercontent.com/aaronspring/remote_climate_data/master/master.yaml"
+)
 cat.atmosphere.HadCRUT5.to_dask()
 ```
 ```
